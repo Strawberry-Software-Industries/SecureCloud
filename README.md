@@ -1,3 +1,4 @@
+
 # SecureCloud
 <b> Your new Cloud. Free and Open Source.
 
@@ -26,3 +27,12 @@ For example:
     application.run(host="192.168.2.101", port=80, threaded=True)    
 
 Now you can reach SecureCloud via your given IP address (for me `192.168.2.101`). In the beta phase you have to note that you have to put "/home" behind the IP address, otherwise you will get on a 404 page. (for example `192.168.2.101/home`
+
+## Supported Platforms
+For SecureCloud to run well, you always need the latest version of python3.
+Therefore only the LTS distributions and the latest distribution of Ubuntu are supported, and only Debian Stable (Debian 11) & Oldstable (Debian 10) are supported. 
+If you manage to get SecureCloud running on Debian 9, and Ubuntu 16.04, 20.10, 21.04 without much effort, feel free to send a pull request. 
+
+| Platform | Version  |
+|--|--|
+|  |  |
