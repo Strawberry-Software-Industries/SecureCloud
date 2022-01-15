@@ -35,9 +35,11 @@ If you manage to get SecureCloud running on Debian 9, and Ubuntu 16.04, 20.10, 2
 
 | Platform | Version  |  Supported|
 |--|--|--|
-| Debian | 10 | Yes |
-| Debian | 10 | Yes |
-| Debian | 10 | Yes |
-| Debian | 10 | Yes |
-| Debian | 10 | Yes |
-| Debian | 10 | Yes |
+| Debian | 9 and below| No|
+| Debian | 10| Yes |
+| Debian | 11| Yes |
+| Ubuntu| 16.04 LTS| No |
+| Debian | 18.04 LTS | Yes |
+| Debian | 20.04 LTS | Yes |
+| Debian | 21.10 | Yes |
+ 
