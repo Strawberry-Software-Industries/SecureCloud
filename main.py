@@ -1,6 +1,7 @@
 # Python Flask- File upload
 
 # import packages
+from ensurepip import version
 import sqlite3 as sql3
 from flask import Flask, app
 import os
@@ -82,6 +83,10 @@ def settings():
 
     lang = get_language()
 
+    version_full = "Release Candidate 1"
+    version = "RC 1"
+    revision = "rev-1"
+
     if lang == "english":
         title = "Settings"
         settings_link = "Settings"
@@ -162,7 +167,7 @@ def settings():
 
     
 
-
+# About Site
 @application.route('/about', methods=["GET", "POST"])
 def about():
     with open("./config/file-extensions.conf", "r") as f:
@@ -217,7 +222,7 @@ def files():
 
     return render_template('files.html', title=title, upload_link=upload_link, settings_link=settings_link, home_link=home_link, user_link=user_link, files_link=files_link)
 
-
+# Userlist
 @application.route('/users', methods=['GET', 'GET'])
 def users():
 
@@ -248,6 +253,7 @@ def users():
 
     return render_template('users.html', title=title, text=text, upload_link=upload_link, files_link=files_link, settings_link=settings_link, home_link=home_link, user_link=user_link, user_list=[])
 
+# Create User site + Function
 
 @application.route("/users/create", methods=['GET', 'GET'])
 def create_user():
@@ -273,6 +279,7 @@ def create_user():
     return render_template('create-user.html', title=title, upload_link=upload_link, settings_link=settings_link, home_link=home_link, user_link=user_link, files_link=files_link)
 
 
+# Upload Site, to upload Some Files
 @application.route("/upload", methods=['GET', 'POST'])
 def upload():
 
@@ -317,6 +324,38 @@ def upload():
             filename1 = " ".join(filename2)
 
     return render_template('upload.html', title=title, upload_link=upload_link, settings_link=settings_link, home_link=home_link, user_link=user_link, files_link=files_link)
+
+
+@application.route("/update", methods=['GET', 'POST'])
+def update(): 
+
+    lang = get_language()
+
+    version = "1.4-Beta"
+
+    if lang == "english":
+        title = "Update"
+        settings_link = "Settings"
+        upload_link = "Upload"
+        files_link = "Files"
+        home_link = "Home"
+        user_link = "User"
+        update_text = "An update for SecureCloud is available. To install the update, save all your settings and press Perform Update."
+        up_perf = "Perform update"
+
+    else:
+        title = "Update"
+        settings_link = "Einstellungen"
+        upload_link = "Hochladen"
+        files_link = "Dateien"
+        home_link = "Startseite"
+        user_link = "Benutzer"
+        update_text = "Ein Update für SecureCloud ist verfügbar. Um das Update zu installieren sichern sie alle ihre Einstellungen, und drücken sie auf Update durchführen"    
+        up_perf = "Update durchführen"
+
+    return render_template('update.html', title=title, settings_link=settings_link, upload_link=upload_link, files_link=files_link, home_link=home_link, user_link=user_link,
+                                          update_text=update_text, up_perf=up_perf)
+
 
 
 if __name__ == '__main__':
