@@ -48,3 +48,12 @@ If you manage to get SecureCloud running on Debian 9, and Ubuntu 16.04, 20.10 wi
 ## Does this also work on a Raspberry Pi?
 Yes of course! SecureCloud is optimized for the Raspberry Pi, and has been tested on a Raspberry Pi by the Strawberry developers. 
 <b>If the hostname of your RPi is `raspberrypi`, you can reach the Pi via the web address `raspberrypi.local/home` </b>
+
+## System requirements
+|RAM  | 512 MB or more  |
+|--|--|
+|  |  |
+|  |  |
+|  |  |
+|  |  |
+
