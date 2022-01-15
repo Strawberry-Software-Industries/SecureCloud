@@ -83,8 +83,8 @@ def settings():
 
     lang = get_language()
 
-    version_full = "Release Candidate 1"
-    version = "RC 1"
+    version_full = "Release Candidate 2"
+    version = "RC 2"
     revision = "rev-1"
 
     if lang == "english":
@@ -236,6 +236,7 @@ def users():
         files_link = "Files"
         home_link = "Home"
         user_link = "Users"
+        cr_new_usr = "Add user"
 
     else:
         title = "Benutzer"
@@ -245,13 +246,15 @@ def users():
         files_link = "Dateien"
         home_link = "Startseite"
         user_link = "Benutzer"
+        cr_new_usr = "Nutzer hinzufügen"
 
     conn = sql3.connect('DB/users.db')
     conn.execute('CREATE TABLE IF NOT EXISTS users (name TEXT, password TEXT)')
 
     cursor = conn.cursor()
 
-    return render_template('users.html', title=title, text=text, upload_link=upload_link, files_link=files_link, settings_link=settings_link, home_link=home_link, user_link=user_link, user_list=[])
+    return render_template('users.html', title=title, text=text, upload_link=upload_link, files_link=files_link, settings_link=settings_link, home_link=home_link, user_link=user_link,
+                                        user_list=[], cr_new_usr=cr_new_usr)
 
 # Create User site + Function
 
