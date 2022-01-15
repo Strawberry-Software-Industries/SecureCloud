@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
+
+* {
+    font-family: Rubik;
+}
+
+body {
+    font-family: Rubik;
+}
+
+.mdl-layout .mdl-js-layout .mdl-layout--fixed-header {
+    font-family: Rubik;
+}
+
+h4 {
+    font-family: Rubik;
+}

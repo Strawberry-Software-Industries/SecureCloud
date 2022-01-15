@@ -1,2 +1,3 @@
 # SecureCloud
-SecureCloud - Your new free and Open Source Cloud!
+
+## Best Cloud :D
