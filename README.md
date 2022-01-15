@@ -1,4 +1,3 @@
-
 # SecureCloud
 
-## Your new Cloud.
+## Your new Cloud. Free and Open Source.
