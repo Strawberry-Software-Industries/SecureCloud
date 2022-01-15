@@ -31,15 +31,16 @@ Now you can reach SecureCloud via your given IP address (for me `192.168.2.101`)
 ## Supported Platforms
 For SecureCloud to run well, you always need the latest version of python3.
 Therefore only the LTS distributions and the latest distribution of Ubuntu are supported, and only Debian Stable (Debian 11) & Oldstable (Debian 10) are supported. 
-If you manage to get SecureCloud running on Debian 9, and Ubuntu 16.04, 20.10, 21.04 without much effort, feel free to send a pull request. 
+If you manage to get SecureCloud running on Debian 9, and Ubuntu 16.04, 20.10 without much effort, feel free to send a pull request. 
 
-| Platform | Version  |  Supported|
-|--|--|--|
-| Debian | 9 and below| No|
-| Debian | 10| Yes |
-| Debian | 11| Yes |
-| Ubuntu| 16.04 LTS| No |
-| Ubuntu| 18.04 LTS | Yes |
-| Ubuntu| 20.04 LTS | Yes |
-| Ubuntu| 21.10 | Yes |
- 
+| Platform | Version  |  Supported|  Branch |
+|--|--|--| -- |
+| Debian | 9 and below| No| OldOldstable |
+| Debian | 10| Yes | Oldstable | 
+| Debian | 11| Yes | Stable| 
+| Ubuntu| 16.04 | No | ESM | 
+| Ubuntu| 18.04 | Yes | Stable| 
+| Ubuntu| 20.04 | Yes | Stable | 
+| Ubuntu| 21.04 | No | End of Life| 
+| Ubuntu| 21.10 | Yes | Current | 
+| Ubuntu| 22.04 | Yes | Future |  
