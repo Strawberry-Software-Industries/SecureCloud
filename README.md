@@ -33,6 +33,11 @@ For SecureCloud to run well, you always need the latest version of python3.
 Therefore only the LTS distributions and the latest distribution of Ubuntu are supported, and only Debian Stable (Debian 11) & Oldstable (Debian 10) are supported. 
 If you manage to get SecureCloud running on Debian 9, and Ubuntu 16.04, 20.10, 21.04 without much effort, feel free to send a pull request. 
 
-| Platform | Version  |
-|--|--|
-|  |  |
+| Platform | Version  |  Supported|
+|--|--|--|
+| Debian | 10 | Yes |
+| Debian | 10 | Yes |
+| Debian | 10 | Yes |
+| Debian | 10 | Yes |
+| Debian | 10 | Yes |
+| Debian | 10 | Yes |
