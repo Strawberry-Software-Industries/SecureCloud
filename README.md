@@ -50,10 +50,13 @@ Yes of course! SecureCloud is optimized for the Raspberry Pi, and has been teste
 <b>If the hostname of your RPi is `raspberrypi`, you can reach the Pi via the web address `raspberrypi.local/home` </b>
 
 ## System requirements
-|RAM  | 512 MB or more  |
-|--|--|
-|  |  |
-|  |  |
-|  |  |
-|  |  |
 
+#### **Minimal requirements**
+ - **RAM:** 256 MB or more
+ - **CPU:** Any x86, or armv7l CPU with 1 Core and 900MHz clock speed
+ - **Storage:** 1 GB
+ 
+#### **Recommended requirements**
+- **RAM:** 1 GB or more
+ - **CPU:** Any x86, x64, armv7l or aarch64 CPU with 2 Cores and 1,3GHz clock speed
+ - **Storage:** 5 GB
