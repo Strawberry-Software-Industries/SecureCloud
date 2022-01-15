@@ -15,7 +15,7 @@ Via the Install Script, which can be found in [this](https://github.com/Strawber
 If you start SecureCloud for the first time, please note that you have to change the Local IP address to the IP address the device uses. 
 
     if __name__ == '__main__':
-    application.run(host="192.168.2.101", port=80, threaded=True)    
+    application.run(host="localhost", port=80, threaded=True)    
 
 <b>Change localhost to your IP address.
 Under Windows you can find it with `ipconfig`, or under Linux with `ip a` or `ifconfig`. </b>
