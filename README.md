@@ -25,4 +25,4 @@ For example:
     if __name__ == '__main__':
     application.run(host="192.168.2.101", port=80, threaded=True)    
 
-Now you can reach SecureCloud via your given IP address (for me `192.168.2.101`). In the beta phase you have to note that you have to put "/home" behind the IP address, otherwise you will get on a 404 page. (for example `192.168.2.101/home`
+Now you can reach SecureCloud via your IP address (for me `192.168.2.101`). In the beta phase you have to note that you have to put "/home" behind the IP address, otherwise you will get on a 404 page. (for example `192.168.2.101/home`
