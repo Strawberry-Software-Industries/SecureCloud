@@ -85,7 +85,7 @@ def settings():
 
     version_full = "Release Candidate 2"
     version = "RC 2"
-    revision = "rev-1"
+    revision = "rev-2"
 
     if lang == "english":
         title = "Settings"
