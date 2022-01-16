@@ -13,8 +13,6 @@ import psutil
 
 UPLOAD_FOLDER = os.path.dirname(os.path.abspath(__file__))
 
-# ALLOWED_EXTENSIONS = {'jpg', 'jpeg', 'png', 'JPG', 'JPEG', 'PNG'}
-
 application = Flask(__name__, static_url_path="/static")
 DIR_PATH = os.path.dirname(os.path.realpath(__file__))
 application.config['/root/'] = UPLOAD_FOLDER
@@ -35,6 +33,20 @@ def allowed_file(filename):
         data = f.read()
 
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in data
+
+
+def get_hostname():
+    with open("./config/hostname.conf", 'r') as f:
+        data = f.read()
+    
+    return data
+
+
+def get_upload_path():
+    with open("./config/upload-path.conf", 'r') as f:
+        data = f.read()
+    
+    return data
 
 
 def memory_usage():
@@ -75,17 +87,16 @@ def home():
 def settings():
     with open("./config/file-extensions.conf", "r") as f:
         file_extensions_data = f.read()
-        file_extensions_data_text = file_extensions_data.replace(
-            "{", "").replace("}", "").replace('"', "")
+        file_extensions_data_text = file_extensions_data.replace("{", "").replace("}", "").replace('"', "")
 
     with open("./config/language.conf", 'r') as f:
         language_data = f.read()
 
     lang = get_language()
 
-    version_full = "Release Candidate 2"
-    version = "RC 2"
-    revision = "rev-2"
+    version_full = "Release Candidate 3"
+    version = "RC 3"
+    revision = "rev-1"
 
     if lang == "english":
         title = "Settings"
@@ -166,12 +177,14 @@ def settings():
 
 
     
-
 # About Site
 @application.route('/about', methods=["GET", "POST"])
 def about():
     with open("./config/file-extensions.conf", "r") as f:
         data = f.read()
+
+    hostname = get_hostname()
+    up_path = get_upload_path()
 
     lang = get_language()
 
@@ -184,6 +197,10 @@ def about():
         user_link = "Users"
 
         check_update = "Check for Updates"
+        change_hostname = "Change Hostname"
+        upload_path = "Upload Path"
+        upload_path_info = "All files are uploaded there:"
+        change_upload_path = "Change"
 
     else:
         title = "Über"
@@ -194,9 +211,14 @@ def about():
         user_link = "Benutzer"
 
         check_update = "Auf Updates überprüfen"
+        change_hostname = "Hostnamen ändern"
+        upload_path = "Hochladeort"
+        upload_path_info = "Dort werden alle Dateien hochgeladen:"
+        change_upload_path = "Ändern"
 
     return render_template('about.html', title=title, upload_link=upload_link, settings_link=settings_link, home_link=home_link, user_link=user_link, files_link=files_link,
-                           check_update=check_update)
+                           check_update=check_update, change_hostname=change_hostname, hostname=hostname, upload_path=upload_path, upload_path_info=upload_path_info,
+                           change_upload_path=change_upload_path, up_path=up_path)
 
 
 @application.route("/files", methods=["GET", "POST"])

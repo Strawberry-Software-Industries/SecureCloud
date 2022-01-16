@@ -44,7 +44,7 @@
         <main class="mdl-layout__content">
             <div class="page-content">
 
-                <!-- Event card 2 -->
+                <!-- Release Card -->
                 <style>
                     .card-event.mdl-card {
                         width: 300px;
@@ -90,7 +90,7 @@
                         <h4>
                             <b><u>SecureCloud</u></b>
                             <br>Version:<br>
-                            <b>Release Candidate 2</b> <br>
+                            <b>Release Candidate 3</b> <br>
                             <b>2022-16-01_00-19-31</b>
 
                         </h4>
@@ -104,17 +104,143 @@
                     </div>
                 </div>
 
+                <!-- Hostname Card  -->
+                <style>
+                    .hostname-card-event.mdl-card {
+                        width: 300px;
+                        height: 256px;
+                        background: #a900ff;
+                        border-radius: 20px;
+                        margin-left: 350px;
+                        margin-top: -256px;
+                    }
+                    
+                    .hostname-card-event>.mdl-card__actions {
+                        border-color: rgba(255, 255, 255, 0.2);
+                    }
+                    
+                    .hostname-card-event>.mdl-card__title {
+                        align-items: flex-start;
+                    }
+                    
+                    .hostname-card-event>.mdl-card__title>h4 {
+                        margin-top: 0;
+                    }
+                    
+                    .hostname-card-event>.mdl-card__actions {
+                        display: flex;
+                        box-sizing: border-box;
+                        align-items: center;
+                    }
+                    
+                    .hostname-card-event>.mdl-card__actions>.material-icons {
+                        padding-right: 10px;
+                    }
+                    
+                    .hostname-card-event>.mdl-card__title,
+                    .hostname-card-event>.mdl-card__actions,
+                    .hostname-card-event>.mdl-card__actions>.mdl-button {
+                        color: #fff;
+                        border-radius: 20px;
+                    }
+                </style>
+
+                <div class="hostname-card-event mdl-card mdl-shadow--2dp">
+                    <div class="mdl-card__title mdl-card--expand">
+                        <h4>
+                            <b><u>Hostname</u></b>
+                            <br>{{hostname}}<br>
+
+
+                        </h4>
+                    </div>
+                    <div class="mdl-card__actions mdl-card--border">
+                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                            {{change_hostname}}
+                        </a>
+                        <div class="mdl-layout-spacer"></div>
+                        <i class="material-icons">info</i>
+                    </div>
+                </div>
+
+                <!-- Upload Path Card  -->
+                <style>
+                    .path-card-event.mdl-card {
+                        width: 300px;
+                        height: 256px;
+                        background: #0000FF;
+                        border-radius: 20px;
+                        margin-left: 692px;
+                        margin-top: -256px;
+                    }
+                    
+                    .path-card-event>.mdl-card__actions {
+                        border-color: rgba(255, 255, 255, 0.2);
+                    }
+                    
+                    .path-card-event>.mdl-card__title {
+                        align-items: flex-start;
+                    }
+                    
+                    .path-card-event>.mdl-card__title>h4 {
+                        margin-top: 0;
+                    }
+                    
+                    .path-card-event>.mdl-card__actions {
+                        display: flex;
+                        box-sizing: border-box;
+                        align-items: center;
+                    }
+                    
+                    .path-card-event>.mdl-card__actions>.material-icons {
+                        padding-right: 10px;
+                    }
+                    
+                    .path-card-event>.mdl-card__title,
+                    .path-card-event>.mdl-card__actions,
+                    .path-card-event>.mdl-card__actions>.mdl-button {
+                        color: #fff;
+                        border-radius: 20px;
+                    }
+                </style>
+
+                <div class="path-card-event mdl-card mdl-shadow--2dp">
+                    <div class="mdl-card__title mdl-card--expand">
+                        <h4>
+                            <b><u>Hochladeort</u></b>
+                            <br>{{upload_path_info}}<br>
+                            <code>{{up_path}}</code> <br>
+
+
+                        </h4>
+                    </div>
+                    <div class="mdl-card__actions mdl-card--border">
+                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                            {{change_upload_path}}
+                        </a>
+                        <div class="mdl-layout-spacer"></div>
+                        <i class="material-icons">info</i>
+                    </div>
+                </div>
+
+
+
                 <span class="mdl-chip" style="margin-left: 10px; margin-top: 30px;">
-                    <span class="mdl-chip__text"><b>Build RC2-rev2_2022-16-01_00-19-31</b></span>
+                    <span class="mdl-chip__text"><b>Build RC3-rev1_2022-16-01_00-19-31</b></span>
                 </span> <br>
 
                 <span class="mdl-chip" style="margin-left: 10px; margin-top: 10px;">
                     <span class="mdl-chip__text"><b>Build with &#10084; by Strawberry Software</b></span>
+                </span> <br>
+
+                <span class="mdl-chip" style="margin-left: 10px; margin-top: 10px;">
+                    <span class="mdl-chip__text"><b>Build with Flask & Material Design Lite</b></span>
                 </span> <br> <br>
 
                 <span class="mdl-chip" style="margin-left: 10px; margin-top: 10px; width: 200px;">
                     <span class="mdl-chip__text" style="margin-left: 78px;"><b><u>Credits</u></b></span>
                 </span>
+
 
 
                 <style>
@@ -176,10 +302,6 @@
                             <a class="mdl-list__item-secondary-action" href="#"></a>
                         </span>
                         </li>
-
-                        <span class="mdl-chip" style="margin-left: 10px;">
-                            <span class="mdl-chip__text"><b>Build with Flask & Material Design Lite</b></span>
-                        </span>
                 </ul>
 
 
