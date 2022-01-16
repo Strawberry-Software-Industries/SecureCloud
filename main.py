@@ -57,6 +57,8 @@ def memory_usage():
 # application = Flask(__name__)
 
 
+# Home
+
 @application.route("/home", methods=["GET", "POST"])
 def home():
 
@@ -83,6 +85,7 @@ def home():
     return render_template('index.html', title=title, upload_link=upload_link, settings_link=settings_link, home_link=home_link, user_link=user_link, title_header=title_header, files_link=files_link)
 
 
+# Settings
 @application.route('/settings', methods=["GET", "POST"])
 def settings():
     with open("./config/file-extensions.conf", "r") as f:
@@ -94,9 +97,7 @@ def settings():
 
     lang = get_language()
 
-    version_full = "Release Candidate 3"
-    version = "RC 3"
-    revision = "rev-3"
+
 
     if lang == "english":
         title = "Settings"
@@ -186,6 +187,12 @@ def about():
     hostname = get_hostname()
     up_path = get_upload_path()
 
+    build_ver = "RC4-rev1_2022-16-01_19-02-13"
+    build_date = "2022-16-01_19-03-06"
+    version_full = "Release Candidate 4"
+    version = "RC 4"
+    revision = "rev-1"
+
     lang = get_language()
 
     if lang == "english":
@@ -218,9 +225,11 @@ def about():
 
     return render_template('about.html', title=title, upload_link=upload_link, settings_link=settings_link, home_link=home_link, user_link=user_link, files_link=files_link,
                            check_update=check_update, change_hostname=change_hostname, hostname=hostname, upload_path=upload_path, upload_path_info=upload_path_info,
-                           change_upload_path=change_upload_path, up_path=up_path)
+                           change_upload_path=change_upload_path, up_path=up_path, build_ver=build_ver, build_date=build_date, version_full=version_full, version=version,
+                           revision=revision)
 
 
+# Files
 @application.route("/files", methods=["GET", "POST"])
 def files():
 
@@ -243,6 +252,7 @@ def files():
         user_link = "Benutzer"
 
     return render_template('files.html', title=title, upload_link=upload_link, settings_link=settings_link, home_link=home_link, user_link=user_link, files_link=files_link)
+
 
 # Userlist
 @application.route('/users', methods=['GET', 'GET'])
@@ -278,8 +288,8 @@ def users():
     return render_template('users.html', title=title, text=text, upload_link=upload_link, files_link=files_link, settings_link=settings_link, home_link=home_link, user_link=user_link,
                                         user_list=[], cr_new_usr=cr_new_usr)
 
-# Create User site + Function
 
+# Create User site + Function
 @application.route("/users/create", methods=['GET', 'GET'])
 def create_user():
 
@@ -338,9 +348,9 @@ def upload():
             filename = secure_filename(file.filename)
             print(filename)
 
-            file.save(os.path.join('D:/', filename))
+            file.save(os.path.join(get_upload_path().rstrip(), filename))
 
-            path = (os.path.join('D:/', filename))
+            path = (os.path.join(get_upload_path().rstrip(), filename))
             print("path :", path)
 
             result = path.split("/")
@@ -351,6 +361,7 @@ def upload():
     return render_template('upload.html', title=title, upload_link=upload_link, settings_link=settings_link, home_link=home_link, user_link=user_link, files_link=files_link)
 
 
+# Update Site
 @application.route("/update", methods=['GET', 'POST'])
 def update(): 
 

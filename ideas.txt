@@ -1,7 +1,7 @@
 - Nutzererstellung und ggf. Anmeldung
-- verbesserte Hochladefunktion mit Config-File wo der Path drinnen steht
+- verbesserte Hochladefunktion mit Config-File wo der Path drinnen steht // Es fehlt nur noch das ändern des Paths in den Einstellungen
 - Updater
-- (Host) Name der SecureCloud (bspw. SecureCloud von Julian, Julian's SecureCloud, ...) // Anzeigen des Hostnamens wurde aktiviert, jedoch kann der nur über der Config File geändert werden
+- (Host) Name der SecureCloud (bspw. SecureCloud von Julian, Julian's SecureCloud, ...) // Es fehlt nur noch das ändern des Namens in den Einstellungen
 - Sprache ändern
 - File Extensions hinzufügen können
 - und vieles mehr
