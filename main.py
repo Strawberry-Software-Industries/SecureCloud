@@ -96,7 +96,7 @@ def settings():
 
     version_full = "Release Candidate 3"
     version = "RC 3"
-    revision = "rev-1"
+    revision = "rev-3"
 
     if lang == "english":
         title = "Settings"
