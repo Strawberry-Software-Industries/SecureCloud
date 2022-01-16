@@ -32,6 +32,7 @@ For SecureCloud to run well, you always need the latest version of python3.
 Therefore only the LTS distributions and the latest distribution of Ubuntu are supported, and only Debian Stable (Debian 11) & Oldstable (Debian 10) are supported. 
 If you manage to get SecureCloud running on Debian 9, and Ubuntu 16.04, 20.10 without much effort, feel free to send a pull request. 
 
+## Linux Support
 | Platform | Version  |  Supported|  Branch |
 |--|--|--| -- |
 | Debian | 9 and below | No | OldOldstable |
@@ -46,6 +47,23 @@ If you manage to get SecureCloud running on Debian 9, and Ubuntu 16.04, 20.10 wi
 | Ubuntu| 21.04 | No | End of Life | 
 | Ubuntu| 21.10 | Yes | Current | 
 | Ubuntu| 22.04 | Yes | Future |  
+
+## Windows Support
+| Platform | Version  |  Supported| 
+|--|--|--| -- |
+| Windows | 10 Build 2004 and above | Yes| 
+| Windows 11| Any | Yes | 
+| Windows 7 | Any | No |
+
+## BSD Support
+| Platform | Version  |  Supported| 
+|--|--|--| -- |
+| Windows | 10 Build 2004 and above | Yes| 
+| Windows 11| Any | Yes | 
+| Windows 7 | Any | No |
+
+
+
 
 ## Does this also work on a Raspberry Pi?
 Yes of course! SecureCloud is optimized for the Raspberry Pi, and has been tested on a Raspberry Pi by the Strawberry developers. 
