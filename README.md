@@ -42,12 +42,14 @@ If you manage to get SecureCloud running on Debian 9, and Ubuntu 16.04, 20.10 wi
 | Debian | 12 | Yes | Testing | 
 | Debian | Sid | Yes | Unstable | 
 | Ubuntu | 16.04 | No | ESM | 
-| Ubuntu| 18.04 | Yes | Stable | 
-| Ubuntu| 20.04 | Yes | Stable | 
-| Ubuntu| 20.10 | No | End of Life | 
-| Ubuntu| 21.04 | No | End of Life | 
-| Ubuntu| 21.10 | Yes | Current | 
-| Ubuntu| 22.04 | Yes | Future |  
+| Ubuntu | 18.04 | Yes | Stable | 
+| Ubuntu | 20.04 | Yes | Stable | 
+| Ubuntu | 20.10 | No | End of Life | 
+| Ubuntu | 21.04 | No | End of Life | 
+| Ubuntu | 21.10 | Yes | Current | 
+| Ubuntu | 22.04 | Yes | Future |  
+| Gentoo | - | Yes | Rolling Release|  
+| Arch | - | Yes | Rolling Release |  
 
 ## Windows Support
 | Platform | Version  |  Supported| 
@@ -57,11 +59,12 @@ If you manage to get SecureCloud running on Debian 9, and Ubuntu 16.04, 20.10 wi
 | Windows 7 | Any | No |
 
 ## BSD Support
+***BSD Support wasn't tested yet.***
 | Platform | Version  |  Supported| 
 |--|--|--|
-| Windows | 10 Build 2004 and above | Yes| 
-| Windows 11| Any | Yes | 
-| Windows 7 | Any | No |
+| BSD | Any | Yes| 
+| BSD | Any | Yes | 
+| BSD | Any | No |
 
 
 
