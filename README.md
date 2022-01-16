@@ -34,13 +34,16 @@ If you manage to get SecureCloud running on Debian 9, and Ubuntu 16.04, 20.10 wi
 
 | Platform | Version  |  Supported|  Branch |
 |--|--|--| -- |
-| Debian | 9 and below| No| OldOldstable |
-| Debian | 10| Yes | Oldstable | 
-| Debian | 11| Yes | Stable| 
-| Ubuntu| 16.04 | No | ESM | 
-| Ubuntu| 18.04 | Yes | Stable| 
+| Debian | 9 and below | No | OldOldstable |
+| Debian | 10 | Yes | Oldstable | 
+| Debian | 11 | Yes | Stable | 
+| Debian | 12 | Yes | Testing | 
+| Debian | Sid | Yes | Unstable | 
+| Ubuntu | 16.04 | No | ESM | 
+| Ubuntu| 18.04 | Yes | Stable | 
 | Ubuntu| 20.04 | Yes | Stable | 
-| Ubuntu| 21.04 | No | End of Life| 
+| Ubuntu| 20.10 | No | End of Life | 
+| Ubuntu| 21.04 | No | End of Life | 
 | Ubuntu| 21.10 | Yes | Current | 
 | Ubuntu| 22.04 | Yes | Future |  
 
