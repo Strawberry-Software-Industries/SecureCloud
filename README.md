@@ -50,14 +50,14 @@ If you manage to get SecureCloud running on Debian 9, and Ubuntu 16.04, 20.10 wi
 
 ## Windows Support
 | Platform | Version  |  Supported| 
-|--|--|--| -- |
+|--|--|--| 
 | Windows | 10 Build 2004 and above | Yes| 
 | Windows 11| Any | Yes | 
 | Windows 7 | Any | No |
 
 ## BSD Support
 | Platform | Version  |  Supported| 
-|--|--|--| -- |
+|--|--|--|
 | Windows | 10 Build 2004 and above | Yes| 
 | Windows 11| Any | Yes | 
 | Windows 7 | Any | No |
