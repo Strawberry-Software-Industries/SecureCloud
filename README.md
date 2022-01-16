@@ -1,5 +1,4 @@
 
-
 # SecureCloud
 <b> Your new Cloud. Free and Open Source.
 
@@ -72,6 +71,3 @@ Yes of course! SecureCloud is optimized for the Raspberry Pi, and has been teste
 **Raspberry Pi 3 Modell B+:** Good performance, but I recommend the RPi 4 with 2 GB RAM 
 **Raspberry Pi Zero W:** Performance is a bit poor, there can be internet lags or CPU lags from time to time. 
 **Raspberry Pi Zero 2 W:** Good performance for a mini Home Server!
-
-## Information about the program code
-SecureCloud was programmed in the Python programming language and the Flask framework was used. Material Design Lite ([getmdl.io](https://getmdl.io)) was used for the web design. All rights for the icons belong to Google. 
