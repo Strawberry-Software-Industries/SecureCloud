@@ -21,6 +21,7 @@ application.config['/root/'] = UPLOAD_FOLDER
 application.config['MAX_CONTENT_LENGTH'] = 8 * 1024 * 1024
 
 
+
 def get_language():
     with open("./config/language.conf", "r") as f:
         data = f.read()
@@ -72,6 +73,8 @@ def home():
         files_link = "Files"
         home_link = "Home"
         user_link = "Users"
+        welcome = "Welcome"
+        welcome_txt = "Welcome to SecureCloud! This is your personal SecureCloud. Press Settings to personalize your SecureCloud."
 
     else:
         title = "Startseite"
@@ -81,8 +84,11 @@ def home():
         files_link = "Dateien"
         home_link = "Startseite"
         user_link = "Benutzer"
+        welcome = "Willkommen"
+        welcome_txt = "Willkommen! Dies ist ihre persönliche SecureCloud. Drücken sie auf Einstellungen um ihre SecureCloud zu personalisieren."
 
-    return render_template('index.html', title=title, upload_link=upload_link, settings_link=settings_link, home_link=home_link, user_link=user_link, title_header=title_header, files_link=files_link)
+    return render_template('index.html', title=title, upload_link=upload_link, settings_link=settings_link, home_link=home_link, user_link=user_link, title_header=title_header,
+                                         files_link=files_link, welcome=welcome, welcome_txt=welcome_txt)
 
 
 # Settings
