@@ -26,7 +26,7 @@ def get_language():
     with open("./config/language.conf", "r") as f:
         data = f.read()
 
-    return data
+    return data.rstrip()
 
 
 def allowed_file(filename):
