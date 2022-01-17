@@ -1,11 +1,12 @@
 - Nutzererstellung und Anmeldung
 - verbesserte Hochladefunktion mit Config-File wo der Path drinnen steht // Es fehlt nur noch das ändern des Paths in den Einstellungen
-- Updater
+- Updater // ✅
 - (Host) Name der SecureCloud (bspw. SecureCloud von Julian, Julian's SecureCloud, ...) // Es fehlt nur noch das ändern des Namens in den Einstellungen
 - Sprache ändern
 - File Extensions hinzufügen können
-- verbesserte Startseite
+- verbesserte Startseite // Fast
 - Icon Hinzufügen // ✅
+- Upload Limit (Wie viel Megabyte eine Datei beim Hochladen haben darf)
 - und vieles mehr
 
 # Alles muss bis zur ersten Stable Version von SecureCloud fertig sein. Sonst wird weiterhin die RC/Beta weitergeführt.

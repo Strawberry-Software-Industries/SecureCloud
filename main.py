@@ -21,6 +21,15 @@ application.config['/root/'] = UPLOAD_FOLDER
 application.config['MAX_CONTENT_LENGTH'] = 8 * 1024 * 1024
 
 
+# Variables
+release_github = "https://github.com/Strawberry-Software-Industries/SecureCloud/releases/tag/v1.7-rc4"
+build_date = "2022-17-01_13-15-03"
+build_ver = "RC5-rev1_" + build_date
+version_full = "Release Candidate 5"
+version_short = "RC 5"
+revision = "rev-1"
+
+
 
 def get_language():
     with open("./config/language.conf", "r") as f:
@@ -48,6 +57,13 @@ def get_upload_path():
         data = f.read()
     
     return data
+
+
+def max_upload_size():
+    with open("./config/upload-size.conf", 'r') as f:
+        data = f.read()
+    
+    return data.rstrip()
 
 
 def memory_usage():
@@ -159,21 +175,7 @@ def settings():
 
 
 
-#    lang = request.form.get('lang-btn')
-#
-#    if lang == "lang-btn-en":
-#        lang_btn_english()
-#            
-#    if lang == "lang-btn-de":
-#        lang_btn_german()
 
-#    def lang_btn_german():
-#        with open("./config/language.conf") as f:
-#            f.write("german")
-#
-#    def lang_btn_english():
-#        with open("./config/language.conf") as f:
-#            f.write('english')
     
 
     return render_template('settings.html', title=title, upload_link=upload_link, settings_link=settings_link, home_link=home_link, user_link=user_link, files_link=files_link,
@@ -193,11 +195,7 @@ def about():
     hostname = get_hostname()
     up_path = get_upload_path()
 
-    build_ver = "RC4-rev1_2022-16-01_19-02-13"
-    build_date = "2022-16-01_19-03-06"
-    version_full = "Release Candidate 4"
-    version = "RC 4"
-    revision = "rev-1"
+    
 
     lang = get_language()
 
@@ -231,7 +229,7 @@ def about():
 
     return render_template('about.html', title=title, upload_link=upload_link, settings_link=settings_link, home_link=home_link, user_link=user_link, files_link=files_link,
                            check_update=check_update, change_hostname=change_hostname, hostname=hostname, upload_path=upload_path, upload_path_info=upload_path_info,
-                           change_upload_path=change_upload_path, up_path=up_path, build_ver=build_ver, build_date=build_date, version_full=version_full, version=version,
+                           change_upload_path=change_upload_path, up_path=up_path, build_ver=build_ver, build_date=build_date, version_full=version_full, version_short=version_short,
                            revision=revision)
 
 
@@ -373,8 +371,6 @@ def update():
 
     lang = get_language()
 
-    version = "1.4-Beta"
-
     if lang == "english":
         title = "Update"
         settings_link = "Settings"
@@ -396,7 +392,7 @@ def update():
         up_perf = "Update durchführen"
 
     return render_template('update.html', title=title, settings_link=settings_link, upload_link=upload_link, files_link=files_link, home_link=home_link, user_link=user_link,
-                                          update_text=update_text, up_perf=up_perf)
+                                          update_text=update_text, up_perf=up_perf, release_github=release_github)
 
 
 
