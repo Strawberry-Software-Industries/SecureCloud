@@ -1,0 +1,11 @@
+- User creation and login
+- improved upload function with config file where the path is inside // only the change of the path in the settings is still missing
+- updater
+- (Host) name of the SecureCloud (e.g. Julian's SecureCloud, Julian's SecureCloud, ...) // Only the change of the name in the settings is still missing
+- Change language
+- be able to add file extensions
+- improved start page
+- add icon // ✅
+- and much more
+
+# Everything must be ready by the first stable version of SecureCloud. Otherwise the RC/Beta will continue.

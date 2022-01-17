@@ -1,0 +1,6 @@
+-- ISSUE 1 --
+
+OPEN : https://github.com/Strawberry-Software-Industries/SecureCloud/issues/1
+UNIX Formatting Error.
+Reads "english\n" instead of "english"
+Same as in Upload 
