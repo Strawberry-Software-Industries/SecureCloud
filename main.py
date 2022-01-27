@@ -81,7 +81,7 @@ def get_ipaddr():
 
 def get_dir():
     #home = expanduser("")
-    h = os.listdir(get_upload_path())
+    h = os.listdir(get_upload_path().rstrip())
     str1 = ' <br/> '.join(h)
     return str1
 
@@ -94,7 +94,7 @@ def root():
 
 @application.route('/dir')
 def dir():
-    dirlist = get_dir()
+    dirlist = get_dir().rstrip()
     return render_template('dir.html', dirlist=dirlist)
 
 # Home
