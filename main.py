@@ -30,7 +30,7 @@ application.config['MAX_CONTENT_LENGTH'] = max_upload_size() * 1024 * 1024
 
 
 # Variables
-release_github = "https://github.com/Strawberry-Software-Industries/SecureCloud/releases/tag/v1.8-rc5"
+release_github = "https://github.com/Strawberry-Software-Industries/SecureCloud/releases/tag/v1.0"
 build_date = "2022-27-01_18-20-24"
 build_ver = "1.0_" + build_date
 version_full = "Version 1.0 Stable"
@@ -81,7 +81,7 @@ def get_ipaddr():
 
 def get_dir():
     #home = expanduser("")
-    h = os.listdir("D:/")
+    h = os.listdir(get_upload_path())
     str1 = ' <br/> '.join(h)
     return str1
 
