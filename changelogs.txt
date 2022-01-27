@@ -1,0 +1,9 @@
+- Now the IP address is automatically determined by the host
+- The configuration file for the upload size has now been activated and should now work on any operating system. 
+- Added new Card for Upload Size
+- Changed Upload Path Icon to "folder" (from "info")
+- Added Shortcut on "/" for "/home" 
+- Added "/dir" for Debugging
+- The folders and files of the upload path can now be displayed by calling "/files"
+- Changed some fonts
+- Switched to Stable Build 

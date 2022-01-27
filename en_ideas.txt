@@ -7,6 +7,9 @@
 - improved start page // Close 
 - add icon // ✅
 - Upload Limit (How many megabytes a file can have when uploading)
+- For Developer: Log Preview
+- maybe Remote Desktop Viewer
+- Dark Mode (Dark .page-content, bright Font)
 - and much more
 
 # Everything must be ready by the first stable version of SecureCloud. Otherwise the RC/Beta will continue.
