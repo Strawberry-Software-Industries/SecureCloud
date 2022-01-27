@@ -45,11 +45,9 @@
         </div>
         <main class="mdl-layout__content">
             <div class="page-content">
-                <!-- Colored FAB button with ripple 
-                <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored" style="position: fixed; bottom: 30px; right: 30px; ">
-                  <i class="material-icons">add</i> -->
-
-                <!-- Accent-colored raised button with ripple -->
+                {% autoescape false %}
+                <h5 style="margin-left: 20px">{{dir}}</h5>
+                {% endautoescape %}
                 <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" style="position: fixed; bottom: 30px; right: 30px;" href="upload">{{upload_link}}</a>
 
             </div>

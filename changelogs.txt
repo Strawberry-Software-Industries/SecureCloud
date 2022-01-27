@@ -6,4 +6,5 @@
 - Added "/dir" for Debugging
 - The folders and files of the upload path can now be displayed by calling "/files"
 - Changed some fonts
-- Switched to Stable Build 
+- Switched to Stable Build
+- Added Edition Card 

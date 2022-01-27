@@ -5,11 +5,13 @@ from ensurepip import version
 import sqlite3 as sql3
 from flask import Flask, app
 import os
+from os.path import expanduser
 from flask import Flask, request, redirect, url_for, render_template, send_from_directory
 from werkzeug.utils import secure_filename
 import sys
 from PIL import Image
 import psutil
+import socket
 
 UPLOAD_FOLDER = os.path.dirname(os.path.abspath(__file__))
 
@@ -17,19 +19,27 @@ application = Flask(__name__, static_url_path="/static")
 DIR_PATH = os.path.dirname(os.path.realpath(__file__))
 application.config['/root/'] = UPLOAD_FOLDER
 
-# limit upload size upto 8mb
-application.config['MAX_CONTENT_LENGTH'] = 8 * 1024 * 1024
+# Upload Size Function & Configuration
+def max_upload_size():
+    with open("./config/upload-size.conf", 'r') as f:
+        data = f.read()
+    
+    return data.rstrip()
+
+application.config['MAX_CONTENT_LENGTH'] = max_upload_size() * 1024 * 1024
 
 
 # Variables
-release_github = "https://github.com/Strawberry-Software-Industries/SecureCloud/releases/tag/v1.7-rc4"
-build_date = "2022-17-01_13-15-03"
-build_ver = "RC5-rev1_" + build_date
-version_full = "Release Candidate 5"
-version_short = "RC 5"
+release_github = "https://github.com/Strawberry-Software-Industries/SecureCloud/releases/tag/v1.8-rc5"
+build_date = "2022-27-01_18-20-24"
+build_ver = "1.0_" + build_date
+version_full = "Version 1.0 Stable"
+version_short = "v1.0"
 revision = "rev-1"
+is_lts_e = "No"
+is_lts_d = "Nein"
 
-
+# Functions
 
 def get_language():
     with open("./config/language.conf", "r") as f:
@@ -59,20 +69,33 @@ def get_upload_path():
     return data
 
 
-def max_upload_size():
-    with open("./config/upload-size.conf", 'r') as f:
-        data = f.read()
-    
-    return data.rstrip()
-
-
 def memory_usage():
     return int(psutil.virtual_memory().total - psutil.virtual_memory().available)
 
 
+def get_ipaddr():
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    s.connect(("8.8.8.8", 80))
+    return s.getsockname()[0]
+    s.close()
 
-# application = Flask(__name__)
+def get_dir():
+    #home = expanduser("")
+    h = os.listdir("D:/")
+    str1 = ' <br/> '.join(h)
+    return str1
 
+
+
+@application.route('/')
+def root():
+
+    return render_template('root.html')
+
+@application.route('/dir')
+def dir():
+    dirlist = get_dir()
+    return render_template('dir.html', dirlist=dirlist)
 
 # Home
 
@@ -118,6 +141,7 @@ def settings():
         language_data = f.read()
 
     lang = get_language()
+    upload_size = max_upload_size()
 
 
 
@@ -145,6 +169,8 @@ def settings():
         changed_english = "Language changed to English"
         memory = "Memory"
         memory_usage_mb = f"{format(int(memory_usage() / 1024 / 1024))} MB of {format(int(psutil.virtual_memory().total / 1024 / 1024))} MB"
+        upload_limit = "Upload Size"
+        change = "Change"
 
     else:
         title = "Einstellungen"
@@ -170,19 +196,17 @@ def settings():
         changed_english = "Sprache wurde zu Englisch geändert"
         memory = "Arbeitsspeicher"
         memory_usage_mb = f"{format(int(memory_usage() / 1024 / 1024))} MB von {format(int(psutil.virtual_memory().total / 1024 / 1024))} MB"
+        upload_limit = "Hochladegröße"
+        change = "Ändern"
 
     memory_usage_percent = f"{psutil.virtual_memory()[2]} %"
 
-
-
-
-    
 
     return render_template('settings.html', title=title, upload_link=upload_link, settings_link=settings_link, home_link=home_link, user_link=user_link, files_link=files_link,
                            act_ext=act_ext, up_av=up_av, up_txt=up_txt, up_perf=up_perf, goto_about=goto_about, about_link=about_link, language=language,
                            german=german, english=english, add_ext=add_ext, file_extensions_data=file_extensions_data, memory_usage_mb=memory_usage_mb,
                            memory_usage_percent=memory_usage_percent, memory=memory, file_extensions_data_text=file_extensions_data_text, changed_german=changed_german,
-                           changed_english=changed_english)
+                           changed_english=changed_english, upload_limit=upload_limit, change=change, upload_size=upload_size)
 
 
     
@@ -212,6 +236,9 @@ def about():
         upload_path = "Upload Path"
         upload_path_info = "All files are uploaded there:"
         change_upload_path = "Change"
+        edition = "Edition"
+        eol_q = "LTS? " + is_lts_e
+        gh_o = "Our GitHub"
 
     else:
         title = "Über"
@@ -226,11 +253,14 @@ def about():
         upload_path = "Hochladeort"
         upload_path_info = "Dort werden alle Dateien hochgeladen:"
         change_upload_path = "Ändern"
+        edition = "Edition"
+        eol_q = "LTS? " + is_lts_d
+        gh_o = "Unser GitHub"
 
     return render_template('about.html', title=title, upload_link=upload_link, settings_link=settings_link, home_link=home_link, user_link=user_link, files_link=files_link,
                            check_update=check_update, change_hostname=change_hostname, hostname=hostname, upload_path=upload_path, upload_path_info=upload_path_info,
                            change_upload_path=change_upload_path, up_path=up_path, build_ver=build_ver, build_date=build_date, version_full=version_full, version_short=version_short,
-                           revision=revision)
+                           revision=revision, edition=edition, eol_q=eol_q, gh_o=gh_o)
 
 
 # Files
@@ -238,6 +268,7 @@ def about():
 def files():
 
     lang = get_language()
+    dir = get_dir()
 
     if lang == "english":
         title = "Files"
@@ -255,7 +286,8 @@ def files():
         home_link = "Startseite"
         user_link = "Benutzer"
 
-    return render_template('files.html', title=title, upload_link=upload_link, settings_link=settings_link, home_link=home_link, user_link=user_link, files_link=files_link)
+    return render_template('files.html', title=title, upload_link=upload_link, settings_link=settings_link, home_link=home_link, user_link=user_link, files_link=files_link,
+                                         dir=dir)
 
 
 # Userlist
@@ -394,7 +426,8 @@ def update():
     return render_template('update.html', title=title, settings_link=settings_link, upload_link=upload_link, files_link=files_link, home_link=home_link, user_link=user_link,
                                           update_text=update_text, up_perf=up_perf, release_github=release_github)
 
-
+hostip = get_ipaddr()
 
 if __name__ == '__main__':
-    application.run(host="localhost", port=80, threaded=True)
+    application.run(host=hostip, port=80, threaded=True)
+
