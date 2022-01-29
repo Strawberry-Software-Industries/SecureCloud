@@ -22,22 +22,22 @@ application.config['/root/'] = UPLOAD_FOLDER
 # Upload Size Function & Configuration
 def max_upload_size():
     with open("./config/upload-size.conf", 'r') as f:
-        data = f.read()
-    
+        data = f.read()        
+
     return data.rstrip()
 
-application.config['MAX_CONTENT_LENGTH'] = max_upload_size() * 1024 * 1024
+application.config['MAX_CONTENT_LENGTH'] = int(max_upload_size()) * 1024 * 1024
 
 
 # Variables
 release_github = "https://github.com/Strawberry-Software-Industries/SecureCloud/releases/tag/v1.0"
-build_date = "2022-27-01_18-20-24"
-build_ver = "1.0_" + build_date
-version_full = "Version 1.0 Stable"
-version_short = "v1.0"
+build_date = "2022-29-01_13-15-01"
+build_ver = "1.1_" + build_date
+version_full = "Version 1.1 (LTS)"
+version_short = "v1.1"
 revision = "rev-1"
-is_lts_e = "No"
-is_lts_d = "Nein"
+is_lts_e = "Yes"
+is_lts_d = "Ja"
 
 # Functions
 
