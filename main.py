@@ -1,23 +1,16 @@
-# Python Flask- File upload
-
-# import packages
-from ensurepip import version
-import sqlite3 as sql3
-from flask import Flask, app
-import os
-from os.path import expanduser
+from flask import Flask
 from flask import Flask, request, redirect, url_for, render_template, send_from_directory
 from werkzeug.utils import secure_filename
-import sys
+
+
+import sqlite3 as sql3
 from PIL import Image
+
+import sys
+import os
 import psutil
 import socket
 
-UPLOAD_FOLDER = os.path.dirname(os.path.abspath(__file__))
-
-application = Flask(__name__, static_url_path="/static")
-DIR_PATH = os.path.dirname(os.path.realpath(__file__))
-application.config['/root/'] = UPLOAD_FOLDER
 
 # Upload Size Function & Configuration
 def max_upload_size():
@@ -26,15 +19,16 @@ def max_upload_size():
 
     return data.rstrip()
 
+application = Flask(__name__, static_url_path="/static")
 application.config['MAX_CONTENT_LENGTH'] = int(max_upload_size()) * 1024 * 1024
 
 
 # Variables
-release_github = "https://github.com/Strawberry-Software-Industries/SecureCloud/releases/tag/v1.0"
-build_date = "2022-29-01_13-15-01"
-build_ver = "1.1_" + build_date
-version_full = "Version 1.1 (LTS)"
-version_short = "v1.1"
+release_github = "https://github.com/Strawberry-Software-Industries/SecureCloud/releases/tag/v1.1"
+build_date = "2022-30-01_21-43-16"
+build_ver = "1.1.1_" + build_date
+version_full = "Version 1.1.1 (LTS)"
+version_short = "v1.1.1"
 revision = "rev-1"
 is_lts_e = "Yes"
 is_lts_d = "Ja"
@@ -79,6 +73,7 @@ def get_ipaddr():
     return s.getsockname()[0]
     s.close()
 
+
 def get_dir():
     #home = expanduser("")
     h = os.listdir(get_upload_path().rstrip())
@@ -87,18 +82,21 @@ def get_dir():
 
 
 
+# Root 
 @application.route('/')
 def root():
 
     return render_template('root.html')
 
+
+# For Debugging
 @application.route('/dir')
 def dir():
     dirlist = get_dir().rstrip()
     return render_template('dir.html', dirlist=dirlist)
 
-# Home
 
+# Home
 @application.route("/home", methods=["GET", "POST"])
 def home():
 
@@ -209,8 +207,7 @@ def settings():
                            changed_english=changed_english, upload_limit=upload_limit, change=change, upload_size=upload_size)
 
 
-    
-# About Site
+# About
 @application.route('/about', methods=["GET", "POST"])
 def about():
     with open("./config/file-extensions.conf", "r") as f:
@@ -325,7 +322,7 @@ def users():
                                         user_list=[], cr_new_usr=cr_new_usr)
 
 
-# Create User site + Function
+# Create User
 @application.route("/users/create", methods=['GET', 'GET'])
 def create_user():
 
@@ -350,7 +347,7 @@ def create_user():
     return render_template('create-user.html', title=title, upload_link=upload_link, settings_link=settings_link, home_link=home_link, user_link=user_link, files_link=files_link)
 
 
-# Upload Site, to upload Some Files
+# Upload Site
 @application.route("/upload", methods=['GET', 'POST'])
 def upload():
 
@@ -397,7 +394,7 @@ def upload():
     return render_template('upload.html', title=title, upload_link=upload_link, settings_link=settings_link, home_link=home_link, user_link=user_link, files_link=files_link)
 
 
-# Update Site
+# Update
 @application.route("/update", methods=['GET', 'POST'])
 def update(): 
 
@@ -425,6 +422,7 @@ def update():
 
     return render_template('update.html', title=title, settings_link=settings_link, upload_link=upload_link, files_link=files_link, home_link=home_link, user_link=user_link,
                                           update_text=update_text, up_perf=up_perf, release_github=release_github)
+
 
 hostip = get_ipaddr()
 
