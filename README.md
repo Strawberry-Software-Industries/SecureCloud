@@ -70,7 +70,32 @@ If you manage to get SecureCloud running on Debian 9, and Ubuntu 16.04 without m
 | Platform | Version  |  Supported| 
 |--|--|--|
 | FreeBSD | Any | Yes| 
-| OpenBSD | Any | Yes | 
+| OpenBSD | Any | Yes |
+
+## Long-Term Support
+We offer Long-Term Support (LTS) for consumers. The Current Version is v1.1.*
+LTS support is free for all SecureCloud users. 
+
+## The support of any SecureCloud version
+The current non-LTS version of SecureCloud has support until a new non-LTS version of SecureCloud is released. From then on the version has only 7 days of support. 
+**Example:**
+Current LTS version: v1.1.*
+Current Non-LTS version: v1.0
+When version 1.2 is released, version 1.0 has only 7 days of support. After the 7 days the version is in EoL status (End of Life) and does not get any security updates. In addition, we do not provide further support for the version. (Via Discord or GitHub)
+
+## Version history
+| Version | Status |  Release | End of Life| Notes
+| --     | --      | --        | --        | -- 
+| 0.2.2-Beta| EoL  | 16.01.2022 | Yes      |First Beta Release
+| 0.1-rc2 | EoL    | 16.01.2022   | Yes    |        
+| 0.6-rc3 | EoL    | 16.01.2022   | Yes    |        
+| 0.7-rc4 | EoL    | 16.01.2022   | Yes    |        
+| 0.8-r5 | EoL     | 17.01.2022   | Yes    | Last RC & Beta
+| 1.0 | Stable     | 27.01.2022   | No     | First Stable Release 
+| 1.1 | LTS        | 29.01.2022   | No      | First LTS 
+| 1.1.1 | LTS      | 30.01.2022   | No      | 
+| 1.2   | Future   | -            | No      | 
+
 
 ## Does this also work on a Raspberry Pi?
 Yes of course! SecureCloud is optimized for the Raspberry Pi, and has been tested on a Raspberry Pi by the Strawberry developers. 
