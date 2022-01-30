@@ -1,18 +1,20 @@
 
 # SecureCloud
-<b> Your new Cloud. Free and Open Source.
+<b> Your new Cloud. Free and Open Source. 
+By Strawberry Software </b>
 
 ## What is SecureCloud?
 SecureCloud is a free and open source cloud that makes storing files on your (home) server more than easy!
 
 ## How does SecureCloud work? 
-SecureCloud is currently in the early beta phase, so many features are not yet available. 
-SecureCloud will be available in English & German.
+SecureCloud is currently a stable product, and includes some features. Some features will be added soon!
+SecureCloud is available in English & German
 
 ## How can I install SecureCloud?
 Via the Install Script, which can be found in [this](https://github.com/Strawberry-Software-Industries/Install-SecureCloud) Repository. 
 
 ## Important notes when you start SecureCloud for the first time
+**<u>NOTE: If you are using SecureCloud 1.0 or higher, you do not need to follow this information.<u>**<br>
 If you start SecureCloud for the first time, please note that you have to change the Local IP address to the IP address the device uses. 
 
     if __name__ == '__main__':
@@ -29,45 +31,46 @@ For example:
 Now you can reach SecureCloud via your given IP address (for me `192.168.2.101`). In the beta phase you have to note that you have to put "/home" behind the IP address, otherwise you will get on a 404 page. (for example `192.168.2.101/home`
 
 ## Supported Platforms
-For SecureCloud to run well, you always need the latest version of python3.
-Therefore only the LTS distributions and the latest distribution of Ubuntu are supported, and only Debian Stable (Debian 11) & Oldstable (Debian 10) are supported. 
-If you manage to get SecureCloud running on Debian 9, and Ubuntu 16.04, 20.10 without much effort, feel free to send a pull request. 
+SecureCloud works on Python 3.9 or higher. However, the Strawberry Software team recommends using the latest Python 3.10 version. All versions below Python 3.9 are untested and may not work.
+Since some distributions use a version below Python 3.9, we have removed support for this distro. 
+If you manage to get SecureCloud running on Debian 9, and Ubuntu 16.04 without much effort, feel free to send a pull request. 
 
 ## Linux Support
 | Platform | Version  |  Supported|  Branch |
 |--|--|--| -- |
 | Debian | 9 and below | No | OldOldstable |
 | Debian | 10 | Yes | Oldstable | 
-| Debian | 11 | Yes | Stable | 
-| Debian | 12 | Yes | Testing | 
+| Debian | 11 | Yes | Stable    | 
+| Debian | 12 | Yes | Testing   | 
 | Debian | Sid | Yes | Unstable | 
-| Ubuntu | 16.04 | No | ESM | 
+| Ubuntu | 16.04 | No | ESM     | 
 | Ubuntu | 18.04 | Yes | Stable | 
 | Ubuntu | 20.04 | Yes | Stable | 
-| Ubuntu | 20.10 | No | End of Life | 
-| Ubuntu | 21.04 | No | End of Life | 
+| Ubuntu | 20.10 | Yes | End of Life | 
+| Ubuntu | 21.04 | Yes | End of Life | 
 | Ubuntu | 21.10 | Yes | Current | 
-| Ubuntu | 22.04 | Yes | Future |  
-| Gentoo | - | Yes | Rolling Release|  
-| Arch | - | Yes | Rolling Release |  
+| Ubuntu | 22.04 | Yes | Future  |  
+| Gentoo | - | Yes | Rolling Release |  
+| Arch | - | Yes | Rolling Release   |  
+| Manjaro | - | Yes | Rolling Release   |  
+
 
 ## Windows Support
 | Platform | Version  |  Supported| 
 |--|--|--| 
-| Windows | 10 Build 2004 and above | Yes| 
-| Windows 11| Any | Yes | 
-| Windows 7 | Any | No |
+| Windows 7 | - | No |
+| Windows 8 | - | No |
+| Windows 8.1 | - | Yes |
+| Windows 10 | Build 1909 and above | Yes| 
+| Windows 11 | Build 22000.51 and above | Yes | 
+
 
 ## BSD Support
 ***BSD Support wasn't tested yet.***
 | Platform | Version  |  Supported| 
 |--|--|--|
-| BSD | Any | Yes| 
-| BSD | Any | Yes | 
-| BSD | Any | No |
-
-
-
+| FreeBSD | Any | Yes| 
+| OpenBSD | Any | Yes | 
 
 ## Does this also work on a Raspberry Pi?
 Yes of course! SecureCloud is optimized for the Raspberry Pi, and has been tested on a Raspberry Pi by the Strawberry developers. 
@@ -76,15 +79,15 @@ Yes of course! SecureCloud is optimized for the Raspberry Pi, and has been teste
 ## System requirements
 
 #### **Minimal requirements**
- - **RAM:** 256 MB or more
- - **CPU:** Any x86, or armv7l CPU with 1 Core and 900MHz clock speed
+ - **RAM:** 128 MB or more
+ - **CPU:** Any x86, or armv7l CPU with 1 Core and 800MHz clock speed
  - **Storage:** 1 GB
  - **Internet connection via wifi** 
- - **OS:** Debian 10 or higher | Ubuntu 16.04 or higher 
+ - **OS:** Debian 10 or higher | Ubuntu 18.04 or higher 
  
 #### **Recommended requirements**
-- **RAM:** 1 GB or more
-- **CPU:** Any x86, x64, armv7l or aarch64 CPU with 2 Cores and 1,3GHz clock speed
+- **RAM:** 512 MB or more
+- **CPU:** Any x86, x64, armv7l or aarch64 CPU with 2 Cores and 1,0GHz clock speed
 - **Storage:** 5 GB
 - **Internet connection via LAN** 
 - **OS:** Debian 11 or higher | Ubuntu 20.04 or higher 
