@@ -46,6 +46,7 @@
         <main class="mdl-layout__content">
             <div class="page-content">
 
+
                 <!-- Update card -->
                 <style>
                     .update-card-square.mdl-card {
@@ -58,7 +59,8 @@
                     
                     .update-card-square>.mdl-card__title {
                         color: #fff;
-                        background: url('https://getmdl.io/assets/demos/dog.png') bottom right 15% no-repeat #46B6AC;
+                        background: url('https://raw.githubusercontent.com/Strawberry-Software-Industries/SecureCloud/main/images/cloud_resized.png') bottom right 15% no-repeat #46B6AC;
+                        /* https://getmdl.io/assets/demos/dog.png */
                     }
                     
                     .mdl-button {
@@ -164,7 +166,7 @@
         </script> -->
 
                 <!-- Raised button -->
-                <button class="mdl-button mdl-js-button mdl-button--raised">Deutsch</button>
+                <button class="mdl-button mdl-js-button mdl-button--raised" style="margin-left: 10px;">Deutsch</button>
 
 
 
@@ -260,7 +262,30 @@
                         </h4>
                     </div>
                     <div class="mdl-card__actions mdl-card--border">
-                        <a class="mdl-button"></a>
+                        <button type="button" class="mdl-button show-modal">{{more}}</button>
+                        <dialog class="mdl-dialog" style="border-radius: 10px; width: 500px;">
+                            <div class="mdl-dialog__content">
+                                <h5>{{memory}}: {{memory_usage_mb}}</h5>
+                                <h5>CPU: {{cpu_usage_percent}}%</h5>
+                                <h5>Uptime: {{uptime_conv}}</h5>
+                            </div>
+                            <div class="mdl-dialog__actions mdl-dialog__actions--full-width">
+                                <button type="button" class="mdl-button close" style="border-radius: 10px;">Ok</button>
+                            </div>
+                        </dialog>
+                        <script>
+                            var dialog = document.querySelector('dialog');
+                            var showModalButton = document.querySelector('.show-modal');
+                            if (!dialog.showModal) {
+                                dialogPolyfill.registerDialog(dialog);
+                            }
+                            showModalButton.addEventListener('click', function() {
+                                dialog.showModal();
+                            });
+                            dialog.querySelector('.close').addEventListener('click', function() {
+                                dialog.close();
+                            });
+                        </script>
                         <div class="mdl-layout-spacer"></div>
                         <i class="material-icons">memory</i>
                     </div>
@@ -304,6 +329,7 @@
                     .uplim-card-event>.mdl-card__actions,
                     .uplim-card-event>.mdl-card__actions>.mdl-button {
                         color: #fff;
+                        border-radius: 20px;
                     }
                 </style>
 
@@ -319,6 +345,8 @@
                         <i class="material-icons">upload</i>
                     </div>
                 </div>
+
+
 
             </div>
         </main>

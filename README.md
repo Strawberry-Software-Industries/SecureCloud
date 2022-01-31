@@ -1,4 +1,3 @@
-
 # SecureCloud
 <b> Your new Cloud. Free and Open Source. 
 By Strawberry Software </b>

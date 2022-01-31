@@ -2,12 +2,13 @@ from flask import Flask
 from flask import Flask, request, redirect, url_for, render_template, send_from_directory
 from werkzeug.utils import secure_filename
 
-
 import sqlite3 as sql3
 from PIL import Image
 
 import sys
 import os
+import time
+import datetime
 import psutil
 import socket
 
@@ -24,14 +25,15 @@ application.config['MAX_CONTENT_LENGTH'] = int(max_upload_size()) * 1024 * 1024
 
 
 # Variables
-release_github = "https://github.com/Strawberry-Software-Industries/SecureCloud/releases/tag/v1.1"
-build_date = "2022-30-01_21-43-16"
-build_ver = "1.1.1_" + build_date
-version_full = "Version 1.1.1 (LTS)"
-version_short = "v1.1.1"
+release_github = "https://github.com/Strawberry-Software-Industries/SecureCloud/releases/tag/v1.2"
+build_date = "2022-31-01_19-09-31"
+build_ver = "1.2.0_" + build_date
+version_full = "Version 1.2.0"
+version_short = "v1.2.0"
 revision = "rev-1"
-is_lts_e = "Yes"
-is_lts_d = "Ja"
+
+is_lts_ver = "n"
+uptime = time.time()
 
 # Functions
 
@@ -65,6 +67,9 @@ def get_upload_path():
 
 def memory_usage():
     return int(psutil.virtual_memory().total - psutil.virtual_memory().available)
+
+def cpu_usage():
+    return psutil.cpu_percent()
 
 
 def get_ipaddr():
@@ -169,6 +174,7 @@ def settings():
         memory_usage_mb = f"{format(int(memory_usage() / 1024 / 1024))} MB of {format(int(psutil.virtual_memory().total / 1024 / 1024))} MB"
         upload_limit = "Upload Size"
         change = "Change"
+        more = "More..."
 
     else:
         title = "Einstellungen"
@@ -196,15 +202,21 @@ def settings():
         memory_usage_mb = f"{format(int(memory_usage() / 1024 / 1024))} MB von {format(int(psutil.virtual_memory().total / 1024 / 1024))} MB"
         upload_limit = "Hochladegröße"
         change = "Ändern"
+        more = "Weiteres..."
 
     memory_usage_percent = f"{psutil.virtual_memory()[2]} %"
+    cpu_usage_percent = cpu_usage()
+    uptime_conv = str(datetime.timedelta(seconds=int(round(time.time()-uptime))))
+     
+    
 
 
     return render_template('settings.html', title=title, upload_link=upload_link, settings_link=settings_link, home_link=home_link, user_link=user_link, files_link=files_link,
                            act_ext=act_ext, up_av=up_av, up_txt=up_txt, up_perf=up_perf, goto_about=goto_about, about_link=about_link, language=language,
                            german=german, english=english, add_ext=add_ext, file_extensions_data=file_extensions_data, memory_usage_mb=memory_usage_mb,
                            memory_usage_percent=memory_usage_percent, memory=memory, file_extensions_data_text=file_extensions_data_text, changed_german=changed_german,
-                           changed_english=changed_english, upload_limit=upload_limit, change=change, upload_size=upload_size)
+                           changed_english=changed_english, upload_limit=upload_limit, change=change, upload_size=upload_size, more=more, cpu_usage_percent=cpu_usage_percent,
+                           uptime_conv=uptime_conv)
 
 
 # About
@@ -216,6 +228,10 @@ def about():
     hostname = get_hostname()
     up_path = get_upload_path()
 
+    if is_lts_ver == "y":
+        lts = "LTS"
+    else:
+        lts = ""
     
 
     lang = get_language()
@@ -234,8 +250,9 @@ def about():
         upload_path_info = "All files are uploaded there:"
         change_upload_path = "Change"
         edition = "Edition"
-        eol_q = "LTS? " + is_lts_e
         gh_o = "Our GitHub"
+        av_editions = "Avaible Editions"
+        update_no = "You're on the lastest build!"
 
     else:
         title = "Über"
@@ -251,13 +268,14 @@ def about():
         upload_path_info = "Dort werden alle Dateien hochgeladen:"
         change_upload_path = "Ändern"
         edition = "Edition"
-        eol_q = "LTS? " + is_lts_d
         gh_o = "Unser GitHub"
+        av_editions = "Verfügbare Editionen"
+        update_no = "Du bist auf dem letzten Stand!"
 
     return render_template('about.html', title=title, upload_link=upload_link, settings_link=settings_link, home_link=home_link, user_link=user_link, files_link=files_link,
                            check_update=check_update, change_hostname=change_hostname, hostname=hostname, upload_path=upload_path, upload_path_info=upload_path_info,
                            change_upload_path=change_upload_path, up_path=up_path, build_ver=build_ver, build_date=build_date, version_full=version_full, version_short=version_short,
-                           revision=revision, edition=edition, eol_q=eol_q, gh_o=gh_o)
+                           revision=revision, edition=edition, lts=lts, gh_o=gh_o, av_editions=av_editions, update_no=update_no)
 
 
 # Files
@@ -347,11 +365,12 @@ def create_user():
     return render_template('create-user.html', title=title, upload_link=upload_link, settings_link=settings_link, home_link=home_link, user_link=user_link, files_link=files_link)
 
 
-# Upload Site
+# Upload
 @application.route("/upload", methods=['GET', 'POST'])
 def upload():
 
     lang = get_language()
+    upload_limit = max_upload_size()
 
     if lang == "english":
         title = "Upload"
@@ -360,6 +379,8 @@ def upload():
         files_link = "Files"
         home_link = "Home"
         user_link = "User"
+        upl_up_to = "You can upload up to " + upload_limit + "MB"
+        change = "Change"
 
     else:
         title = "Hochladen"
@@ -368,6 +389,8 @@ def upload():
         files_link = "Dateien"
         home_link = "Startseite"
         user_link = "Benutzer"
+        upl_up_to = "Du kannst bis zu " + upload_limit + "MB hochladen"
+        change = "Ändern"
 
     if request.method == 'POST':
         if 'file' not in request.files:
@@ -391,7 +414,8 @@ def upload():
             print("fname :", filename2)
             filename1 = " ".join(filename2)
 
-    return render_template('upload.html', title=title, upload_link=upload_link, settings_link=settings_link, home_link=home_link, user_link=user_link, files_link=files_link)
+    return render_template('upload.html', title=title, upload_link=upload_link, settings_link=settings_link, home_link=home_link, user_link=user_link, files_link=files_link,
+                                          upl_up_to=upl_up_to, change=change)
 
 
 # Update

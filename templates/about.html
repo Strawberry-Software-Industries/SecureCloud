@@ -97,11 +97,30 @@
                         </h4>
                     </div>
                     <div class="mdl-card__actions mdl-card--border">
-                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                            {{check_update}}
-                        </a>
-                        <div class="mdl-layout-spacer"></div>
-                        <i class="material-icons">info</i>
+                        <button type="button" class="mdl-button show-modal">{{check_update}}</button>
+                        <dialog class="mdl-dialog" style="border-radius: 10px; width: 400px;">
+                            <div class="mdl-dialog__content">
+                                <h5>{{update_no}}</h5>
+                            </div>
+                            <div class="mdl-dialog__actions mdl-dialog__actions--full-width">
+                                <button type="button" class="mdl-button close" style="border-radius: 10px;">Ok</button>
+                            </div>
+                        </dialog>
+                        <script>
+                            var dialog = document.querySelector('dialog');
+                            var showModalButton = document.querySelector('.show-modal');
+                            if (!dialog.showModal) {
+                                dialogPolyfill.registerDialog(dialog);
+                            }
+                            showModalButton.addEventListener('click', function() {
+                                dialog.showModal();
+                            });
+                            dialog.querySelector('.close').addEventListener('click', function() {
+                                dialog.close();
+                            });
+                        </script>
+                        <div class=" mdl-layout-spacer "></div>
+                        <i class="material-icons ">info</i>
                     </div>
                 </div>
 
@@ -149,8 +168,8 @@
                     }
                 </style>
 
-                <div class="hostname-card-event mdl-card mdl-shadow--2dp">
-                    <div class="mdl-card__title mdl-card--expand">
+                <div class="hostname-card-event mdl-card mdl-shadow--2dp ">
+                    <div class="mdl-card__title mdl-card--expand ">
                         <h4>
                             <b><u>Hostname</u></b>
                             <br>{{hostname}}<br>
@@ -158,12 +177,12 @@
 
                         </h4>
                     </div>
-                    <div class="mdl-card__actions mdl-card--border">
-                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                    <div class="mdl-card__actions mdl-card--border ">
+                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect ">
                             {{change_hostname}}
                         </a>
-                        <div class="mdl-layout-spacer"></div>
-                        <i class="material-icons">info</i>
+                        <div class="mdl-layout-spacer "></div>
+                        <i class="material-icons ">laptop</i>
                     </div>
                 </div>
 
@@ -208,8 +227,8 @@
                     }
                 </style>
 
-                <div class="path-card-event mdl-card mdl-shadow--2dp">
-                    <div class="mdl-card__title mdl-card--expand">
+                <div class="path-card-event mdl-card mdl-shadow--2dp ">
+                    <div class="mdl-card__title mdl-card--expand ">
                         <h4>
                             <b><u>Hochladeort</u></b>
                             <br>{{upload_path_info}}<br>
@@ -218,12 +237,12 @@
 
                         </h4>
                     </div>
-                    <div class="mdl-card__actions mdl-card--border">
-                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                    <div class="mdl-card__actions mdl-card--border ">
+                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect ">
                             {{change_upload_path}}
                         </a>
-                        <div class="mdl-layout-spacer"></div>
-                        <i class="material-icons">folder</i>
+                        <div class="mdl-layout-spacer "></div>
+                        <i class="material-icons ">folder</i>
                     </div>
                 </div>
 
@@ -268,41 +287,41 @@
                     }
                 </style>
 
-                <div class="ed-card-event mdl-card mdl-shadow--2dp">
-                    <div class="mdl-card__title mdl-card--expand">
+                <div class="ed-card-event mdl-card mdl-shadow--2dp ">
+                    <div class="mdl-card__title mdl-card--expand ">
                         <h4>
                             <b><u>{{edition}}</u></b>
-                            <br>SecureCloud Home<br>
-                            <b>Open Source</b> <br>
+                            <br>SecureCloud Home {{lts}}<br>
+                            <b>OSS</b> <br>
                             <b>{{eol_q}}</b> <br>
 
                         </h4>
                     </div>
-                    <div class="mdl-card__actions mdl-card--border">
-                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="https://github.com/Strawberry-Software-Industries/SecureCloud">
+                    <div class="mdl-card__actions mdl-card--border ">
+                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect " href="https://github.com/Strawberry-Software-Industries/SecureCloud ">
                             {{gh_o}} 
                         </a>
-                        <div class="mdl-layout-spacer"></div>
-                        <i class="material-icons">info</i>
+                        <div class="mdl-layout-spacer "></div>
+                        <i class="material-icons ">info</i>
                     </div>
                 </div>
 
 
 
-                <span class="mdl-chip" style="margin-left: 10px; margin-top: 30px;">
-                    <span class="mdl-chip__text"><b>Build {{build_ver}}</b></span>
+                <span class="mdl-chip " style="margin-left: 10px; margin-top: 30px; ">
+                    <span class="mdl-chip__text "><b>Build {{build_ver}}</b></span>
                 </span> <br>
 
-                <span class="mdl-chip" style="margin-left: 10px; margin-top: 10px;">
-                    <span class="mdl-chip__text"><b>Build with &#10084; by Strawberry Software</b></span>
+                <span class="mdl-chip " style="margin-left: 10px; margin-top: 10px; ">
+                    <span class="mdl-chip__text "><b>Build with &#10084; by Strawberry Software</b></span>
                 </span> <br>
 
-                <span class="mdl-chip" style="margin-left: 10px; margin-top: 10px;">
-                    <span class="mdl-chip__text"><b>Build with Flask & Material Design Lite</b></span>
+                <span class="mdl-chip " style="margin-left: 10px; margin-top: 10px; ">
+                    <span class="mdl-chip__text "><b>Build with Flask & Material Design Lite</b></span>
                 </span> <br> <br>
 
-                <span class="mdl-chip" style="margin-left: 10px; margin-top: 10px; width: 200px;">
-                    <span class="mdl-chip__text" style="margin-left: 78px;"><b><u>Credits</u></b></span>
+                <span class="mdl-chip " style="margin-left: 10px; margin-top: 10px; width: 200px; ">
+                    <span class="mdl-chip__text " style="margin-left: 78px; "><b><u>Credits</u></b></span>
                 </span>
 
 
@@ -313,57 +332,57 @@
                     }
                 </style>
 
-                <ul class="demo-list-three mdl-list">
-                    <li class="mdl-list__item mdl-list__item--three-line">
-                        <span class="mdl-list__item-primary-content">
-                            <i class="material-icons mdl-list__item-avatar">person</i>
+                <ul class="demo-list-three mdl-list ">
+                    <li class="mdl-list__item mdl-list__item--three-line ">
+                        <span class="mdl-list__item-primary-content ">
+                            <i class="material-icons mdl-list__item-avatar ">person</i>
                             <span><b>Juliandev02</b></span>
-                        <span class="mdl-list__item-text-body">
+                        <span class="mdl-list__item-text-body ">
                                 Developer & Maintainer<br>
                                 Frontend & Backend Developer
                             </span>
                         </span>
-                        <span class="mdl-list__item-secondary-content">
-                            <a class="mdl-list__item-secondary-action" href="#"></a>
+                        <span class="mdl-list__item-secondary-content ">
+                            <a class="mdl-list__item-secondary-action " href="# "></a>
                         </span>
                     </li>
 
-                    <li class="mdl-list__item mdl-list__item--three-line">
-                        <span class="mdl-list__item-primary-content">
-                            <i class="material-icons  mdl-list__item-avatar">person</i>
+                    <li class="mdl-list__item mdl-list__item--three-line ">
+                        <span class="mdl-list__item-primary-content ">
+                            <i class="material-icons mdl-list__item-avatar ">person</i>
                             <span><b>Creative_Dreamer</b></span>
-                        <span class="mdl-list__item-text-body">
+                        <span class="mdl-list__item-text-body ">
                                 Developer <br>
                                 Backend Developer
                             </span>
                         </span>
-                        <span class="mdl-list__item-secondary-content">
-                            <a class="mdl-list__item-secondary-action" href="#"></a>
+                        <span class="mdl-list__item-secondary-content ">
+                            <a class="mdl-list__item-secondary-action " href="# "></a>
                         </span>
                     </li>
 
-                    <li class="mdl-list__item mdl-list__item--three-line">
-                        <span class="mdl-list__item-primary-content">
-                            <i class="material-icons  mdl-list__item-avatar">person</i>
+                    <li class="mdl-list__item mdl-list__item--three-line ">
+                        <span class="mdl-list__item-primary-content ">
+                            <i class="material-icons mdl-list__item-avatar ">person</i>
                             <span><b>Wellensittichfan</b></span>
-                        <span class="mdl-list__item-text-body">
+                        <span class="mdl-list__item-text-body ">
                                 Collector of ideas
                             </span>
                         </span>
-                        <span class="mdl-list__item-secondary-content">
-                            <a class="mdl-list__item-secondary-action" href="#"></a>
+                        <span class="mdl-list__item-secondary-content ">
+                            <a class="mdl-list__item-secondary-action " href="# "></a>
                         </span>
 
-                        <li class="mdl-list__item mdl-list__item--three-line">
-                            <span class="mdl-list__item-primary-content">
-                            <i class="material-icons  mdl-list__item-avatar">person</i>
+                        <li class="mdl-list__item mdl-list__item--three-line ">
+                            <span class="mdl-list__item-primary-content ">
+                            <i class="material-icons mdl-list__item-avatar ">person</i>
                             <span><b>Ohnezahn</b></span>
-                            <span class="mdl-list__item-text-body">
+                            <span class="mdl-list__item-text-body ">
                                 Allrounder
                             </span>
                             </span>
-                            <span class="mdl-list__item-secondary-content">
-                            <a class="mdl-list__item-secondary-action" href="#"></a>
+                            <span class="mdl-list__item-secondary-content ">
+                            <a class="mdl-list__item-secondary-action " href="# "></a>
                         </span>
                         </li>
                 </ul>
