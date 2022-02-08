@@ -90,10 +90,11 @@ When version 1.2 is released, version 1.0 has only 7 days of support. After the 
 | 0.6-rc3 | EoL    | 16.01.2022   | Yes    |        
 | 0.7-rc4 | EoL    | 16.01.2022   | Yes    |        
 | 0.8-r5 | EoL     | 17.01.2022   | Yes    | Last RC & Beta
-| 1.0 | Stable     | 27.01.2022   | No     | First Stable Release 
-| 1.1 | LTS        | 29.01.2022   | No      | First LTS 
+| 1.0 | EoL | 27.01.2022   | Yes | First Stable Release 
+| 1.1 | LTS        | 29.01.2022   | Yes | First LTS 
 | 1.1.1 | LTS      | 30.01.2022   | No      | 
-| 1.2   | Future   | -            | No      | 
+| 1.2   | Stable | 31.01.2022            | No, soon      | 
+| 1.3   | LTS | 08.02.2022            | No      | LTS with more Features 
 
 
 ## Does this also work on a Raspberry Pi?
