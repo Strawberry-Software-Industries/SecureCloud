@@ -1,13 +1,5 @@
-- Changed Text in Edition Box
-- Changed Icon from Hostname Box to Laptop
-- Added Rounded Button Corners for Upload Limit Box
-- Changed dog.png with cloud_resized.png 
-- Added margin-left (10px) for Language Buttons
-- Changed Font of Dir List (To Cascadia Code)
-- Added Bold Text for Dir List
-- Added Upload Limit Text to Upload Site
-- Added Button on Upload Page for changing Upload Size
-- Added More Button on Settings -> Memory Usage Card (Displays more Informations; Dialog)
-- Added Dialog for Update Button (about.html)
-- Added Uptime 
-- Added CPU Usage
+- Upload size was adjusted to 32MB (Default)
+- The long-awaited update for the language system: Finally, the language can now be changed via SecureCloud settings!!!
+- LTS Update (Replaces 1.1.*)
+- Added Developer Key
+- Added Edition Version Variable
