@@ -1,11 +1,9 @@
 from flask import Flask
-from flask import Flask, request, redirect, url_for, render_template, send_from_directory
+from flask import Flask, request, redirect, render_template, make_response, url_for
 from werkzeug.utils import secure_filename
 
-import sqlite3 as sql3
-from PIL import Image
+import sqlite3 as sql
 
-import sys
 import os
 import time
 import datetime
@@ -26,17 +24,20 @@ application.config['MAX_CONTENT_LENGTH'] = int(max_upload_size()) * 1024 * 1024
 
 # Variables
 release_github = "https://github.com/Strawberry-Software-Industries/SecureCloud/releases/tag/v1.2"
-build_date = "2022-31-01_19-09-31"
-build_ver = "1.2.0_" + build_date
-version_full = "Version 1.2.0"
-version_short = "v1.2.0"
+build_date = "2022-08-02_19-09-31"
+build_ver = "1.3.0_" + build_date
+version_full = "Version 1.3.0"
+version_short = "v1.3.0"
 revision = "rev-1"
 
 is_lts_ver = "n"
+is_oss = "y"
+edition_ver = "Home"
+developer_key = "-"
 uptime = time.time()
 
-# Functions
 
+# Functions
 def get_language():
     with open("./config/language.conf", "r") as f:
         data = f.read()
@@ -68,6 +69,7 @@ def get_upload_path():
 def memory_usage():
     return int(psutil.virtual_memory().total - psutil.virtual_memory().available)
 
+
 def cpu_usage():
     return psutil.cpu_percent()
 
@@ -76,11 +78,9 @@ def get_ipaddr():
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     s.connect(("8.8.8.8", 80))
     return s.getsockname()[0]
-    s.close()
 
 
 def get_dir():
-    #home = expanduser("")
     h = os.listdir(get_upload_path().rstrip())
     str1 = ' <br/> '.join(h)
     return str1
@@ -129,6 +129,7 @@ def home():
         welcome = "Willkommen"
         welcome_txt = "Willkommen! Dies ist ihre persönliche SecureCloud. Drücken sie auf Einstellungen um ihre SecureCloud zu personalisieren."
 
+
     return render_template('index.html', title=title, upload_link=upload_link, settings_link=settings_link, home_link=home_link, user_link=user_link, title_header=title_header,
                                          files_link=files_link, welcome=welcome, welcome_txt=welcome_txt)
 
@@ -146,6 +147,15 @@ def settings():
     lang = get_language()
     upload_size = max_upload_size()
 
+
+    if request.method == 'POST':
+        if request.form.get('de_lang') == 'de_lang':
+            with open("./config/language.conf", 'w') as f:
+                f.write("german")
+
+        elif request.form.get('en_lang') == 'en_lang':
+            with open("./config/language.conf", 'w') as f:
+                f.write("english")
 
 
     if lang == "english":
@@ -210,7 +220,6 @@ def settings():
      
     
 
-
     return render_template('settings.html', title=title, upload_link=upload_link, settings_link=settings_link, home_link=home_link, user_link=user_link, files_link=files_link,
                            act_ext=act_ext, up_av=up_av, up_txt=up_txt, up_perf=up_perf, goto_about=goto_about, about_link=about_link, language=language,
                            german=german, english=english, add_ext=add_ext, file_extensions_data=file_extensions_data, memory_usage_mb=memory_usage_mb,
@@ -232,6 +241,23 @@ def about():
         lts = "LTS"
     else:
         lts = ""
+
+    if is_oss == "y":
+        oss = "OSS"
+    else:
+        oss = "Non-OSS"
+
+
+    # BETA
+    with open("./config/theme.conf", "r") as f:
+        dark = f.read()
+        
+
+    if dark == "y":
+        dark_mode = '<link rel="stylesheet" href="../static/dark.css">'
+    else:
+        dark_mode = '<link rel="stylesheet" href="../static/white.css">'
+    
     
 
     lang = get_language()
@@ -275,7 +301,7 @@ def about():
     return render_template('about.html', title=title, upload_link=upload_link, settings_link=settings_link, home_link=home_link, user_link=user_link, files_link=files_link,
                            check_update=check_update, change_hostname=change_hostname, hostname=hostname, upload_path=upload_path, upload_path_info=upload_path_info,
                            change_upload_path=change_upload_path, up_path=up_path, build_ver=build_ver, build_date=build_date, version_full=version_full, version_short=version_short,
-                           revision=revision, edition=edition, lts=lts, gh_o=gh_o, av_editions=av_editions, update_no=update_no)
+                           revision=revision, edition=edition, lts=lts, gh_o=gh_o, av_editions=av_editions, update_no=update_no, dark_mode=dark_mode, oss=oss, edition_ver=edition_ver)
 
 
 # Files
@@ -331,10 +357,11 @@ def users():
         user_link = "Benutzer"
         cr_new_usr = "Nutzer hinzufügen"
 
-    conn = sql3.connect('DB/users.db')
-    conn.execute('CREATE TABLE IF NOT EXISTS users (name TEXT, password TEXT)')
-
-    cursor = conn.cursor()
+    conn = sql.connect('db/users.db')
+    cur = conn.cursor()
+    cur.execute("CREATE TABLE IF NOT EXISTS users (name TEXT, password TEXT)")
+    conn.close()
+    
 
     return render_template('users.html', title=title, text=text, upload_link=upload_link, files_link=files_link, settings_link=settings_link, home_link=home_link, user_link=user_link,
                                         user_list=[], cr_new_usr=cr_new_usr)
@@ -452,4 +479,3 @@ hostip = get_ipaddr()
 
 if __name__ == '__main__':
     application.run(host=hostip, port=80, threaded=True)
-
