@@ -24,13 +24,13 @@ application.config['MAX_CONTENT_LENGTH'] = int(max_upload_size()) * 1024 * 1024
 
 # Variables
 release_github = "https://github.com/Strawberry-Software-Industries/SecureCloud/releases/tag/v1.2"
-build_date = "2022-08-02_19-09-31"
+build_date = "2022-08-02_16-18-13"
 build_ver = "1.3.0_" + build_date
 version_full = "Version 1.3.0"
 version_short = "v1.3.0"
 revision = "rev-1"
 
-is_lts_ver = "n"
+is_lts_ver = "y"
 is_oss = "y"
 edition_ver = "Home"
 developer_key = "-"
