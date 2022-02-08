@@ -1,15 +1,12 @@
 - User creation and login
-- improved upload function with config file where the path is inside // only the change of the path in the settings is still missing
+- improved upload function with config file where the path is inside // ✅
 - updater // ✅
-- (Host) name of the SecureCloud (e.g. Julian's SecureCloud, Julian's SecureCloud, ...) // Only the change of the name in the settings is still missing
-- Change language
+- (Host) name of the SecureCloud (e.g. Julian's SecureCloud, Julian's SecureCloud, ...) // ✅
+- Change language // ✅
 - be able to add file extensions
-- improved start page // Close 
-- add icon // ✅
+- improved start page // Close ✅
 - Upload Limit (How many megabytes a file can have when uploading)
-- For Developer: Log Preview
-- maybe Remote Desktop Viewer
-- Dark Mode (Dark .page-content, bright Font)
+- Dark Mode (Dark .page-content, bright Font) // ❓
 - and much more
 
 # Everything must be ready by the first stable version of SecureCloud. Otherwise the RC/Beta will continue.

@@ -1,15 +1,12 @@
 - Nutzererstellung und Anmeldung
 - verbesserte Hochladefunktion mit Config-File wo der Path drinnen steht // ✅
 - Updater // ✅
-- (Host) Name der SecureCloud (bspw. SecureCloud von Julian, Julian's SecureCloud, ...) // Es fehlt nur noch das ändern des Namens in den Einstellungen
-- Sprache ändern
+- (Host) Name der SecureCloud (bspw. SecureCloud von Julian, Julian's SecureCloud, ...) // ✅
+- Sprache ändern // ✅
 - File Extensions hinzufügen können
-- verbesserte Startseite // Fast 
-- Icon Hinzufügen // ✅
+- verbesserte Startseite // Fast ✅
 - Upload Limit (Wie viel Megabyte eine Datei beim Hochladen haben darf) + Anzeige in den Einstellungen  // ✅
-- Für Developer: Log Vorschau
-- vllt. einen Remote Desktop Viewer
-- Dark Mode (Dunkler .page-content, helle Schrift)
+- Dark Mode (Dunkler .page-content, helle Schrift) // ❓
 - und vieles mehr
 
 # Alles muss bis zur ersten Stable Version von SecureCloud fertig sein. Sonst wird weiterhin die RC/Beta weitergeführt.
