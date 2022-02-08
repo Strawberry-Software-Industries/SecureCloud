@@ -72,15 +72,18 @@ If you manage to get SecureCloud running on Debian 9, and Ubuntu 16.04 without m
 | OpenBSD | Any | Yes |
 
 ## Long-Term Support
-We offer Long-Term Support (LTS) for consumers. The Current Version is v1.1.*
+We offer Long-Term Support (LTS) for consumers. The Current Version is v1.3.*
 LTS support is free for all SecureCloud users. 
 
 ## The support of any SecureCloud version
 The current non-LTS version of SecureCloud has support until a new non-LTS version of SecureCloud is released. From then on the version has only 7 days of support. 
 **Example:**
-Current LTS version: v1.1.*
-Current Non-LTS version: v1.0
-When version 1.2 is released, version 1.0 has only 7 days of support. After the 7 days the version is in EoL status (End of Life) and does not get any security updates. In addition, we do not provide further support for the version. (Via Discord or GitHub)
+Current LTS version: v1.3.*
+Current Non-LTS version: v1.2
+When version 1.4 is released, version 1.2 has only 7 days of support. After the 7 days the version is in EoL status (End of Life) and does not get any security updates. In addition, we do not provide further support for the version. (Via Discord or GitHub).
+**For LTS versions:**
+Each LTS version has support until a new LTS version comes out. From then on the version has only 7 days of support. 
+
 
 ## Version history
 | Version | Status |  Release | End of Life| Notes
@@ -98,7 +101,7 @@ When version 1.2 is released, version 1.0 has only 7 days of support. After the 
 
 
 ## Does this also work on a Raspberry Pi?
-Yes of course! SecureCloud is optimized for the Raspberry Pi, and has been tested on a Raspberry Pi by the Strawberry developers. 
+Yes of course! SecureCloud is optimized for the Raspberry Pi, and has been tested on a Raspberry Pi by the Strawberry developers. (3 of our 7 developers have a Raspberry Pi. (4B 8GB, 4B 4GB, 2B)). Now you know why we have optimized SecureCloud so well 😉
 <b>If the hostname of your RPi is `raspberrypi`, you can reach the Pi via the web address `raspberrypi.local/home` </b>
 
 ## System requirements
