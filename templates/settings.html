@@ -145,70 +145,26 @@
 
                 <h4 style="margin-top: 110px; margin-left: 10px">{{language}}</h4>
 
-
-                <!-- <button id="german-show-toast" name="lang-btn-de" class="mdl-button mdl-js-button mdl-button--raised" type="button" style="margin-left: 10px" onclick="lang_btn_german()">Deutsch</button>
-        <div id="german-toast-example" class="mdl-js-snackbar mdl-snackbar">
-          <div class="mdl-snackbar__text"></div>
-          <button class="mdl-snackbar__action" type="button"></button>
-        </div>
-        <script>
-          (function () {
-            'use strict';
-            window['counter'] = 0;
-            var snackbarContainer = document.querySelector('#german-toast-example');
-            var showToastButton = document.querySelector('#german-show-toast');
-            showToastButton.addEventListener('click', function () {
-              'use strict';
-              var data = { message: '{{changed_german}}' };
-              snackbarContainer.MaterialSnackbar.showSnackbar(data);
-            });
-          }());
-        </script> -->
-
-                <!-- Raised button -->
-                <button class="mdl-button mdl-js-button mdl-button--raised" style="margin-left: 10px;">Deutsch</button>
+                <form method="post">
+                    <button class="mdl-button mdl-js-button mdl-button--raised" value="de_lang" name="de_lang" style="margin-left: 10px">{{german}}</button>
+                    <button class="mdl-button mdl-js-button mdl-button--raised" value="en_lang" name="en_lang" style="margin-left: 10px">{{english}}</button>
+                </form>
 
 
+                <h4 style="margin-top: 90px; margin-left: 10px ">{{act_ext}}</h4>
 
-                <button id="english-show-toast" name="lang-btn-en" class="mdl-button mdl-js-button mdl-button--raised" type="button" onclick="lang_btn_english()">English</button>
-                <div id="english-toast-example" class="mdl-js-snackbar mdl-snackbar">
-                    <div class="mdl-snackbar__text"></div>
-                    <button class="mdl-snackbar__action" type="button"></button>
-                </div>
-                <script>
-                    (function() {
-                        'use strict';
-                        window['counter'] = 0;
-                        var snackbarContainer = document.querySelector('#english-toast-example');
-                        var showToastButton = document.querySelector('#english-show-toast');
-                        showToastButton.addEventListener('click', function() {
-                            'use strict';
-                            var data = {
-                                message: '{{changed_english}}'
-                            };
-                            snackbarContainer.MaterialSnackbar.showSnackbar(data);
-                        });
-                    }());
-                </script>
-
-
-
-
-
-                <h4 style="margin-top: 90px; margin-left: 10px">{{act_ext}}</h4>
-
-                <form action="#">
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="text" id="sample3" style="margin-left: 10px">
-                        <label class="mdl-textfield__label" for="sample3" style="margin-left: 10px">{{add_ext}}</label>
+                <form action="# ">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label ">
+                        <input class="mdl-textfield__input " type="text " id="sample3 " style="margin-left: 10px ">
+                        <label class="mdl-textfield__label " for="sample3 " style="margin-left: 10px ">{{add_ext}}</label>
                     </div>
                 </form>
 
-                <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored" style="margin-left: 350px; margin-top: -120px;">
-          <i class="material-icons">add</i>
+                <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored " style="margin-left: 350px; margin-top: -120px; ">
+          <i class="material-icons ">add</i>
         </button>
 
-                <h5 style="margin-top: 10px; margin-left: 10px; font-family: 'Cascadia Code', sans-serif;"><b>{{file_extensions_data_text}}</b></h5>
+                <h5 style="margin-top: 10px; margin-left: 10px; font-family: 'Cascadia Code', sans-serif; "><b>{{file_extensions_data_text}}</b></h5>
 
 
 
@@ -255,22 +211,22 @@
                     }
                 </style>
 
-                <div class="mem-card-event mdl-card mdl-shadow--2dp">
-                    <div class="mdl-card__title mdl-card--expand">
+                <div class="mem-card-event mdl-card mdl-shadow--2dp ">
+                    <div class="mdl-card__title mdl-card--expand ">
                         <h4>
                             <b><u>{{memory}}</u></b><br> {{memory_usage_mb}} <br> {{memory_usage_percent}}
                         </h4>
                     </div>
-                    <div class="mdl-card__actions mdl-card--border">
-                        <button type="button" class="mdl-button show-modal">{{more}}</button>
-                        <dialog class="mdl-dialog" style="border-radius: 10px; width: 500px;">
-                            <div class="mdl-dialog__content">
+                    <div class="mdl-card__actions mdl-card--border ">
+                        <button type="button " class="mdl-button show-modal ">{{more}}</button>
+                        <dialog class="mdl-dialog " style="border-radius: 10px; width: 500px; ">
+                            <div class="mdl-dialog__content ">
                                 <h5>{{memory}}: {{memory_usage_mb}}</h5>
                                 <h5>CPU: {{cpu_usage_percent}}%</h5>
                                 <h5>Uptime: {{uptime_conv}}</h5>
                             </div>
-                            <div class="mdl-dialog__actions mdl-dialog__actions--full-width">
-                                <button type="button" class="mdl-button close" style="border-radius: 10px;">Ok</button>
+                            <div class="mdl-dialog__actions mdl-dialog__actions--full-width ">
+                                <button type="button " class="mdl-button close " style="border-radius: 10px; ">Ok</button>
                             </div>
                         </dialog>
                         <script>
@@ -286,8 +242,8 @@
                                 dialog.close();
                             });
                         </script>
-                        <div class="mdl-layout-spacer"></div>
-                        <i class="material-icons">memory</i>
+                        <div class="mdl-layout-spacer "></div>
+                        <i class="material-icons ">memory</i>
                     </div>
                 </div>
 
@@ -333,16 +289,16 @@
                     }
                 </style>
 
-                <div class="uplim-card-event mdl-card mdl-shadow--2dp">
-                    <div class="mdl-card__title mdl-card--expand">
+                <div class="uplim-card-event mdl-card mdl-shadow--2dp ">
+                    <div class="mdl-card__title mdl-card--expand ">
                         <h4>
                             <b><u>{{upload_limit}}</u></b> <br> {{upload_size}} MB
                         </h4>
                     </div>
-                    <div class="mdl-card__actions mdl-card--border">
-                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">{{change}}</a>
-                        <div class="mdl-layout-spacer"></div>
-                        <i class="material-icons">upload</i>
+                    <div class="mdl-card__actions mdl-card--border ">
+                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect ">{{change}}</a>
+                        <div class="mdl-layout-spacer "></div>
+                        <i class="material-icons ">upload</i>
                     </div>
                 </div>
 
