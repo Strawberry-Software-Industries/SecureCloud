@@ -1,5 +1,6 @@
-- Upload size was adjusted to 32MB (Default)
-- The long-awaited update for the language system: Finally, the language can now be changed via SecureCloud settings!!!
-- LTS Update (Replaces 1.1.*)
-- Added Developer Key
-- Added Edition Version Variable
+- Changed "application" variable to "app"
+- Add 404 page
+- Add Login page
+- Changed Website Root from root.html to login.html
+- Add Beta Login System
+- Add admin user

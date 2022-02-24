@@ -3,7 +3,7 @@ from flask import Flask, request, redirect, render_template, make_response, url_
 from werkzeug.utils import secure_filename
 
 import sqlite3 as sql
-
+import hashlib
 import os
 import time
 import datetime
@@ -18,22 +18,22 @@ def max_upload_size():
 
     return data.rstrip()
 
-application = Flask(__name__, static_url_path="/static")
-application.config['MAX_CONTENT_LENGTH'] = int(max_upload_size()) * 1024 * 1024
+app = Flask(__name__, static_url_path="/static")
+app.config['MAX_CONTENT_LENGTH'] = int(max_upload_size()) * 1024 * 1024
 
 
 # Variables
-release_github = "https://github.com/Strawberry-Software-Industries/SecureCloud/releases/tag/v1.2"
-build_date = "2022-08-02_16-18-13"
-build_ver = "1.3.0_" + build_date
-version_full = "Version 1.3.0"
-version_short = "v1.3.0"
+release_github = "https://github.com/Strawberry-Software-Industries/SecureCloud/releases/tag/v1.3"
+build_date = "2022-24-02_20-38-09"
+build_ver = "1.4.0_" + build_date
+version_full = "Version 1.4.0"
+version_short = "v1.4.0"
 revision = "rev-1"
 
-is_lts_ver = "y"
-is_oss = "y"
+is_lts_ver = "n"
+is_oss = "n"
 edition_ver = "Home"
-developer_key = "-"
+developer_key = "xdev_Twt6a7LCkugdNwYzsx34Fv2CitZ2sW_tkey"
 uptime = time.time()
 
 
@@ -85,24 +85,69 @@ def get_dir():
     str1 = ' <br/> '.join(h)
     return str1
 
+def check_password(hashed_password, user_password):
+    return hashed_password == hashlib.md5(user_password.encode()).hexdigest()
+
+
+def validate(username, password):
+    db = sql.connect('db/users.db')
+    c = db.cursor()
+
+    c.execute('SELECT * FROM users WHERE name = ? AND password = ?', (username, password))
+    if c.fetchall():
+        print(f'Willkommen {username}!')
+        redirect("/home")
+        return redirect("/home")
+    else:
+        print('Login fehlgeschlagen. Bitte Passwort überprüfen')
+        error = 'Invalid Credentials. Please try again.'
+
+
+
+@app.route('/', methods=['GET', 'POST'])
+def login():
+    error = None
+        
+    lang = get_language()
+
+    if lang == "english":
+        title = "Login"
+        title_header = "Login"
+        username_txt = "Username"
+        password_txt = "Password"
+
+
+    else:
+        title = "Anmelden"
+        title_header = "Anmelden" 
+        username_txt = "Nutzername"
+        password_txt = "Passwort"
+
+    
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        validate(username, password)
+
+    return render_template('login.html', title=title, title_header=title_header, username_txt=username_txt, password_txt=password_txt, error=error)
 
 
 # Root 
-@application.route('/')
+@app.route('/root')
 def root():
 
     return render_template('root.html')
 
 
 # For Debugging
-@application.route('/dir')
+@app.route('/dir')
 def dir():
     dirlist = get_dir().rstrip()
     return render_template('dir.html', dirlist=dirlist)
 
 
 # Home
-@application.route("/home", methods=["GET", "POST"])
+@app.route("/home", methods=["GET", "POST"])
 def home():
 
     lang = get_language()
@@ -135,7 +180,7 @@ def home():
 
 
 # Settings
-@application.route('/settings', methods=["GET", "POST"])
+@app.route('/settings', methods=["GET", "POST"])
 def settings():
     with open("./config/file-extensions.conf", "r") as f:
         file_extensions_data = f.read()
@@ -229,7 +274,7 @@ def settings():
 
 
 # About
-@application.route('/about', methods=["GET", "POST"])
+@app.route('/about', methods=["GET", "POST"])
 def about():
     with open("./config/file-extensions.conf", "r") as f:
         data = f.read()
@@ -305,7 +350,7 @@ def about():
 
 
 # Files
-@application.route("/files", methods=["GET", "POST"])
+@app.route("/files", methods=["GET", "POST"])
 def files():
 
     lang = get_language()
@@ -332,7 +377,7 @@ def files():
 
 
 # Userlist
-@application.route('/users', methods=['GET', 'GET'])
+@app.route('/users', methods=['GET', 'GET'])
 def users():
 
     lang = get_language()
@@ -368,7 +413,7 @@ def users():
 
 
 # Create User
-@application.route("/users/create", methods=['GET', 'GET'])
+@app.route("/users/create", methods=['GET', 'GET'])
 def create_user():
 
     lang = get_language()
@@ -393,7 +438,7 @@ def create_user():
 
 
 # Upload
-@application.route("/upload", methods=['GET', 'POST'])
+@app.route("/upload", methods=['GET', 'POST'])
 def upload():
 
     lang = get_language()
@@ -446,7 +491,7 @@ def upload():
 
 
 # Update
-@application.route("/update", methods=['GET', 'POST'])
+@app.route("/update", methods=['GET', 'POST'])
 def update(): 
 
     lang = get_language()
@@ -475,7 +520,11 @@ def update():
                                           update_text=update_text, up_perf=up_perf, release_github=release_github)
 
 
+@app.errorhandler(404)
+def page_not_found(error):
+    return render_template('404.html'), 404
+
 hostip = get_ipaddr()
 
 if __name__ == '__main__':
-    application.run(host=hostip, port=80, threaded=True)
+    app.run(host=hostip, port=80, threaded=True)
