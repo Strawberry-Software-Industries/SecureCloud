@@ -1,6 +1,7 @@
 from flask import Flask
 from flask import *
 from werkzeug.utils import secure_filename
+from config import *
 
 import sqlite3 as sql
 import hashlib
@@ -37,9 +38,7 @@ edition_ver = "Home"
 developer_key = "xdev_JRkz1Z4UrsExIuFOglLBwpK6ENMYs6_tkey"
 uptime = time.time()
 
-# Networking 
-ip_type = "localhost" # Change between localhost and networking
-global_port = "80" # Port for SecureCloud
+
 
 # # (EN) Init JSON Language files
 # e_la = open('./lang/english.json')
