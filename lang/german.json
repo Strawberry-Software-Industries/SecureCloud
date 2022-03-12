@@ -1,0 +1,27 @@
+{
+    "title": "Einstellungen",
+    "settings_link": "Einstellungen",
+    "upload_link": "Hochladen",
+    "files_link": "Dateien",
+    "home_link": "Startseite",
+    "user_link": "Benutzer",
+    "act_ext": "Aktive Dateiendungen",
+    "add_ext": "Dateiendung hinzufügen...",
+    "add": "Hinzufügen",
+    "up_av": "Update verfügbar",
+    "up_txt": "Ein Update für SecureCloud ist verfügbar. Um das Update zu installieren sichern sie alle ihre Einstellungen, und drücken sie auf Update durchführen",
+    "up_perf": "Update durchführen",
+    "goto_about": "Um zur Informationsseite zu gelangen drücken sie auf Über",
+    "about_link": "Über",
+    "language": "Sprache",
+    "german": "Deutsch",
+    "english": "Englisch",
+    "changed_german": "Sprache wurde zu Deutsch geändert",
+    "changed_english": "Sprache wurde zu Englisch geändert,",
+    "memory" : "Arbeitsspeicher",
+    "memory_usage_mb": "{format(int(memory_usage() / 1024 / 1024))} MB von {format(int(psutil.virtual_memory().total / 1024 / 1024))} MB",
+    "upload_limit": "Hochladegröße",
+    "change": "Ändern",
+    "more": "Weiteres..."
+}
+
