@@ -5,6 +5,9 @@
 - Improved Login Page
 - Improved Upload Page
 - Improved Translations
+- Improved README
+- Improved Script
+- Improved DB Structure
 - Added new Developer (Credits)
 - Added User Creation System
 - Added User Account Manager (UAM)
@@ -17,5 +20,7 @@
 - Added Site for First Setup
 - Added Language Files for JSON Test
 - Added Unit Tests
+- Deleted Non-Required CSS Code & Text Files
+- Deleted some Test File
 - Button redesign on Upload Page
 - Requires now Login for every page (execpt Login page and 404 page (xD))
