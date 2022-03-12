@@ -27,7 +27,7 @@ If applicable, add screenshots to help explain your problem.
  - OS: [e.g. Linux]
  - SecureCloud Edition [e.g. Home, Professional, Enterprise, Pro-NCU]
 - Python Version
- - Version [e.g. 1.1-LTS]
+ - Version [e.g. 1.5-LTS]
 
 **Additional context**
 Add any other context about the problem here.
