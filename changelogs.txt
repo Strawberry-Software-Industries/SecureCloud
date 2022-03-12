@@ -4,3 +4,8 @@
 - Added User Creation
 - Added User Account Manager (UAM)
 - Improved Login Page
+- Added new Developer
+- Added Site for Chaning Upload Size
+- Added Site for Chaning Hostname
+- Added Site for Chaning Upload Path
+- Fixed wrong translation in about (Upload Path)
