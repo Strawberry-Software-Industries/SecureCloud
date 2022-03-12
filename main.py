@@ -37,6 +37,10 @@ edition_ver = "Home"
 developer_key = "xdev_JRkz1Z4UrsExIuFOglLBwpK6ENMYs6_tkey"
 uptime = time.time()
 
+# Networking 
+ip_type = "localhost" # Change between localhost and networking
+global_port = "80" # Port for SecureCloud
+
 # # (EN) Init JSON Language files
 # e_la = open('./lang/english.json')
 # e_data = json.load(e_la)
@@ -844,8 +848,16 @@ def logout():
 def page_not_found(error):
     return render_template('404.html'), 404
 
-#hostip = get_ipaddr()
-hostip = "localhost"
+
+if ip_type == "networking":
+    hostip = get_ipaddr()
+
+elif ip_type == "localhost":
+    hostip = "localhost"
+
+else:
+    hostip = "localhost"
+
 
 if __name__ == '__main__':
-    app.run(host=hostip, port=80, threaded=True)
+    app.run(host=hostip, port=global_port, threaded=True)
