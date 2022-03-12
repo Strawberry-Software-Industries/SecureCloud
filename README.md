@@ -13,26 +13,35 @@ SecureCloud is available in English & German
 Via the Install Script, which can be found in [this](https://github.com/Strawberry-Software-Industries/Install-SecureCloud) Repository. 
 
 ## Important notes when you start SecureCloud for the first time
-**<u>NOTE: If you are using SecureCloud 1.0 or higher, you do not need to follow this information.<u>**<br>
+**<u>NOTE: This notes are deprecated. Starting with SecureCloud v1.0 you don't have to change anything in the source code.<u>**<br>
 If you start SecureCloud for the first time, please note that you have to change the Local IP address to the IP address the device uses. 
 
-    if __name__ == '__main__':
-    application.run(host="localhost", port=80, threaded=True)    
-
+```py
+if __name__ == '__main__':
+	application.run(host="localhost", port=80, threaded=True)    
+```
 <b>Change localhost to your IP address.
 Under Windows you can find it with `ipconfig`, or under Linux with `ip a` or `ifconfig`. </b>
 ######
 For example:
-
-    if __name__ == '__main__':
-    application.run(host="192.168.2.101", port=80, threaded=True)    
-
-Now you can reach SecureCloud via your given IP address (for me `192.168.2.101`). In the beta phase you have to note that you have to put "/home" behind the IP address, otherwise you will get on a 404 page. (for example `192.168.2.101/home`
+```py
+if __name__ == '__main__':
+	application.run(host="192.168.2.101", port=80, threaded=True)    
+```
+Now you can reach SecureCloud via your given IP address (for me `192.168.2.101`). In the beta phase you have to note that you have to put "/home" behind the IP address, otherwise you will get on a 404 page. (for example `192.168.2.101/home`) <br>
+**<u>NOTE: This notes are deprecated. Starting with SecureCloud v1.0 you don't have to change anything in the source code.<u>**<br>
 
 ## Supported Platforms
 SecureCloud works on Python 3.9 or higher. However, the Strawberry Software team recommends using the latest Python 3.10 version. All versions below Python 3.9 are untested and may not work.
 Since some distributions use a version below Python 3.9, we have removed support for this distro. 
 If you manage to get SecureCloud running on Debian 9, and Ubuntu 16.04 without much effort, feel free to send a pull request. 
+
+| Version | Supported  |  Status|
+|--|--|--| -- |
+| Python 3.8 | - | Untested |
+| Python 3.9 | Yes | Tested, working |
+| Python 3.10 | Yes | Tested, working |
+| Python 3.11 | - | Untested |
 
 ## Linux Support
 | Platform | Version  |  Supported|  Branch |
@@ -44,11 +53,11 @@ If you manage to get SecureCloud running on Debian 9, and Ubuntu 16.04 without m
 | Debian | Sid | Yes | Unstable | 
 | Ubuntu | 16.04 | No | ESM     | 
 | Ubuntu | 18.04 | Yes | Stable | 
-| Ubuntu | 20.04 | Yes | Stable | 
+| Ubuntu | 20.04 | Yes | LTS | 
 | Ubuntu | 20.10 | Yes | End of Life | 
 | Ubuntu | 21.04 | Yes | End of Life | 
 | Ubuntu | 21.10 | Yes | Current | 
-| Ubuntu | 22.04 | Yes | Future  |  
+| Ubuntu | 22.04 | Yes | Future, LTS  |  
 | Gentoo | - | Yes | Rolling Release |  
 | Arch | - | Yes | Rolling Release   |  
 | Manjaro | - | Yes | Rolling Release   |  
@@ -79,8 +88,8 @@ LTS support is free for all SecureCloud users.
 The current non-LTS version of SecureCloud has support until a new non-LTS version of SecureCloud is released. From then on the version has only 7 days of support. 
 **Example:**
 Current LTS version: v1.3.*
-Current Non-LTS version: v1.2
-When version 1.4 is released, version 1.2 has only 7 days of support. After the 7 days the version is in EoL status (End of Life) and does not get any security updates. In addition, we do not provide further support for the version. (Via Discord or GitHub).
+Current Non-LTS version: v1.4
+When version 1.5 is released, version 1.4 has only 7 days of support. After the 7 days the version is in EoL status (End of Life) and does not get any security updates. In addition, we do not provide further support for the version. (Via Discord or GitHub).
 **For LTS versions:**
 Each LTS version has support until a new LTS version comes out. From then on the version has only 7 days of support. 
 
@@ -96,8 +105,10 @@ Each LTS version has support until a new LTS version comes out. From then on the
 | 1.0 	 	 | EoL 		| 27.01.2022   | Yes 	| First Stable Release 
 | 1.1 		 | LTS      | 29.01.2022   | Yes 	| First LTS 
 | 1.1.1 	 | LTS      | 30.01.2022   | Yes     | 
-| 1.2   	 | Stable 	| 31.01.2022   | Yes    | 
+| 1.2   	 | EoL 	| 31.01.2022   | Yes    | 
 | 1.3   	 | LTS 		| 08.02.2022   | No     | LTS with more Features 
+| 1.4   	 | Stable 	| 24.02.2022   | No     | Beta Login System
+| 1.5   	 | Future  | 11.03.2022   | No     | 
 
 
 ## Does this also work on a Raspberry Pi?
