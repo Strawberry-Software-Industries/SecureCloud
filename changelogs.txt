@@ -21,6 +21,8 @@
 - Added Language Files for JSON Test
 - Added Unit Tests
 - Added Strawberry Software Industries Logo (Secret Page, who will find this?)
+- Added IP-Type Variable
+- Added Port Variable
 - Deleted Non-Required CSS Code & Text Files
 - Deleted some Test File
 - Button redesign on Upload Page
