@@ -1,11 +1,21 @@
-- Fixed Login System
-- Requires now Login for every page (execpt Login page and 404 page (xD))
-- Updated Developer Key
-- Added User Creation
-- Added User Account Manager (UAM)
-- Improved Login Page
-- Added new Developer
-- Added Site for Chaning Upload Size
-- Added Site for Chaning Hostname
-- Added Site for Chaning Upload Path
 - Fixed wrong translation in about (Upload Path)
+- Fixed Login System
+- Updated Developer Key
+- Updated widht of Edition Card
+- Improved Login Page
+- Improved Upload Page
+- Improved Translations
+- Added new Developer (Credits)
+- Added User Creation System
+- Added User Account Manager (UAM)
+- Added Site for Changing Upload Size
+- Added Site for Changing Hostname
+- Added Site for Changing Upload Path
+- Added Function to change Upload Size
+- Added Function to change Hostname
+- Added Function to change Upload Path
+- Added Site for First Setup
+- Added Language Files for JSON Test
+- Added Unit Tests
+- Button redesign on Upload Page
+- Requires now Login for every page (execpt Login page and 404 page (xD))
