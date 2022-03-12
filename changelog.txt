@@ -2,6 +2,8 @@
 - Fixed Login System
 - Updated Developer Key
 - Updated widht of Edition Card
+- Updated default Upload Size to 64MB 
+- Updated default Hostname to "My SecureCloud"
 - Improved Login Page
 - Improved Upload Page
 - Improved Translations
@@ -24,7 +26,10 @@
 - Added IP-Type Variable (config.py)
 - Added Port Variable (config.py)
 - Added config.py (For Networking etc)
+- Added .7z to file-extensions.conf
+- Added .gz to file-extensions.conf
 - Deleted Non-Required CSS Code & Text Files
 - Deleted some Test File
+- Renamed changelogs.txt to changelog.txt (ok?)
 - Button redesign on Upload Page
 - Requires now Login for every page (execpt Login page and 404 page (xD))

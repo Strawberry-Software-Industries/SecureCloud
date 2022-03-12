@@ -39,7 +39,6 @@ developer_key = "xdev_JRkz1Z4UrsExIuFOglLBwpK6ENMYs6_tkey"
 uptime = time.time()
 
 
-
 # # (EN) Init JSON Language files
 # e_la = open('./lang/english.json')
 # e_data = json.load(e_la)
