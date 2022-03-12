@@ -1,2 +1,6 @@
 - Fixed Login System
 - Requires now Login for every page (execpt Login page and 404 page (xD))
+- Updated Developer Key
+- Added User Creation
+- Added User Account Manager (UAM)
+- Improved Login Page
