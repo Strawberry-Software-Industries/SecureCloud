@@ -37,7 +37,7 @@ Since some distributions use a version below Python 3.9, we have removed support
 If you manage to get SecureCloud running on Debian 9, and Ubuntu 16.04 without much effort, feel free to send a pull request. 
 
 | Version | Supported  |  Status|
-|--|--|--| -- |
+|--|--|--| 
 | Python 3.8 | - | Untested |
 | Python 3.9 | Yes | Tested, working |
 | Python 3.10 | Yes | Tested, working |
