@@ -108,7 +108,7 @@ Each LTS version has support until a new LTS version comes out. From then on the
 | 1.2   	 | EoL 	    | 31.01.2022   | Yes    | 
 | 1.3   	 | LTS 		| 08.02.2022   | No     | LTS with more Features 
 | 1.4   	 | Stable 	| 24.02.2022   | No     | Beta Login System
-| 1.5   	 | LTS      | 11.03.2022   | No     | 
+| 1.5   	 | LTS      | 12.03.2022   | No     | 
 
 
 ## Does this also work on a Raspberry Pi?
@@ -140,3 +140,4 @@ Yes of course! SecureCloud is optimized for the Raspberry Pi, and has been teste
 
 ## Information about the program code
 SecureCloud was programmed in the Python programming language and the Flask framework was used. Material Design Lite ([getmdl.io](https://getmdl.io)) was used for the web design. All rights for the Material Design Icons belong to Google. 
+	
