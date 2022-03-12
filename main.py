@@ -826,7 +826,7 @@ def update():
                             update_text=update_text, up_perf=up_perf, release_github=release_github)
 
 
-# Logout
+# Whats that
 @app.route("/secretpage")
 def secretpage():
     return "<img src='{{url_for('static', filename='strawberry_software.png')}}' align='middle'/>"
