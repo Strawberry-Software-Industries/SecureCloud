@@ -1,6 +1,2 @@
-- Changed "application" variable to "app"
-- Add 404 page
-- Add Login page
-- Changed Website Root from root.html to login.html
-- Add Beta Login System
-- Add admin user
+- Fixed Login System
+- Requires now Login for every page (execpt Login page and 404 page (xD))
