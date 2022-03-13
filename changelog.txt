@@ -4,7 +4,6 @@
 - Changed widht of Edition Card
 - Changed default Upload Size to 64MB 
 - Changed default Hostname to "My SecureCloud"
-- Changed 
 - Improved Login Page
 - Improved Upload Page
 - Improved Translations
@@ -32,6 +31,7 @@
 - Added File Downloading (/files/download/filename OR /files/download/MyDirectory/filename)
 - Added Dir Listening (With File View)
 - Added 404 Page for File/Directory Not Found
+- Added Dir Listening in /files (Replaced with standardlone Text)
 - Deleted Non-Required CSS Code & Text Files
 - Deleted some Test File
 - Renamed changelogs.txt to changelog.txt (ok?)
