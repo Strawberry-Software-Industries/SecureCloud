@@ -96,24 +96,8 @@ Each LTS version has support until a new LTS version comes out. From then on the
 
 ## Version history
 
-You can look at the history in [VERSION.md](https://github.com/Strawberry-Software-Industries/SecureCloud/main/VERSION.md)	
+You can look at the history in [VERSION.md](https://github.com/Strawberry-Software-Industries/SecureCloud/blob/main/VERSION.md)	
 	
-| Version    | Status   |  Release     | End of Life| Notes
-| --         | --       | --           | --     | -- 
-| 0.2.2-Beta | EoL  	| 16.01.2022   | Yes    |First Beta Release
-| 0.1-rc2 	 | EoL    	| 16.01.2022   | Yes    |        
-| 0.6-rc3 	 | EoL    	| 16.01.2022   | Yes    |        
-| 0.7-rc4 	 | EoL    	| 16.01.2022   | Yes    |        
-| 0.8-r5 	 | EoL     	| 17.01.2022   | Yes    | Last RC & Beta
-| 1.0 	 	 | EoL 		| 27.01.2022   | Yes 	| First Stable Release 
-| 1.1 		 | LTS      | 29.01.2022   | Yes 	| First LTS 
-| 1.1.1 	 | LTS      | 30.01.2022   | Yes    | 
-| 1.2   	 | EoL 	    | 31.01.2022   | Yes    | 
-| 1.3   	 | LTS 		| 08.02.2022   | No     | LTS with more Features 
-| 1.4   	 | Stable 	| 24.02.2022   | No     | Beta Login System
-| 1.5   	 | LTS      | 13.03.2022   | No     | Biggest Release (LTS)
-
-
 ## Does this also work on a Raspberry Pi?
 Yes of course! SecureCloud is optimized for the Raspberry Pi, and has been tested on a Raspberry Pi by the Strawberry developers. (3 of our 7 developers have a Raspberry Pi. (4B 8GB, 4B 4GB, 2B)). Now you know why we have optimized SecureCloud so well 😉
 <b>If the hostname of your RPi is `raspberrypi`, you can reach the Pi via the web address `raspberrypi.local/home` </b>
