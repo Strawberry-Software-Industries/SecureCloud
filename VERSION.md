@@ -4,7 +4,7 @@ Current Stable Version: **1.4** (Strawberry Mix)
 
 | Version    | Codename | Status   |  Release     | End of Life| Notes
 | --         | --       | --       | --           | --     | -- 
-| 0.2.2-Beta | Milky Way | EoL  	| 16.01.2022   | Yes    |First Beta Release
+| [0.2.2-Beta](https://github.com/Strawberry-Software-Industries/SecureCloud/releases/tag/v0.1-rc2) | Milky Way | EoL  	| 16.01.2022   | Yes    |First Beta Release
 | 0.1-rc2 	 | Apple Juice | EoL    	| 16.01.2022   | Yes    |        
 | 0.6-rc3 	 | Apple Juice | EoL    	| 16.01.2022   | Yes    |        
 | 0.7-rc4  	 | Apple Juice | EoL    	| 16.01.2022   | Yes    |        
