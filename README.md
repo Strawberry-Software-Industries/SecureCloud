@@ -95,6 +95,9 @@ Each LTS version has support until a new LTS version comes out. From then on the
 
 
 ## Version history
+
+You can look at the history in [VERSION.md](https://github.com/Strawberry-Software-Industries/SecureCloud/main/VERSION.md)	
+	
 | Version    | Status   |  Release     | End of Life| Notes
 | --         | --       | --           | --     | -- 
 | 0.2.2-Beta | EoL  	| 16.01.2022   | Yes    |First Beta Release
