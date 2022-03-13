@@ -34,6 +34,8 @@
 - Added 404 Page for File/Directory Not Found
 - Added Dir Listening in /files (Replaced with standardlone Text)
 - Added CodeQL on our GitHub Repository
+- Added Stale on our GitHub Repository
+- Added Labeler on our GitHub Repository
 - Deleted Non-Required CSS Code & Text Files
 - Deleted some Test File
 - Renamed changelogs.txt to changelog.txt (ok?)
