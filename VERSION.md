@@ -1,5 +1,5 @@
 # Versions
-Current Stable Version: **1.4** (Strawberry Mix)
+Current Version: **1.5** (Strawberry Mix)
 
 | Version | Codename | Status | Release | End of Life| Notes
 | -- | -- | -- | -- | -- | --
