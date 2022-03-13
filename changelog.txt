@@ -4,6 +4,7 @@
 - Changed widht of Edition Card
 - Changed default Upload Size to 64MB 
 - Changed default Hostname to "My SecureCloud"
+- Changed the algorythm of check_password Function
 - Improved Login Page
 - Improved Upload Page
 - Improved Translations
@@ -32,6 +33,7 @@
 - Added Dir Listening (With File View)
 - Added 404 Page for File/Directory Not Found
 - Added Dir Listening in /files (Replaced with standardlone Text)
+- Added CodeQL on our GitHub Repository
 - Deleted Non-Required CSS Code & Text Files
 - Deleted some Test File
 - Renamed changelogs.txt to changelog.txt (ok?)
