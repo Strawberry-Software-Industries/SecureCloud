@@ -1,4 +1,4 @@
-[![CodeQL](https://github.com/Strawberry-Software-Industries/SecureCloud/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/Strawberry-Software-Industries/SecureCloud/actions/workflows/codeql-analysis.yml)
+[![CodeQL](https://github.com/Strawberry-Software-Industries/SecureCloud/actions/workflows/codeql-analysis.yml/badge.svg?branch=main)](https://github.com/Strawberry-Software-Industries/SecureCloud/actions/workflows/codeql-analysis.yml)
 # SecureCloud
 <b> Your new Cloud. Free and Open Source. 
 By Strawberry Software </b>
