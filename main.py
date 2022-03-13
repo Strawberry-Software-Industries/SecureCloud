@@ -31,6 +31,7 @@ build_ver = "1.5.0_" + build_date
 version_full = "Version 1.5.0"
 version_short = "v1.5.0"
 revision = "rev-1"
+codename = ""
 
 is_lts_ver = "y"
 is_oss = "y"
@@ -597,8 +598,9 @@ def about():
 
     return render_template('about.html', title=title, upload_link=upload_link, settings_link=settings_link, home_link=home_link, user_link=user_link, files_link=files_link,
                            check_update=check_update, change_hostname=change_hostname, hostname=hostname, upload_path=upload_path, upload_path_info=upload_path_info,
-                           change_upload_path=change_upload_path, up_path=up_path, build_ver=build_ver, build_date=build_date, version_full=version_full, version_short=version_short,
-                           revision=revision, edition=edition, lts=lts, gh_o=gh_o, av_editions=av_editions, update_no=update_no, dark_mode=dark_mode, oss=oss, edition_ver=edition_ver)
+                           change_upload_path=change_upload_path, up_path=up_path, build_ver=build_ver, build_date=build_date, version_full=version_full, 
+                           version_short=version_short, revision=revision, edition=edition, lts=lts, gh_o=gh_o, av_editions=av_editions, update_no=update_no, 
+                           dark_mode=dark_mode, oss=oss, edition_ver=edition_ver, codename=codename)
 
 
 # Files
@@ -639,8 +641,8 @@ def files(req_path):
     files = os.listdir(abs_path)
     
 
-    return render_template('files.html', files=files, title=title, upload_link=upload_link, settings_link=settings_link, home_link=home_link, user_link=user_link, files_link=files_link,
-                            dir=dir)
+    return render_template('files.html', files=files, title=title, upload_link=upload_link, settings_link=settings_link, home_link=home_link, user_link=user_link, 
+                            files_link=files_link, dir=dir)
 
 
 # Download Files
@@ -730,9 +732,8 @@ def users():
     cur.execute("CREATE TABLE IF NOT EXISTS users (name TEXT, password TEXT)")
     conn.close()
     
-
-    return render_template('users.html', title=title, text=text, upload_link=upload_link, files_link=files_link, settings_link=settings_link, home_link=home_link, user_link=user_link,
-                            user_list=[], cr_new_usr=cr_new_usr, logout=logout)
+    return render_template('users.html', title=title, text=text, upload_link=upload_link, files_link=files_link, settings_link=settings_link, home_link=home_link, 
+                            user_link=user_link, user_list=[], cr_new_usr=cr_new_usr, logout=logout)
 
 
 # Create User
@@ -806,8 +807,9 @@ def create_user():
     except:
         pass
 
-    return render_template('create-user.html', username_txt=username_txt,password_txt=password_txt,password_txt2=password_txt2, title=title, upload_link=upload_link, settings_link=settings_link, home_link=home_link, user_link=user_link, files_link=files_link,submitvalue=submitvalue,
-                            postscr=postscr, create_new_account_txt=create_new_account_txt)
+    return render_template('create-user.html', username_txt=username_txt,password_txt=password_txt,password_txt2=password_txt2, title=title, upload_link=upload_link, 
+                            settings_link=settings_link, home_link=home_link, user_link=user_link, files_link=files_link,submitvalue=submitvalue, postscr=postscr, 
+                            create_new_account_txt=create_new_account_txt)
 
 
 # Upload
