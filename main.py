@@ -96,10 +96,6 @@ def get_dir():
     return str1
 
 
-def check_password(hashed_password, user_password):
-    return hashed_password == hashlib.md5(user_password.encode()).hexdigest()
-
-
 def logged_in(session):
     try:
         db = sql.connect('db/users.db')
