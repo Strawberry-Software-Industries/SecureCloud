@@ -25,11 +25,11 @@ app.config["SECRET_KEY"] = "xpub_hqFFnmKE7cHe5DhIxdE3_default"
 
 
 # Variables
-release_github = "https://github.com/Strawberry-Software-Industries/SecureCloud/releases/tag/v1.5"
-build_date = "2022-13-03_14-00-00"
-build_ver = "1.5.0_" + build_date
-version_full = "Version 1.5.0"
-version_short = "v1.5.0"
+release_github = "https://github.com/Strawberry-Software-Industries/SecureCloud/releases/tag/v1.5.1"
+build_date = "2022-13-03_19-57-15"
+build_ver = "1.5.1_" + build_date
+version_full = "Version 1.5.1"
+version_short = "v1.5.1"
 revision = "rev-1"
 codename = "Strawberry Mix"
 
@@ -67,14 +67,14 @@ def get_hostname():
     with open("./config/hostname.conf", 'r') as f:
         data = f.read()
     
-    return data
+    return data.rstrip()
 
 
 def get_upload_path():
     with open("./config/upload-path.conf", 'r') as f:
         data = f.read()
     
-    return data
+    return data.rstrip()
 
 
 def memory_usage():
@@ -853,9 +853,9 @@ def upload():
             filename = secure_filename(file.filename)
             print(filename)
 
-            file.save(os.path.join(get_upload_path().rstrip(), filename))
+            file.save(os.path.join(get_upload_path(), filename))
 
-            path = (os.path.join(get_upload_path().rstrip(), filename))
+            path = (os.path.join(get_upload_path(), filename))
             print("path :", path)
 
             result = path.split("/")
