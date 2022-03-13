@@ -1,9 +1,10 @@
 - Fixed wrong translation in about (Upload Path)
 - Fixed Login System
-- Updated Developer Key
-- Updated widht of Edition Card
-- Updated default Upload Size to 64MB 
-- Updated default Hostname to "My SecureCloud"
+- Changed Developer Key
+- Changed widht of Edition Card
+- Changed default Upload Size to 64MB 
+- Changed default Hostname to "My SecureCloud"
+- Changed 
 - Improved Login Page
 - Improved Upload Page
 - Improved Translations
@@ -28,6 +29,9 @@
 - Added config.py (For Networking etc)
 - Added .7z to file-extensions.conf
 - Added .gz to file-extensions.conf
+- Added File Downloading (/files/download/filename OR /files/download/MyDirectory/filename)
+- Added Dir Listening (With File View)
+- Added 404 Page for File/Directory Not Found
 - Deleted Non-Required CSS Code & Text Files
 - Deleted some Test File
 - Renamed changelogs.txt to changelog.txt (ok?)
