@@ -1,5 +1,7 @@
 # Versions
 
+Current Stable Version: **1.4** (Strawberry Mix)
+
 | Version    | Codename | Status   |  Release     | End of Life| Notes
 | --         | --       | --       | --           | --     | -- 
 | 0.2.2-Beta | Milky Way | EoL  	| 16.01.2022   | Yes    |First Beta Release
