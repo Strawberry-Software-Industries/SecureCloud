@@ -1,6 +1,9 @@
 # Versions
 Current Version: **1.5** (Strawberry Mix)
 
+- ❌: N/A
+- ❓: Unknown 
+
 | Version | Codename | Status | Release | End of Life| Notes
 | -- | -- | -- | -- | -- | --
 | [0.1-rc2](https://github.com/Strawberry-Software-Industries/SecureCloud/releases/tag/v0.1-rc2) | Apple Juice | EoL | 16.01.2022 | Yes |
