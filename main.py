@@ -31,7 +31,7 @@ build_ver = "1.5.0_" + build_date
 version_full = "Version 1.5.0"
 version_short = "v1.5.0"
 revision = "rev-1"
-codename = "Codename"
+codename = "Strawberry Mix"
 
 is_lts_ver = "y"
 is_oss = "y"

@@ -37,6 +37,9 @@
 - Added Stale on our GitHub Repository
 - Added Labeler on our GitHub Repository
 - Added Logout Button on User Page
+- Added Codename
+- Added Codename to Version Card
+- Added Codename Chip
 - Deleted Non-Required CSS Code & Text Files
 - Deleted some Test File
 - Renamed changelogs.txt to changelog.txt (ok?)
