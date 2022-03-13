@@ -136,6 +136,7 @@ def logged_in(session):
 #     return wrapper2
 
 
+# Login
 @app.route('/', methods=['GET', 'POST'])
 def login():
     error = None
@@ -197,6 +198,7 @@ def login():
         return render_template('login.html', title=title, title_header=title_header, username_txt=username_txt, password_txt=password_txt, error=error, welcome=welcome,
                                 hostname=hostname)
 
+# First Setup
 @app.route("/fsetup")
 def first_setup():
     db = sql.connect('db/users.db')
@@ -465,6 +467,7 @@ def change_hostname():
                             files_link=files_link, postscr=postscr, submitvalue=submitvalue)
 
 
+# Change Upload Path
 @app.route('/change-upload-path', methods=["GET", "POST"])
 def change_upload_path():
     if not logged_in(session):
@@ -517,7 +520,6 @@ def change_upload_path():
 
     return render_template("change-upload-path.html", title=title, upload_link=upload_link, settings_link=settings_link, home_link=home_link, user_link=user_link, 
                             files_link=files_link, postscr=postscr, submitvalue=submitvalue, upload_path=upload_path)
-
 
 
 # About
@@ -653,6 +655,7 @@ def download_file(filename):
     return send_file(path, as_attachment=True)
 
 
+# Browse Files
 @app.route('/files/', defaults={'req_path': ''})
 @app.route('/files/<path:req_path>')
 def dir_browsing(req_path):
@@ -692,7 +695,7 @@ def dir_browsing(req_path):
                             user_link=user_link, files_link=files_link)
 
 
-# Userlist
+# Users
 @app.route('/users', methods=['GET', 'GET'])
 def users():
     if not logged_in(session):
@@ -709,6 +712,7 @@ def users():
         home_link = "Home"
         user_link = "Users"
         cr_new_usr = "Add user"
+        logout = "Logout"
 
     else:
         title = "Benutzer"
@@ -719,6 +723,7 @@ def users():
         home_link = "Startseite"
         user_link = "Benutzer"
         cr_new_usr = "Nutzer hinzufügen"
+        logout = "Ausloggen"
 
     conn = sql.connect('db/users.db')
     cur = conn.cursor()
@@ -727,7 +732,7 @@ def users():
     
 
     return render_template('users.html', title=title, text=text, upload_link=upload_link, files_link=files_link, settings_link=settings_link, home_link=home_link, user_link=user_link,
-                            user_list=[], cr_new_usr=cr_new_usr)
+                            user_list=[], cr_new_usr=cr_new_usr, logout=logout)
 
 
 # Create User
