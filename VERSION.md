@@ -14,3 +14,4 @@
 | 1.3   	   | Strawberry Mix | LTS 		| 08.02.2022   | No     | LTS with more Features 
 | 1.4   	   | Strawberry Mix | Stable 	| 24.02.2022   | No     | Beta Login System
 | 1.5   	   | Strawberry Mix | LTS      | 13.03.2022   | No     | Biggest Release (LTS)
+| Unstable   | Ice Cream | Development Rolling | ❌ | No | 
