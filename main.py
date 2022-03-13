@@ -97,7 +97,7 @@ def get_dir():
 
 
 def check_password(hashed_password, user_password):
-    return hashed_password == hashlib.md5(user_password.encode()).hexdigest()
+    return hashed_password == hashlib.sha256(user_password.encode()).hexdigest()
 
 
 def logged_in(session):
