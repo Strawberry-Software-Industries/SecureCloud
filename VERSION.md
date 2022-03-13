@@ -21,4 +21,4 @@ Current Version: **1.5** (Strawberry Mix)
 | [1.4](https://github.com/Strawberry-Software-Industries/SecureCloud/releases/tag/v1.4) | Strawberry Mix | Stable | 24.02.2022 | ❌ | Beta Login System
 | [1.5](https://github.com/Strawberry-Software-Industries/SecureCloud/releases/tag/v1.5) | Strawberry Mix | LTS | 13.03.2022 | ❌ | Biggest Release (LTS)
 | [1.6]() | Strawberry Mix | Future | ❓ | ❓ |
-| Unstable | Ice Cream | Development Rolling | ❌ | ❌ |
+| Unstable | Ice Cream | Development Rolling | ✖️ | ❌ |
