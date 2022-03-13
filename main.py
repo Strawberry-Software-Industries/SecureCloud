@@ -787,7 +787,7 @@ def create_user():
                     print(f"[User Account Manager] new Account created -> {request.form['username']}")
 
                 except:
-                        print(f"Error while Inserting Values {request.form['username']} {request.form['password']} to Database")
+                        print(f"Error while creating User {request.form['username']}: Value cannot be inserted into DB")
 
 
 
