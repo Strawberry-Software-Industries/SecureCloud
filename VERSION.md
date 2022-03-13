@@ -20,5 +20,6 @@ Current Version: **1.5** (Strawberry Mix)
 | [1.3](https://github.com/Strawberry-Software-Industries/SecureCloud/releases/tag/v1.3) | Strawberry Mix | LTS | 08.02.2022 | Free Home OSS | ❌ | LTS with more Features
 | [1.4](https://github.com/Strawberry-Software-Industries/SecureCloud/releases/tag/v1.4) | Strawberry Mix | Stable | 24.02.2022 | Free Home OSS | ❌ | Beta Login System
 | [1.5](https://github.com/Strawberry-Software-Industries/SecureCloud/releases/tag/v1.5) | Strawberry Mix | LTS | 13.03.2022 | Free Home OSS | ❌ | Biggest Release (LTS)
-| 1.6 | Strawberry Mix | Future | ❓ | Free Home | ❓ |
-| [Unstable](https://github.com/Strawberry-Software-Industries/SecureCloud) | Ice Cream | Development Rolling | ✖️ | Free Home | ❌ | Source Code 
+| 1.6 | Strawberry Mix | Future | ❓ | Free Home OSS | ❓ |
+| ❓ | Juicy Starfruit | Future | ❓ | Enterprise Non-OSS | ❓
+| [Unstable](https://github.com/Strawberry-Software-Industries/SecureCloud) | Ice Cream | Development Rolling | ✖️ | Free Home OSS | ❌ | Source Code 
