@@ -36,6 +36,7 @@
 - Added CodeQL on our GitHub Repository
 - Added Stale on our GitHub Repository
 - Added Labeler on our GitHub Repository
+- Added Logout Button on User Page
 - Deleted Non-Required CSS Code & Text Files
 - Deleted some Test File
 - Renamed changelogs.txt to changelog.txt (ok?)
