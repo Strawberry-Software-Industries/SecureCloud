@@ -45,30 +45,27 @@
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
         <header class="mdl-layout__header">
             <div class="mdl-layout__header-row">
-                <span class="mdl-layout-title">{{title}}</span>
+                <span class="mdl-layout-title">{{title}} - {{ (request.path + '/' if request.path != '/' else '')}}</span>
                 <div class="mdl-layout-spacer"></div>
                 <nav class="mdl-navigation mdl-layout--large-screen-only">
-                    <a class="mdl-navigation__link" href="files">{{files_link}}</a>
-                    <a class="mdl-navigation__link" href="settings">{{settings_link}}</a>
-                    <a class="mdl-navigation__link" href="users">{{user_link}}</a>
-                    <a class="mdl-navigation__link" href="home">{{home_link}}</a>
+                    <a class="mdl-navigation__link" href="/files">{{files_link}}</a>
+                    <a class="mdl-navigation__link" href="/settings">{{settings_link}}</a>
+                    <a class="mdl-navigation__link" href="/users">{{user_link}}</a>
+                    <a class="mdl-navigation__link" href="/home">{{home_link}}</a>
                 </nav>
             </div>
         </header>
         <div class="mdl-layout__drawer">
             <span class="mdl-layout-title">SecureCloud</span>
             <nav class="mdl-navigation">
-                <a class="mdl-navigation__link" href="files">{{files_link}}</a>
-                <a class="mdl-navigation__link" href="settings">{{settings_link}}</a>
-                <a class="mdl-navigation__link" href="users">{{user_link}}</a>
-                <a class="mdl-navigation__link" href="home">{{home_link}}</a>
+                <a class="mdl-navigation__link" href="/files">{{files_link}}</a>
+                <a class="mdl-navigation__link" href="/settings">{{settings_link}}</a>
+                <a class="mdl-navigation__link" href="/users">{{user_link}}</a>
+                <a class="mdl-navigation__link" href="/home">{{home_link}}</a>
             </nav>
         </div>
         <main class="mdl-layout__content">
             <div class="page-content">
-                <!-- {% autoescape false %}
-                <h5 style="margin-left: 20px; font-family: 'Cascadia Code', sans-serif;"><b>{{dir}}</b></h5>
-                {% endautoescape %}-->
                 <ul>
                     {% for file in files %}
                     <li>
