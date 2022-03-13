@@ -26,7 +26,7 @@ app.config["SECRET_KEY"] = "xpub_hqFFnmKE7cHe5DhIxdE3_default"
 
 # Variables
 release_github = "https://github.com/Strawberry-Software-Industries/SecureCloud/releases/tag/v1.5"
-build_date = "2022-13-03_00-00-00"
+build_date = "2022-13-03_13-00-00"
 build_ver = "1.5.0_" + build_date
 version_full = "Version 1.5.0"
 version_short = "v1.5.0"
@@ -117,23 +117,23 @@ def logged_in(session):
         return False
 
 
-def login_is_required(function):
-    def wrapper2(*args, **kwargs):
-        try:
-            db = sql.connect('db/users.db')
-            c = db.cursor()
-            c.execute('SELECT * FROM users WHERE name = ? AND password = ?', (session.get("username"), session.get("password")))
-            logged_in=c.fetchall()
+# def login_is_required(function):
+#     def wrapper2(*args, **kwargs):
+#         try:
+#             db = sql.connect('db/users.db')
+#             c = db.cursor()
+#             c.execute('SELECT * FROM users WHERE name = ? AND password = ?', (session.get("username"), session.get("password")))
+#             logged_in=c.fetchall()
 
-        except:
-            logged_in=False
+#         except:
+#             logged_in=False
 
-        if logged_in:
-            return function()
+#         if logged_in:
+#             return function()
 
-        else:
-            return redirect("/")
-    return wrapper2
+#         else:
+#             return redirect("/")
+#     return wrapper2
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -600,13 +600,67 @@ def about():
 
 
 # Files
-@app.route("/files", methods=["GET", "POST"])
-def files():
+@app.route("/files", defaults={'req_path': ''})
+@app.route('/files/<path:req_path>')
+def files(req_path):
     if not logged_in(session):
         return redirect("/")
 
     lang = get_language()
-    dir = get_dir()
+    upload_path = get_upload_path()
+
+    if lang == "english":
+        title = "Files"
+        settings_link = "Settings"
+        upload_link = "Upload"
+        files_link = "Files"
+        home_link = "Home"
+        user_link = "Users"
+
+    else:
+        title = "Dateien"
+        settings_link = "Einstellungen"
+        upload_link = "Hochladen"
+        files_link = "Dateien"
+        home_link = "Startseite"
+        user_link = "Benutzer"
+    
+
+    abs_path = os.path.join(upload_path, req_path)
+
+    if not os.path.exists(abs_path):
+        return render_template('404_file.html'), 404
+
+    if os.path.isfile(abs_path):
+        return send_file(abs_path)
+
+    files = os.listdir(abs_path)
+    
+
+    return render_template('files.html', files=files, title=title, upload_link=upload_link, settings_link=settings_link, home_link=home_link, user_link=user_link, files_link=files_link,
+                            dir=dir)
+
+
+# Download Files
+@app.route("/files/download/<path:filename>", methods=["GET", "POST"])
+def download_file(filename):
+    if not logged_in(session):
+        return redirect("/")
+    
+    upload_path = get_upload_path()
+
+    path = upload_path + filename
+    return send_file(path, as_attachment=True)
+
+
+@app.route('/files/', defaults={'req_path': ''})
+@app.route('/files/<path:req_path>')
+def dir_browsing(req_path):
+    if not logged_in(session):
+        return redirect("/")
+    
+    upload_path = get_upload_path()
+    lang = get_language()
 
     if lang == "english":
         title = "Files"
@@ -624,8 +678,18 @@ def files():
         home_link = "Startseite"
         user_link = "Benutzer"
 
-    return render_template('files.html', title=title, upload_link=upload_link, settings_link=settings_link, home_link=home_link, user_link=user_link, files_link=files_link,
-                            dir=dir)
+    abs_path = os.path.join(upload_path, req_path)
+
+    if not os.path.exists(abs_path):
+        return render_template('404_file.html'), 404
+
+    if os.path.isfile(abs_path):
+        return send_file(abs_path)
+
+    files = os.listdir(abs_path)
+
+    return render_template('file_browsing.html', files=files, title=title, upload_link=upload_link, settings_link=settings_link, home_link=home_link, 
+                            user_link=user_link, files_link=files_link)
 
 
 # Userlist
