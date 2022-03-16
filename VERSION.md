@@ -1,6 +1,5 @@
-
 # Versions
-Current Version: **1.5** (Strawberry Mix)
+Current Version: **1.5.2** (Strawberry Mix) (LTS)
 
 - ✅: Yes
 - ❌: No
@@ -10,8 +9,8 @@ Current Version: **1.5** (Strawberry Mix)
 # Open Source Editions
 | Version | Codename | Status | Release | Edition | Supported | Notes 
 | -- | -- | -- | -- | -- | -- | --
-| [0.1-rc2](https://github.com/Strawberry-Software-Industries/SecureCloud/releases/tag/v0.1-rc2) | Apple Juice | EoL | 16.01.2022 | Free Home OSS | ❌ | 
-| [0.6-rc3](https://github.com/Strawberry-Software-Industries/SecureCloud/releases/tag/v0.6-rc3) | Apple Juice | EoL | 16.01.2022 | Free Home OSS | ❌ |
+| [0.1-rc2](https://github.com/Strawberry-Software-Industries/SecureCloud/releases/tag/v0.1-rc2) | Apple Juice | EoL | 16.01.2022 | Free Home OSS | ❌ | First offical Release
+| [0.6-rc3](https://github.com/Strawberry-Software-Industries/SecureCloud/releases/tag/v0.6-rc3) | Apple Juice | EoL | 16.01.2022 | Free Home OSS | ❌ | 
 | [0.7-rc4](https://github.com/Strawberry-Software-Industries/SecureCloud/releases/tag/v0.7-rc4) | Apple Juice | EoL | 16.01.2022 | Free Home OSS | ❌ |
 | [0.2.2-Beta](https://github.com/Strawberry-Software-Industries/SecureCloud/releases/tag/v0.2.2-Beta) | Milky Way | EoL | 16.01.2022 | Free Home OSS| ❌ | First Beta Release
 | [0.8-rc5](https://github.com/Strawberry-Software-Industries/SecureCloud/releases/tag/v0.8-rc5) | Apple Juice | EoL | 17.01.2022 | Free Home OSS | ❌ | Last RC & Beta
