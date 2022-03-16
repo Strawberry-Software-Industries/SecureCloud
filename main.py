@@ -30,7 +30,7 @@ app.config["SECRET_KEY"] = "xpub_hqFFnmKE7cHe5DhIxdE3_default"
 
 # Variables
 release_github = "https://github.com/Strawberry-Software-Industries/SecureCloud/releases/tag/v1.5.2"
-build_date = "2022-16-03_21-09-45"
+build_date = "2022-16-03_22-52-41"
 build_ver = "1.5.3_" + build_date
 version_full = "Version 1.5.3"
 version_short = "v1.5.3"
