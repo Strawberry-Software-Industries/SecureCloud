@@ -85,11 +85,11 @@ We offer Long-Term Support (LTS) for consumers. The Current Version is v1.3.*
 LTS support is free for all SecureCloud users. 
 
 ## The support of any SecureCloud version
-The current non-LTS version of SecureCloud has support until a new non-LTS version of SecureCloud is released. From then on the version has only 7 days of support. 
+The current non-LTS version of SecureCloud has support until a new version of SecureCloud is released (Any, even LTS). From then on the version has only 7 days of support. 
 **Example:**
-Current LTS version: v1.3.*
-Current Non-LTS version: v1.4
-When version 1.5 is released, version 1.4 has only 7 days of support. After the 7 days the version is in EoL status (End of Life) and does not get any security updates. In addition, we do not provide further support for the version. (Via Discord or GitHub).
+Current LTS version: v1.5.*
+Current Non-LTS version: v1.6 (GIT-Build)
+When version 1.7 is released, version 1.6 has only 7 days of support. After the 7 days the version is in EoL status (End of Life) and does not get any security updates. In addition, we do not provide further support for the version. (Via Discord or GitHub).
 **For LTS versions:**
 Each LTS version has support until a new LTS version comes out. From then on the version has only 7 days of support. 
 
@@ -105,7 +105,7 @@ Yes of course! SecureCloud is optimized for the Raspberry Pi, and has been teste
 ## System requirements
 
 #### **Minimal requirements**
- - **RAM:** 128 MB or more
+ - **RAM:** 256 MB or more
  - **CPU:** Any x86, or armv7l CPU with 1 Core and 800MHz clock speed
  - **Storage:** 1 GB
  - **Internet connection via wifi** 
