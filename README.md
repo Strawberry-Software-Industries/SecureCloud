@@ -11,25 +11,8 @@ SecureCloud is available in English & German
 
 ## How can I install SecureCloud?
 Via the Install Script, which can be found in [this](https://github.com/Strawberry-Software-Industries/Install-SecureCloud) Repository. 
+Otherwise clone this repository (unstable), or download the latest release (stable).
 
-## Important notes when you start SecureCloud for the first time
-**<u>NOTE: This notes are deprecated. Starting with SecureCloud v1.0 you don't have to change anything in the source code.<u>**<br>
-If you start SecureCloud for the first time, please note that you have to change the Local IP address to the IP address the device uses. 
-
-```py
-if __name__ == '__main__':
-	application.run(host="localhost", port=80, threaded=True)    
-```
-<b>Change localhost to your IP address.
-Under Windows you can find it with `ipconfig`, or under Linux with `ip a` or `ifconfig`. </b>
-######
-For example:
-```py
-if __name__ == '__main__':
-	application.run(host="192.168.2.101", port=80, threaded=True)    
-```
-Now you can reach SecureCloud via your given IP address (for me `192.168.2.101`). In the beta phase you have to note that you have to put "/home" behind the IP address, otherwise you will get on a 404 page. (for example `192.168.2.101/home`) <br>
-**<u>NOTE: This notes are deprecated. Starting with SecureCloud v1.0 you don't have to change anything in the source code.<u>**<br>
 
 ## Supported Platforms
 SecureCloud works on Python 3.9 or higher. However, the Strawberry Software team recommends using the latest Python 3.10 version. All versions below Python 3.9 are untested and may not work.
