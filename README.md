@@ -88,17 +88,17 @@ Yes of course! SecureCloud is optimized for the Raspberry Pi, and has been teste
 
 #### **Minimal requirements**
  - **RAM:** 256 MB or more
- - **CPU:** Any x86, or armv7l CPU with 1 Core and 800MHz clock speed
- - **Storage:** 1 GB
+ - **CPU:** Any x86 or armv7l CPU with 1 Core and 800MHz clock speed
+ - **Storage:** 3,5 GB (Including Python SDK, etc..)
  - **Internet connection via wifi** 
  - **OS:** Debian 10 or higher | Ubuntu 18.04 or higher 
  
 #### **Recommended requirements**
 - **RAM:** 512 MB or more
-- **CPU:** Any x86, x64, armv7l or aarch64 CPU with 2 Cores and 1,0GHz clock speed
-- **Storage:** 5 GB
+- **CPU:** Any x64 or aarch64 CPU with 2 Cores and 1,0GHz clock speed
+- **Storage:** 8 GB (Including Python SDK, etc..)
 - **Internet connection via LAN** 
-- **OS:** Debian 11 or higher | Ubuntu 20.04 or higher 
+- **OS:** Debian 11 or higher | Ubuntu 20.04 LTS or higher 
 
 ## Performance on a Raspberry Pi
 **Raspberry Pi 4 Modell B [2, 4, 8 GB]:** Very good performance. Recommended for Home Server with SecureCloud or other Cloud Software. <br>
