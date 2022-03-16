@@ -16,15 +16,11 @@
 
 <body>
 
-    <!-- Always shows a header, even in smaller screens. -->
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
         <header class="mdl-layout__header">
             <div class="mdl-layout__header-row">
-                <!-- Title -->
                 <span class="mdl-layout-title">{{title}}</span>
-                <!-- Add spacer, to align navigation to the right -->
                 <div class="mdl-layout-spacer"></div>
-                <!-- Navigation. We hide it in small screens. -->
                 <nav class="mdl-navigation mdl-layout--large-screen-only">
                     <a class="mdl-navigation__link" href="files">{{files_link}}</a>
                     <a class="mdl-navigation__link" href="settings">{{settings_link}}</a>
@@ -46,12 +42,8 @@
             <div class="page-content">
                 <h3 style="margin-left: 20px;"><b><u>SecureCloud Update</u></b></h3>
                 <h4 style="margin-left: 20px;">{{update_text}}</h4>
-
-                <!-- Raised button with ripple -->
-                <!-- Accent-colored raised button with ripple -->
-                <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" style="margin-left: 20px; position: fixed; bottom: 30px; right: 30px;" href="{{release_github}}">{{up_perf}}</a>
-
-
+                <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" 
+                style="margin-left: 20px; position: fixed; bottom: 30px; right: 30px;" href="{{release_github}}">{{up_perf}}</a>
             </div>
         </main>
     </div>
