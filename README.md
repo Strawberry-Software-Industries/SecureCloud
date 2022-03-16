@@ -108,4 +108,4 @@ Yes of course! SecureCloud is optimized for the Raspberry Pi, and has been teste
 **Raspberry Pi Zero 2 W:** Good performance for a mini Home Server! <br>
 
 ## Information about the program code
-SecureCloud was programmed in the Python programming language. We're using Flask for the Web Server. Material Design Lite ([getmdl.io](https://getmdl.io)) was used for the web design. All rights for the Material Design Icons belong to Google. 
+SecureCloud was programmed in the Python programming language. We're using Flask for the Web Server. Material Design Lite ([getmdl.io](https://getmdl.io)) was used for the web design. 
