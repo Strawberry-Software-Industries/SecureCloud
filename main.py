@@ -334,7 +334,7 @@ def settings():
                            german=german, english=english, add_ext=add_ext, file_extensions_data=file_extensions_data, memory_usage_mb=memory_usage_mb,
                            memory_usage_percent=memory_usage_percent, memory=memory, file_extensions_data_text=file_extensions_data_text, changed_german=changed_german,
                            changed_english=changed_english, upload_limit=upload_limit, change=change, upload_size=upload_size, more=more, cpu_usage_percent=cpu_usage_percent,
-                           uptime_conv=uptime_conv)
+                           uptime_conv=uptime_conv, add=add)
 
 
 # Change Upload Size
