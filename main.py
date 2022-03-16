@@ -40,14 +40,6 @@ developer_key = "xdev_JRkz1Z4UrsExIuFOglLBwpK6ENMYs6_tkey"
 uptime = time.time()
 
 
-# # (EN) Init JSON Language files
-# e_la = open('./lang/english.json')
-# e_data = json.load(e_la)
-# for e_c in e_data:
-#    print(e_c)
-
-# e_la.close()
-
 # Functions
 def get_language():
     with open("./config/language.conf", "r") as f:
