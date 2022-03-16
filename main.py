@@ -10,7 +10,6 @@ import time
 import datetime
 import psutil
 import socket
-import json
 
 # Upload Size Function & Configuration
 def max_upload_size():
