@@ -3,6 +3,7 @@
 #### For Vanilla Cake:
 
 - Calendar
+- Improved Design
 
 #### For Bloody Dragonfruit:
 
