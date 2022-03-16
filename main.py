@@ -33,8 +33,8 @@ version_short = "v1.5.2"
 revision = "rev-1"
 codename = "Strawberry Mix"
 
-is_lts_ver = "y"
-is_oss = "y"
+is_lts_ver = "yes"
+is_oss = "yes"
 edition_ver = "Home"
 uptime = time.time()
 
@@ -526,12 +526,12 @@ def about():
     hostname = get_hostname()
     up_path = get_upload_path()
 
-    if is_lts_ver == "y":
+    if is_lts_ver == "yes":
         lts = "LTS"
     else:
         lts = "Rolling"
 
-    if is_oss == "y":
+    if is_oss == "yes":
         oss = "OSS"
     else:
         oss = "Non-OSS"
