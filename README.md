@@ -13,6 +13,9 @@ SecureCloud is available in English & German
 Via the Install Script, which can be found in [this](https://github.com/Strawberry-Software-Industries/Install-SecureCloud) Repository. 
 Otherwise clone this repository (unstable), or download the latest release (stable).
 
+## Version history
+
+You can look at the history in [VERSION.md](https://github.com/Strawberry-Software-Industries/SecureCloud/blob/main/VERSION.md)	
 
 ## Supported Platforms
 SecureCloud works on Python 3.9 or higher. However, the Strawberry Software team recommends using the latest Python 3.10 version. All versions below Python 3.9 are untested and may not work.
@@ -76,10 +79,6 @@ When version 1.7 is released, version 1.6 has only 7 days of support. After the 
 **For LTS versions:**
 Each LTS version has support until a new LTS version comes out. From then on the version has only 7 days of support. 
 
-
-## Version history
-
-You can look at the history in [VERSION.md](https://github.com/Strawberry-Software-Industries/SecureCloud/blob/main/VERSION.md)	
 	
 ## Does this also work on a Raspberry Pi?
 Yes of course! SecureCloud is optimized for the Raspberry Pi, and has been tested on a Raspberry Pi by the Strawberry developers. (3 of our 7 developers have a Raspberry Pi. (4B 8GB, 4B 4GB, 2B)). Now you know why we have optimized SecureCloud so well 😉
