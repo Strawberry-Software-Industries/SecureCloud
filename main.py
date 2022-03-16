@@ -904,5 +904,6 @@ else:
     hostip = "localhost"
 
 
+# Run SecureCloud 
 if __name__ == '__main__':
     app.run(host=hostip, port=global_port, threaded=True)
