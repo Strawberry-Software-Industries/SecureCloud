@@ -1,3 +1,1 @@
-- Fixed that in /files/ the folder name was not in the header title
-- Fixed Unix Formatting Error
-- Changed "Change Upload Size" Button redirect in /upload to /change-upload-size
+No Changelogs
