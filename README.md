@@ -81,8 +81,8 @@ Each LTS version has support until a new LTS version comes out. From then on the
 
 	
 ## Does this also work on a Raspberry Pi?
-Yes of course! SecureCloud is optimized for the Raspberry Pi, and has been tested on a Raspberry Pi by the Strawberry developers. (3 of our 7 developers have a Raspberry Pi. (4B 8GB, 4B 4GB, 2B)). Now you know why we have optimized SecureCloud so well 😉
-<b>If the hostname of your RPi is `raspberrypi`, you can reach the Pi via the web address `raspberrypi.local/home` </b>
+Yes of course! SecureCloud is optimized for the Raspberry Pi, and has been tested on a Raspberry Pi by the Strawberry developers. (5 of our 8 developers have a Raspberry Pi). Now you know why we have optimized SecureCloud so well 😉
+<b>If the hostname of your RPi is `raspberrypi`, you can reach the Pi via the web address `raspberrypi.local`. If you have a Fritz Box, it could be that the URL is `raspberry.fritz.box`. Just try it!</b>
 
 ## System requirements
 
