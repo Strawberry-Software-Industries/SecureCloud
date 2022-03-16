@@ -58,14 +58,6 @@ If you manage to get SecureCloud running on Debian 9, and Ubuntu 16.04 without m
 | Windows 10 | Build 1909 and above | Yes| 
 | Windows 11 | Build 22000.51 and above | Yes | 
 
-
-## BSD Support
-***BSD Support wasn't tested yet.***
-| Platform | Version  |  Supported| 
-|--|--|--|
-| FreeBSD | Any | Yes| 
-| OpenBSD | Any | Yes |
-
 ## Long-Term Support
 We offer Long-Term Support (LTS) for consumers. The Current Version is v1.5.*
 LTS support is free for all SecureCloud users. 
