@@ -67,7 +67,7 @@ If you manage to get SecureCloud running on Debian 9, and Ubuntu 16.04 without m
 | OpenBSD | Any | Yes |
 
 ## Long-Term Support
-We offer Long-Term Support (LTS) for consumers. The Current Version is v1.3.*
+We offer Long-Term Support (LTS) for consumers. The Current Version is v1.5.*
 LTS support is free for all SecureCloud users. 
 
 ## The support of any SecureCloud version
