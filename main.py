@@ -19,6 +19,7 @@ def max_upload_size():
     return data.rstrip()
 
 app = Flask(__name__, static_url_path="/static")
+
 app.config['MAX_CONTENT_LENGTH'] = int(max_upload_size()) * 1024 * 1024
 app.config["SECRET_KEY"] = "xpub_hqFFnmKE7cHe5DhIxdE3_default"
 
@@ -35,7 +36,6 @@ codename = "Strawberry Mix"
 is_lts_ver = "y"
 is_oss = "y"
 edition_ver = "Home"
-developer_key = "xdev_JRkz1Z4UrsExIuFOglLBwpK6ENMYs6_tkey"
 uptime = time.time()
 
 
