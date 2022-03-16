@@ -18,8 +18,12 @@ def max_upload_size():
 
     return data.rstrip()
 
+
+# App Declaration
 app = Flask(__name__, static_url_path="/static")
 
+
+# App Config
 app.config['MAX_CONTENT_LENGTH'] = int(max_upload_size()) * 1024 * 1024
 app.config["SECRET_KEY"] = "xpub_hqFFnmKE7cHe5DhIxdE3_default"
 
@@ -107,25 +111,6 @@ def logged_in(session):
 
     else:
         return False
-
-
-# def login_is_required(function):
-#     def wrapper2(*args, **kwargs):
-#         try:
-#             db = sql.connect('db/users.db')
-#             c = db.cursor()
-#             c.execute('SELECT * FROM users WHERE name = ? AND password = ?', (session.get("username"), session.get("password")))
-#             logged_in=c.fetchall()
-
-#         except:
-#             logged_in=False
-
-#         if logged_in:
-#             return function()
-
-#         else:
-#             return redirect("/")
-#     return wrapper2
 
 
 # Login
