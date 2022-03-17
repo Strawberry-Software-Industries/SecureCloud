@@ -2,12 +2,13 @@
 <b> Your new Cloud. Free and Open Source. 
 By Strawberry Software </b>
 
+## What is SecureCloud?
+SecureCloud is a free and open source cloud that makes storing files on your (home) server more than easy!
+
 | ℹ️ Information
 | -------------
 | We are looking for developers! To appy, simply join our Discord server and DM a staff member!
 
-## What is SecureCloud?
-SecureCloud is a free and open source cloud that makes storing files on your (home) server more than easy!
 
 ## How does SecureCloud work? 
 SecureCloud is currently a stable product, and includes some features. Some features will be added soon!
@@ -62,11 +63,26 @@ If you manage to get SecureCloud running on Debian 9, and Ubuntu 16.04 without m
 | Windows 10 | Build 1909 and above | Yes| 
 | Windows 11 | Build 22000.51 and above | Yes | 
 
+## BSD Support
+
+| ⚠️ Warning
+| -------------
+| The BSD support hasn't been tested yet!
+
+| Platform | Version | Supported |
+| -------- | ------- | --------- |
+| FreeBSD  | v13+    | ❓        |
+
 ## Long-Term Support
 We offer Long-Term Support (LTS) for consumers. The Current Version is v1.5.*
 LTS support is free for all SecureCloud users. 
 
 ## The support of any SecureCloud version
+
+| ⚠️ Warning
+| -------------
+| The current LTS concept will change with version 2.0 (Vanilla Cake)
+
 The current non-LTS version of SecureCloud has support until a new version of SecureCloud is released (Any, even LTS). From then on the version has only 7 days of support. 
 **Example:**
 Current LTS version: v1.5.*
