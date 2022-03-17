@@ -1,1 +1,5 @@
-# No Changelog for v1.7
+- Added Personal File Directory
+- Added new App Route for Personal Files (/personal-files)
+- Added Storage Choosing Page
+- Added Upload for Personal Files
+- Changed default App Route for Shared Files (/files) to /shared-files
