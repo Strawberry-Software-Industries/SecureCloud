@@ -3,6 +3,7 @@
 By Strawberry Software </b>
 
 | ℹ️ Information
+| -------------
 | We are looking for developers! To appy, simply join our Discord server and DM a staff member!
 
 ## What is SecureCloud?
