@@ -2,4 +2,8 @@
 - Added new App Route for Personal Files (/personal-files)
 - Added Storage Choosing Page
 - Added Upload for Personal Files
+- Added Custom Choose Storage Page (/files)
+- Added Uploading to other Directories
+- Added Current Path Information to Upload Pages
 - Changed default App Route for Shared Files (/files) to /shared-files
+- Changed Text from Upload Pages
