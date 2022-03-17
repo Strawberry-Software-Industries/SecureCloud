@@ -41,3 +41,4 @@ Current LTS Version: **1.5.2** (Strawberry Mix) (LTS)
 ### Open a Pull Request to add your fork here!
 | Version | Codename | Status | Release | Edition | Supported | Notes 
 | -- | -- | -- | -- | -- | -- | --
+| -- | -- | -- | -- | -- | -- | --
