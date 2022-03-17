@@ -1,0 +1,3 @@
+[submodule "lib/StrawLib"]
+	path = lib/StrawLib
+	url = https://github.com/Strawberry-Software-Industries/StrawLib.git
