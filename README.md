@@ -6,6 +6,7 @@ By Strawberry Software </b>
 SecureCloud is a free and open source cloud that makes storing files on your (home) server more than easy!
 
 | ℹ️ Information
+| -------------
 | We are looking for developers! To appy, simply join our Discord server and DM a staff member!
 
 
