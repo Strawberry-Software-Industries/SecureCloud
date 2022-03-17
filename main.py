@@ -761,7 +761,7 @@ def personal_files(req_path):
     files = os.listdir(abs_path)
     
 
-    return render_template('files.html', files=files, title=title, upload_link=upload_link, settings_link=settings_link, home_link=home_link, user_link=user_link, 
+    return render_template('file_browsing_personal.html', files=files, title=title, upload_link=upload_link, settings_link=settings_link, home_link=home_link, user_link=user_link, 
                             files_link=files_link, dir=dir)
 
 
@@ -813,7 +813,7 @@ def dir_browsing_personal(req_path):
 
     files = os.listdir(abs_path)
 
-    return render_template('file_browsing.html', files=files, title=title, upload_link=upload_link, settings_link=settings_link, home_link=home_link, 
+    return render_template('file_browsing_personal.html', files=files, title=title, upload_link=upload_link, settings_link=settings_link, home_link=home_link, 
                             user_link=user_link, files_link=files_link)
 
 
@@ -941,9 +941,10 @@ def create_user():
                             create_new_account_txt=create_new_account_txt)
 
 
-# Upload
-@app.route("/upload", methods=['GET', 'POST'])
-def upload():
+# Upload to Shared Files
+@app.route("/upload/shared/", methods=['GET', 'POST'], defaults={'upload_path': None})
+@app.route("/upload/shared/<path:upload_path>", methods=['GET', 'POST'])
+def upload_to_shared(upload_path):
     if not logged_in(session):
         return redirect("/")
 
@@ -958,7 +959,9 @@ def upload():
         home_link = "Home"
         user_link = "User"
         upl_up_to = "You can upload up to " + upload_limit + "MB"
+        upl_to = "Upload to Shared Files"
         change = "Change"
+        cur_up_path = "Current Path: "
 
     else:
         title = "Hochladen"
@@ -968,7 +971,9 @@ def upload():
         home_link = "Startseite"
         user_link = "Benutzer"
         upl_up_to = "Du kannst bis zu " + upload_limit + "MB hochladen"
+        upl_to = "Zu geteilte Daten Hochladen"
         change = "Ändern"
+        cur_up_path = "Aktueller Pfad: "
 
     if request.method == 'POST':
         if 'file' not in request.files:
@@ -982,18 +987,90 @@ def upload():
             filename = secure_filename(file.filename)
             print(filename)
 
-            file.save(os.path.join(get_upload_path(), filename))
+            if upload_path == None:
+                upload_path = ""
 
-            path = (os.path.join(get_upload_path(), filename))
-            print("path :", path)
+            file.save(os.path.join(get_upload_path() + upload_path, filename))
+
+            path = (os.path.join(get_upload_path() + upload_path, filename))
+            print("Path:", path)
 
             result = path.split("/")
             filename2 = result[-1:]
-            print("fname :", filename2)
+            print("Filename:", filename2)
             filename1 = " ".join(filename2)
 
-    return render_template('upload.html', title=title, upload_link=upload_link, settings_link=settings_link, home_link=home_link, user_link=user_link, files_link=files_link,
-                            upl_up_to=upl_up_to, change=change)
+    return render_template('upload_shared.html', title=title, upload_link=upload_link, settings_link=settings_link, home_link=home_link, user_link=user_link, files_link=files_link,
+                            upl_up_to=upl_up_to, change=change, cur_up_path=cur_up_path, upload_path=upload_path, upl_to=upl_to)
+
+# Upload to Personal Files
+@app.route("/upload/personal/", methods=['GET', 'POST'], defaults={'upload_path': None})
+@app.route("/upload/personal/<path:upload_path>", methods=['GET', 'POST'])
+def upload_to_personal(upload_path):
+    if not logged_in(session):
+        return redirect("/")
+
+    lang = get_language()
+    upload_limit = max_upload_size()
+    user_upload_path = f'./data/{session.get("username")}/'
+
+    if lang == "english":
+        title = "Upload"
+        settings_link = "Settings"
+        upload_link = "Upload"
+        files_link = "Files"
+        home_link = "Home"
+        user_link = "User"
+        upl_up_to = "You can upload up to " + upload_limit + "MB"
+        upl_to = "Upload to Personal Files"
+        change = "Change"
+        cur_up_path = "Current Path: "
+
+    else:
+        title = "Hochladen"
+        settings_link = "Einstellungen"
+        upload_link = "Hochladen"
+        files_link = "Dateien"
+        home_link = "Startseite"
+        user_link = "Benutzer"
+        upl_up_to = "Du kannst bis zu " + upload_limit + "MB hochladen"
+        upl_to = "Zu persönlichen Daten Hochladen"
+        change = "Ändern"
+        cur_up_path = "Aktueller Pfad: "
+
+    if request.method == 'POST':
+        if 'file' not in request.files:
+            print('No file attached in request')
+            return redirect(request.url)
+
+        file = request.files['file']
+
+        if file.filename == '':
+            print('No file selected')
+            return redirect(request.url)
+
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            print(filename)
+
+            if upload_path == None:
+                upload_path = ""
+
+            file.save(os.path.join(user_upload_path + upload_path, filename))
+
+            path = (os.path.join(user_upload_path + upload_path, filename))
+            print("Path:", path)
+
+            result = path.split("/")
+            filename2 = result[-1:]
+            print("Filename:", filename2)
+            filename1 = " ".join(filename2)
+
+
+
+    return render_template('upload_personal.html', title=title, upload_link=upload_link, settings_link=settings_link, home_link=home_link, user_link=user_link, files_link=files_link,
+                            upl_up_to=upl_up_to, change=change, cur_up_path=cur_up_path, upload_path=upload_path, upl_to=upl_to)
+
 
 
 # Update
