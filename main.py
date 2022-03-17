@@ -519,8 +519,10 @@ def about():
 
     if is_lts_ver == "yes":
         lts = "LTS"
-    else:
+    elif is_lts_ver == "rr":
         lts = "Rolling"
+    else:
+        lts = "Stable"
 
     if is_oss == "yes":
         oss = "OSS"
