@@ -1,4 +1,5 @@
 # SecureCloud
+[![CodeQL](https://github.com/Strawberry-Software-Industries/SecureCloud/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/Strawberry-Software-Industries/SecureCloud/actions/workflows/codeql-analysis.yml) [![Labeler](https://github.com/Strawberry-Software-Industries/SecureCloud/actions/workflows/label.yml/badge.svg)](https://github.com/Strawberry-Software-Industries/SecureCloud/actions/workflows/label.yml) [![Mark stale issues and pull requests](https://github.com/Strawberry-Software-Industries/SecureCloud/actions/workflows/stale.yml/badge.svg)](https://github.com/Strawberry-Software-Industries/SecureCloud/actions/workflows/stale.yml) [![Python application](https://github.com/Strawberry-Software-Industries/SecureCloud/actions/workflows/python-app.yml/badge.svg)](https://github.com/Strawberry-Software-Industries/SecureCloud/actions/workflows/python-app.yml) <br>
 <b> Your new Cloud. Free and Open Source. 
 By Strawberry Software </b>
 
