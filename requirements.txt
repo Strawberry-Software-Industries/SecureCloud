@@ -1,4 +1,4 @@
 flask
 psutil
-cryptodome
+pycryptodome
 sqlite3
