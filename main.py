@@ -10,6 +10,7 @@ import time
 import datetime
 import psutil
 import socket
+from Cryptodome.Hash import SHAKE256
 
 # Upload Size Function & Configuration
 def max_upload_size():
@@ -25,15 +26,15 @@ app = Flask(__name__, static_url_path="/static")
 
 # App Config
 app.config['MAX_CONTENT_LENGTH'] = int(max_upload_size()) * 1024 * 1024
-app.config["SECRET_KEY"] = "xpub_hqFFnmKE7cHe5DhIxdE3_default"
+app.config["SECRET_KEY"] = "xprivate_ypysKXdjbyMNkBIbx88IFaKlbwiZwn"
 
 
 # Variables
 release_github = "https://github.com/Strawberry-Software-Industries/SecureCloud/releases/tag/v1.5.2"
-build_date = "2022-16-03_22-52-41"
-build_ver = "1.5.3_" + build_date
-version_full = "Version 1.5.3"
-version_short = "v1.5.3"
+build_date = "2022-17-03_16-00-00"
+build_ver = "1.6.0_" + build_date
+version_full = "Version 1.6.0"
+version_short = "v1.6.0"
 revision = "rev-1"
 codename = "Strawberry Mix"
 
@@ -144,12 +145,17 @@ def login():
         db = sql.connect('db/users.db')
         c = db.cursor()
 
-        c.execute('SELECT * FROM users WHERE name = ? AND password = ?', (username, password))
+        Password_Byte_Encoded = str.encode(password)
+        Hashed_Password = SHAKE256.new()
+        Hashed_Password.update(Password_Byte_Encoded)
+        pw = Hashed_Password.read(26).hex()
+
+        c.execute('SELECT * FROM users WHERE name = ? AND password = ?', (username, pw))
         if c.fetchall():
             print(f'[User Account Manager] {username} has logged in!')
 
             session["username"] = username
-            session["password"] = password
+            session["password"] = pw
 
             return redirect("/home")
 
@@ -762,14 +768,18 @@ def create_user():
                     postscr=f"Ein neuer Account mit dem Namen {request.form['username']} wurde erstellt."
 
                 try:
+                    Password_Byte_Encoded = str.encode(request.form["password"])
+                    Hashed_Password = SHAKE256.new()
+                    Hashed_Password.update(Password_Byte_Encoded)
+
                     conn = sql.connect('./db/users.db')
-                    conn.execute(f"INSERT INTO users (name,password) VALUES ('{request.form['username']}', '{request.form['password']}')")
+                    conn.execute(f"INSERT INTO users (name,password) VALUES ('{request.form['username']}', '{Hashed_Password.read(26).hex()}')")
                     conn.commit()
                     conn.close()
-                    print(f"[User Account Manager] new Account created -> {request.form['username']}")
+                    print(f"[User Account Manager] new Account created » {request.form['username']}")
 
                 except:
-                        print(f"Error while creating User {request.form['username']}: Value cannot be inserted into DB")
+                        print(f"Error while creating User {request.form['username']}: Values cannot be inserted into the Database")
 
 
 
