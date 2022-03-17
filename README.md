@@ -119,5 +119,10 @@ Yes of course! SecureCloud is optimized for the Raspberry Pi, and has been teste
 **Raspberry Pi Zero W:** Performance is a bit poor, there can be internet lags or CPU lags from time to time.  <br>
 **Raspberry Pi Zero 2 W:** Good performance for a mini Home Server! <br>
 
+## GitHub
+| ℹ️ Information
+| -------------
+| CodeQL and pytest are running every 12h on 00:00 (12AM) UTC and 12:00 (12PM) UTC.
+
 ## Information about the program code
 SecureCloud was programmed in the Python programming language. We're using Flask for the Web Server. Material Design Lite ([getmdl.io](https://getmdl.io)) was used for the web design. 
