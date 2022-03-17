@@ -39,12 +39,13 @@
         <main class="mdl-layout__content">
             <div class="page-content">
 
-                <h4 style="margin-top: 20px; margin-left: 20px; font-family: Rubik;"><b>{{global_file_str}}</b></h4> <br>
-                <h6></h6>
+                <h4 style="margin-top: 20px; margin-left: 20px; font-family: Rubik;"><b>{{global_file_str}}</b></h4>
+                <h6 style="margin-top: -10px; margin-left: 20px; font-family: Rubik;" >{{cur_up_path}} {{upload_path}}</h6>
                 <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="margin-left: 20px;" href="/shared-files">
                     /shared-files/
                 </a>
-                <h4 style="margin-top: 30px; margin-left: 20px; font-family: Rubik;"><b>{{personal_file_str}}</b></h4>
+                <h4 style="margin-top: 35px; margin-left: 20px; font-family: Rubik;"><b>{{personal_file_str}}</b></h4>
+                <h6 style="margin-top: -10px; margin-left: 20px; font-family: Rubik;" >{{logged_in_as}} {{username}}</h6>
                 <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" style="margin-left: 20px;" href="/personal-files">
                     /personal-files/
                 </a>
