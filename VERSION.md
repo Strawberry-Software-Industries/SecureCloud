@@ -1,5 +1,6 @@
 # Versions
-Current Version: **1.5.2** (Strawberry Mix) (LTS)
+Current Stable Version: **1.6.0** (Strawberry Mix)
+Current LTS Version: **1.5.2** (Strawberry Mix) (LTS)
 
 - ✅: Yes
 - ❌: No
