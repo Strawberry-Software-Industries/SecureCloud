@@ -585,9 +585,50 @@ def about():
                            dark_mode=dark_mode, oss=oss, edition_ver=edition_ver, codename=codename)
 
 
+
+@app.route('/files')
+def file_choosing():
+    if not logged_in(session):
+        return redirect("/")
+
+    lang = get_language()
+    upload_path = get_upload_path()
+    username = session.get('username')
+
+    if lang == "english":
+        title = "Files"
+        settings_link = "Settings"
+        upload_link = "Upload"
+        files_link = "Files"
+        home_link = "Home"
+        user_link = "Users"
+        global_file_str = "Shared Files"
+        personal_file_str = "Personal Files"
+        cur_up_path = "Current Shared Path: "
+        logged_in_as = "Logged in as"
+
+    else:
+        title = "Dateien"
+        settings_link = "Einstellungen"
+        upload_link = "Hochladen"
+        files_link = "Dateien"
+        home_link = "Startseite"
+        user_link = "Benutzer"
+        global_file_str = "Geteilte Daten"
+        personal_file_str = "Personal Files"
+        cur_up_path = "Aktueller Geteilte Pfad: "
+        logged_in_as = "Angemeldet als"
+    
+
+    return render_template('file_choosing.html', title=title, upload_link=upload_link, settings_link=settings_link, home_link=home_link, user_link=user_link, 
+                            files_link=files_link, dir=dir, global_file_str=global_file_str, personal_file_str=personal_file_str, cur_up_path=cur_up_path,
+                            logged_in_as=logged_in_as, upload_path=upload_path, username=username)
+
+
+
 # Files
-@app.route("/files", defaults={'req_path': ''})
-@app.route('/files/<path:req_path>')
+@app.route("/shared-files", defaults={'req_path': ''})
+@app.route('/shared-files/<path:req_path>')
 def files(req_path):
     if not logged_in(session):
         return redirect("/")
@@ -628,7 +669,7 @@ def files(req_path):
 
 
 # Download Files
-@app.route("/files/download/<path:filename>", methods=["GET", "POST"])
+@app.route("/shared-files/download/<path:filename>", methods=["GET", "POST"])
 def download_file(filename):
     if not logged_in(session):
         return redirect("/")
@@ -640,8 +681,8 @@ def download_file(filename):
 
 
 # Browse Files
-@app.route('/files/', defaults={'req_path': ''})
-@app.route('/files/<path:req_path>')
+@app.route('/shared-files/', defaults={'req_path': ''})
+@app.route('/shared-files/<path:req_path>')
 def dir_browsing(req_path):
     if not logged_in(session):
         return redirect("/")
@@ -666,6 +707,103 @@ def dir_browsing(req_path):
         user_link = "Benutzer"
 
     abs_path = os.path.join(upload_path, req_path)
+
+    if not os.path.exists(abs_path):
+        return render_template('404_file.html'), 404
+
+    if os.path.isfile(abs_path):
+        return send_file(abs_path)
+
+    files = os.listdir(abs_path)
+
+    return render_template('file_browsing.html', files=files, title=title, upload_link=upload_link, settings_link=settings_link, home_link=home_link, 
+                            user_link=user_link, files_link=files_link)
+
+
+
+
+
+# Personal Files
+@app.route("/personal-files", defaults={'req_path': ''})
+@app.route('/personal-files/<path:req_path>')
+def personal_files(req_path):
+    if not logged_in(session):
+        return redirect("/")
+
+    lang = get_language()
+    user_file_path = f'./data/{session.get("username")}'
+
+    if lang == "english":
+        title = "Files"
+        settings_link = "Settings"
+        upload_link = "Upload"
+        files_link = "Files"
+        home_link = "Home"
+        user_link = "Users"
+
+    else:
+        title = "Dateien"
+        settings_link = "Einstellungen"
+        upload_link = "Hochladen"
+        files_link = "Dateien"
+        home_link = "Startseite"
+        user_link = "Benutzer"
+    
+
+    abs_path = os.path.join(user_file_path, req_path)
+
+    if not os.path.exists(abs_path):
+        return render_template('404_file.html'), 404
+
+    if os.path.isfile(abs_path):
+        return send_file(abs_path)
+
+    files = os.listdir(abs_path)
+    
+
+    return render_template('files.html', files=files, title=title, upload_link=upload_link, settings_link=settings_link, home_link=home_link, user_link=user_link, 
+                            files_link=files_link, dir=dir)
+
+
+# Download Personal Files
+@app.route("/personal-files/download/<path:filename>", methods=["GET", "POST"])
+def download_personal_file(filename):
+    if not logged_in(session):
+        return redirect("/")
+    
+    user_file_path = f'./data/{session.get("username")}'
+
+    path = user_file_path + filename
+    return send_file(path, as_attachment=True)
+
+
+# Browse Personal Files
+@app.route('/personal-files/', defaults={'req_path': ''})
+@app.route('/personal-files/<path:req_path>')
+def dir_browsing_personal(req_path):
+    if not logged_in(session):
+        return redirect("/")
+    
+    user_file_path = f'./data/{session.get("username")}'
+    lang = get_language()
+
+    if lang == "english":
+        title = "Files"
+        settings_link = "Settings"
+        upload_link = "Upload"
+        files_link = "Files"
+        home_link = "Home"
+        user_link = "Users"
+
+    else:
+        title = "Dateien"
+        settings_link = "Einstellungen"
+        upload_link = "Hochladen"
+        files_link = "Dateien"
+        home_link = "Startseite"
+        user_link = "Benutzer"
+
+    abs_path = os.path.join(user_file_path, req_path)
 
     if not os.path.exists(abs_path):
         return render_template('404_file.html'), 404
@@ -776,11 +914,16 @@ def create_user():
                     conn.execute(f"INSERT INTO users (name,password) VALUES ('{request.form['username']}', '{Hashed_Password.read(26).hex()}')")
                     conn.commit()
                     conn.close()
-                    print(f"[User Account Manager] new Account created » {request.form['username']}")
+                    print(f"[User Account Manager] New Account created » {request.form['username']}")
+                    
+                    try:
+                        os.mkdir(f"./data/{request.form['username']}")
+
+                    except FileExistsError:
+                        print(f"Could not create Directory {request.form['username']}: This Directory already exists")
 
                 except:
                         print(f"Error while creating User {request.form['username']}: Values cannot be inserted into the Database")
-
 
 
             else:
