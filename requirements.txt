@@ -1,3 +1,4 @@
 flask
 psutil
 cryptodome
+sqlite3
