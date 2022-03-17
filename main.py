@@ -38,7 +38,7 @@ version_short = "v1.7.0"
 revision = "rev-1"
 codename = "Strawberry Mix"
 
-is_lts_ver = "yes"
+is_lts_ver = "no"
 is_oss = "yes"
 edition_ver = "Home"
 uptime = time.time()
