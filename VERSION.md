@@ -32,3 +32,8 @@ Current Version: **1.5.2** (Strawberry Mix) (LTS)
 | -- | -- | -- | -- | -- | -- | --
 | ❓ | Bloody Dragonfruit | Future | ❓ | Pro Home Non-OSS | ❓
 | ❓ | Juicy Starfruit | Future | ❓ | Enterprise Non-OSS | ❓
+
+# Forks
+### Open a Pull Request to add your fork here!
+| Version | Codename | Status | Release | Edition | Supported | Notes 
+| -- | -- | -- | -- | -- | -- | --
