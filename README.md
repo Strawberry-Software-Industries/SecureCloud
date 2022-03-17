@@ -122,7 +122,7 @@ Yes of course! SecureCloud is optimized for the Raspberry Pi, and has been teste
 ## GitHub
 | ℹ️ Information
 | -------------
-| CodeQL and pytest are running every 12h on 00:00 (12AM) UTC and 12:00 (12PM) UTC.
+| CodeQL and pytest are running every 12h on 00:00 (12AM) UTC and on 12:00 (12PM) UTC.
 
 ## Information about the program code
 SecureCloud was programmed in the Python programming language. We're using Flask for the Web Server. Material Design Lite ([getmdl.io](https://getmdl.io)) was used for the web design. 
