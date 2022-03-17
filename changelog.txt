@@ -1,1 +1,3 @@
-No Changelogs
+- Created new SECRET_KEY (Changed from xpub to xprivate)
+- Created new Developer Key
+- Encryption of Passwords via SHAKE256
