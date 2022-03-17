@@ -68,6 +68,11 @@ We offer Long-Term Support (LTS) for consumers. The Current Version is v1.5.*
 LTS support is free for all SecureCloud users. 
 
 ## The support of any SecureCloud version
+
+| ⚠️ Warning
+| -------------
+| The current LTS concept will change with version 2.0 (Vanilla Cake)
+
 The current non-LTS version of SecureCloud has support until a new version of SecureCloud is released (Any, even LTS). From then on the version has only 7 days of support. 
 **Example:**
 Current LTS version: v1.5.*
