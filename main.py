@@ -12,6 +12,11 @@ import psutil
 import socket
 from Cryptodome.Hash import SHAKE256
 
+# try:
+#     from Cryptodome.Hash import SHAKE256
+# except:
+#     from Crypto.Hash import SHAKE256
+
 
 # Upload Size Function & Configuration
 def max_upload_size():
@@ -31,8 +36,8 @@ app.config["SECRET_KEY"] = "xprivate_ypysKXdjbyMNkBIbx88IFaKlbwiZwn"
 
 
 # Variables
-release_github = "https://github.com/Strawberry-Software-Industries/SecureCloud/releases/tag/v1.6"
-build_date = "2022-18-03_12-00-00"
+release_github = "https://github.com/Strawberry-Software-Industries/SecureCloud/releases/tag/v1.7"
+build_date = "2022-18-03_16-12-15"
 build_ver = "1.7.0_" + build_date
 version_full = "Version 1.7.0"
 version_short = "v1.7.0"
@@ -191,6 +196,60 @@ def first_setup():
     fetched = c.fetchall()
     if fetched:
         return redirect("/")
+    elif request.method=="POST":
+        try:
+            mode=request.form["mode"]
+            username=request.form["username"]
+            password=request.form["password"]
+            return f"{request.form}"
+            errorr=False
+            if request.form["password"] == request.form["password2"]:
+                pass
+
+                if lang == "english":
+                    error=f"The first account and main Account with the name {request.form['username']} has been created."
+
+                else:
+                    error=f"Ein erste und Main Account mit dem Namen {request.form['username']} wurde erstellt."
+
+                try:
+                    Password_Byte_Encoded = str.encode(request.form["password"])
+                    Hashed_Password = SHAKE256.new()
+                    Hashed_Password.update(Password_Byte_Encoded)
+
+                    conn = sql.connect('./db/users.db')
+                    conn.execute(f"INSERT INTO users (name,password) VALUES ('{request.form['username']}', '{Hashed_Password.read(26).hex()}')")
+                    conn.commit()
+                    conn.close()
+                    print(f"[User Account Manager] New Account created » {request.form['username']}")
+                    
+                    try:
+                        os.mkdir(f"./data/{request.form['username']}")
+
+                    except FileExistsError:
+                        error=f"Could not create Directory {request.form['username']}: This Directory already exists"
+                        errorr=True
+
+                except:
+                        error=f"Error while creating User {request.form['username']}: Values cannot be inserted into the Database"
+                        errorr=True
+
+
+            else:
+                if lang == "english":
+                    error="Error: Both passwords are not identical"
+                    errorr=True
+
+                else:
+                    error="Fehler: Beide Passwörter sind nicht identisch"
+                    errorr=True
+            if errorr==True:
+                raise flask.e
+            return redirect("/")
+        except:
+            return render_template("fsetup.html")
+    else:
+        return render_template("fsetup.html")
 
 
 # Root 
