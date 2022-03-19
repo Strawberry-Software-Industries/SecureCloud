@@ -201,7 +201,7 @@ def first_setup():
             mode=request.form["mode"]
             username=request.form["username"]
             password=request.form["password"]
-            return f"{request.form}"
+            return f"{escape(request.form)}"
             errorr=False
             if request.form["password"] == request.form["password2"]:
                 pass
