@@ -31,11 +31,11 @@ app.config["SECRET_KEY"] = "xprivate_ypysKXdjbyMNkBIbx88IFaKlbwiZwn"
 
 
 # Variables
-release_github = "https://github.com/Strawberry-Software-Industries/SecureCloud/releases/tag/v1.7"
-build_date = "2022-24-03_19-12-34"
-build_ver = "1.8.0_" + build_date
-version_full = "Version 1.8.0"
-version_short = "v1.8.0"
+release_github = "https://github.com/Strawberry-Software-Industries/SecureCloud/releases/tag/v1.9"
+build_date = "2022-24-03_20-00-00"
+build_ver = "1.9.0_" + build_date
+version_full = "Version 1.9.0"
+version_short = "v1.9.0"
 revision = "rev-1"
 codename = "Strawberry Mix"
 
@@ -117,7 +117,7 @@ def logged_in(session):
 
 # Login
 @app.route('/', methods=['GET', 'POST'])
-def login():
+async def login():
     error = None
         
     lang = get_language()
@@ -184,7 +184,7 @@ def login():
 
 # First Setup
 @app.route("/fsetup")
-def first_setup():
+async def first_setup():
     db = sql.connect('db/users.db')
     c = db.cursor()
     c.execute("SELECT name, password FROM users")
@@ -249,7 +249,7 @@ def first_setup():
 
 # Root 
 @app.route('/root')
-def root():
+async def root():
     if not logged_in(session):
         return redirect("/")
 
@@ -258,7 +258,7 @@ def root():
 
 # For Debugging
 @app.route('/dir')
-def dir():
+async def dir():
     if not logged_in(session):
         return redirect("/")
         
@@ -303,7 +303,7 @@ def home():
 
 # Settings
 @app.route('/settings', methods=["GET", "POST"])
-def settings():
+async def settings():
     if not logged_in(session):
         return redirect("/")
     
@@ -400,7 +400,7 @@ def settings():
 
 # Change Upload Size
 @app.route('/change-upload-size', methods=["GET", "POST"])
-def change_upload_size():
+async def change_upload_size():
     if not logged_in(session):
         return redirect("/")    
     
@@ -454,7 +454,7 @@ def change_upload_size():
 
 # Change Hostname
 @app.route('/change-hostname', methods=["GET", "POST"])
-def change_hostname():
+async def change_hostname():
     if not logged_in(session):
         return redirect("/")    
     
@@ -507,7 +507,7 @@ def change_hostname():
 
 # Change Upload Path
 @app.route('/change-upload-path', methods=["GET", "POST"])
-def change_upload_path():
+async def change_upload_path():
     if not logged_in(session):
         return redirect("/")    
     
@@ -562,7 +562,7 @@ def change_upload_path():
 
 # About
 @app.route('/about', methods=["GET", "POST"])
-def about():
+async def about():
     if not logged_in(session):
         return redirect("/")
 
@@ -644,7 +644,7 @@ def about():
 
 
 @app.route('/files')
-def file_choosing():
+async def file_choosing():
     if not logged_in(session):
         return redirect("/")
 
@@ -686,7 +686,7 @@ def file_choosing():
 # Files
 @app.route("/shared-files", defaults={'req_path': ''})
 @app.route('/shared-files/<path:req_path>')
-def files(req_path):
+async def files(req_path):
     if not logged_in(session):
         return redirect("/")
 
@@ -727,7 +727,7 @@ def files(req_path):
 
 # Download Files
 @app.route("/shared-files/download/<path:filename>", methods=["GET", "POST"])
-def download_file(filename):
+async def download_file(filename):
     if not logged_in(session):
         return redirect("/")
     
@@ -740,7 +740,7 @@ def download_file(filename):
 # Browse Files
 @app.route('/shared-files/', defaults={'req_path': ''})
 @app.route('/shared-files/<path:req_path>')
-def dir_browsing(req_path):
+async def dir_browsing(req_path):
     if not logged_in(session):
         return redirect("/")
     
@@ -783,7 +783,7 @@ def dir_browsing(req_path):
 # Personal Files
 @app.route("/personal-files", defaults={'req_path': ''})
 @app.route('/personal-files/<path:req_path>')
-def personal_files(req_path):
+async def personal_files(req_path):
     if not logged_in(session):
         return redirect("/")
 
@@ -824,7 +824,7 @@ def personal_files(req_path):
 
 # Download Personal Files
 @app.route("/personal-files/download/<path:filename>", methods=["GET", "POST"])
-def download_personal_file(filename):
+async def download_personal_file(filename):
     if not logged_in(session):
         return redirect("/")
     
@@ -837,7 +837,7 @@ def download_personal_file(filename):
 # Browse Personal Files
 @app.route('/personal-files/', defaults={'req_path': ''})
 @app.route('/personal-files/<path:req_path>')
-def dir_browsing_personal(req_path):
+async def dir_browsing_personal(req_path):
     if not logged_in(session):
         return redirect("/")
     
@@ -876,7 +876,7 @@ def dir_browsing_personal(req_path):
 
 # Users
 @app.route('/users', methods=['GET', 'GET'])
-def users():
+async def users():
     if not logged_in(session):
         return redirect("/")
 
@@ -915,12 +915,12 @@ def users():
 
 # Create User
 @app.route("/users/create", methods=['GET', 'POST'])
-def create_user():
+async def create_user():
     if not logged_in(session):
         return redirect("/")
 
 
-    lang = get_language()
+    lang = await get_language()
 
     if lang == "english":
         title = "User Creation"
@@ -1001,7 +1001,7 @@ def create_user():
 # Upload to Shared Files
 @app.route("/upload/shared/", methods=['GET', 'POST'], defaults={'upload_path': None})
 @app.route("/upload/shared/<path:upload_path>", methods=['GET', 'POST'])
-def upload_to_shared(upload_path):
+async def upload_to_shared(upload_path):
     if not logged_in(session):
         return redirect("/")
 
@@ -1063,7 +1063,7 @@ def upload_to_shared(upload_path):
 # Upload to Personal Files
 @app.route("/upload/personal/", methods=['GET', 'POST'], defaults={'upload_path': None})
 @app.route("/upload/personal/<path:upload_path>", methods=['GET', 'POST'])
-def upload_to_personal(upload_path):
+async def upload_to_personal(upload_path):
     if not logged_in(session):
         return redirect("/")
 
@@ -1132,7 +1132,7 @@ def upload_to_personal(upload_path):
 
 # Update
 @app.route("/update", methods=['GET', 'POST'])
-def update(): 
+async def update(): 
     if not logged_in(session):
         return redirect("/")
 
@@ -1164,20 +1164,20 @@ def update():
 
 # Whats that
 @app.route("/secretpage")
-def secretpage():
+async def secretpage():
     return "<img src='{{url_for('static', filename='strawberry_software.png')}}' align='middle'/>"
 
                             
 # Logout
 @app.route("/logout")
-def logout():
+async def logout():
     session.clear()
     return redirect("/")
 
 
 # 404 Page
 @app.errorhandler(404)
-def page_not_found(error):
+async def page_not_found(error):
     return render_template('404.html'), 404
 
 
