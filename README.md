@@ -1,5 +1,5 @@
 # SecureCloud
-[![SecureCloud - v1.7](https://img.shields.io/badge/SecureCloud-v1.7-2ea44f)](https://github.com/Strawberry-Software-Industries/SecureCloud/blob/main/current_version.txt) [![SecureCloud - v1.5.2 LTS](https://img.shields.io/badge/SecureCloud-v1.5.2_LTS-2ea44f)](https://github.com/Strawberry-Software-Industries/SecureCloud/blob/main/current_version_lts.txt)
+[![SecureCloud - v1.8](https://img.shields.io/badge/SecureCloud-v1.8-2ea44f)](https://github.com/Strawberry-Software-Industries/SecureCloud/blob/main/current_version.txt) [![SecureCloud - v1.5.2 LTS](https://img.shields.io/badge/SecureCloud-v1.5.2_LTS-2ea44f)](https://github.com/Strawberry-Software-Industries/SecureCloud/blob/main/current_version_lts.txt)
 [![CodeQL](https://github.com/Strawberry-Software-Industries/SecureCloud/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/Strawberry-Software-Industries/SecureCloud/actions/workflows/codeql-analysis.yml) [![Stale](https://github.com/Strawberry-Software-Industries/SecureCloud/actions/workflows/stale.yml/badge.svg)](https://github.com/Strawberry-Software-Industries/SecureCloud/actions/workflows/stale.yml) [![Python application](https://github.com/Strawberry-Software-Industries/SecureCloud/actions/workflows/python-app.yml/badge.svg)](https://github.com/Strawberry-Software-Industries/SecureCloud/actions/workflows/python-app.yml) <br> <br>
 <b> Your new Cloud. Free and Open Source. 
 By Strawberry Software </b>
@@ -10,6 +10,10 @@ SecureCloud is a free and open source cloud that makes storing files on your (ho
 | ℹ️ Information
 | -------------
 | We are looking for developers! To appy, simply join our Discord server and DM a staff member!
+
+Try out free Demo at [demo-securecloud.loca.lt](https://demo-securecloud.loca.lt/) <br>
+**Username:** `admin` <br>
+**Password:** `python`
 
 
 ## How does SecureCloud work? 
