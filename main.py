@@ -12,11 +12,6 @@ import psutil
 import socket
 from Cryptodome.Hash import SHAKE256
 
-# try:
-#     from Cryptodome.Hash import SHAKE256
-# except:
-#     from Crypto.Hash import SHAKE256
-
 
 # Upload Size Function & Configuration
 def max_upload_size():
@@ -37,10 +32,10 @@ app.config["SECRET_KEY"] = "xprivate_ypysKXdjbyMNkBIbx88IFaKlbwiZwn"
 
 # Variables
 release_github = "https://github.com/Strawberry-Software-Industries/SecureCloud/releases/tag/v1.7"
-build_date = "2022-18-03_16-12-15"
-build_ver = "1.7.0_" + build_date
-version_full = "Version 1.7.0"
-version_short = "v1.7.0"
+build_date = "2022-24-03_18-00-00"
+build_ver = "1.8.0_" + build_date
+version_full = "Version 1.8.0"
+version_short = "v1.8.0"
 revision = "rev-1"
 codename = "Strawberry Mix"
 
