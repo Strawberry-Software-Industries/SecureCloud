@@ -32,16 +32,16 @@ app.config["SECRET_KEY"] = "xprivate_ypysKXdjbyMNkBIbx88IFaKlbwiZwn"
 
 # Variables
 release_github = "https://github.com/Strawberry-Software-Industries/SecureCloud/releases/tag/v1.9"
-build_date = "2022-24-03_20-19-41"
-build_ver = "1.9.0_" + build_date
-version_full = "Version 1.9.0"
-version_short = "v1.9.0"
+build_date = "2022-26-03_21-21-28"
+build_ver = "1.9.1_" + build_date
+version_full = "Version 1.9.1"
+version_short = "v1.9.1"
 revision = "rev-1"
 codename = "Strawberry Mix"
 
 is_lts_ver = "no"
-is_oss = "yes"
-edition_ver = "Home"
+is_oss = "no"
+edition_ver = "Pro"
 uptime = time.time()
 
 
