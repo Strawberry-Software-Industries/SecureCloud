@@ -920,7 +920,7 @@ async def create_user():
         return redirect("/")
 
 
-    lang = await get_language()
+    lang = get_language()
 
     if lang == "english":
         title = "User Creation"
