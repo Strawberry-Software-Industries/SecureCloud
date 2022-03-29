@@ -41,9 +41,16 @@
         <main class="mdl-layout__content">
             <div class="page-content">
                 <h3 style="margin-left: 20px;"><b><u>SecureCloud Update</u></b></h3>
-                <h4 style="margin-left: 20px;">{{update_text}}</h4>
-                <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" 
-                style="margin-left: 20px; position: fixed; bottom: 30px; right: 30px;" href="{{release_github}}">{{up_perf}}</a>
+                {% if online_version == installed_version %}
+                    <h4 style="margin-left: 20px;">{{no_update}}</h4>
+                {% else %}
+                    <h4 style="margin-left: 20px;">{{update_text}}</h4>
+                    <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" 
+                    style="margin-left: 20px; position: fixed; bottom: 30px; right: 30px;" href="{{release_github}}">
+                    {{up_perf}}
+                    </a>
+                {% endif %}
+                
             </div>
         </main>
     </div>

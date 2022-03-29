@@ -67,8 +67,11 @@
 
                         <input class="button-green" type="submit" value="{{title}}">
                     </form>
+                    <br>
+
                     {% if error %}
-                    <p class="error"><strong>Error:</strong> {{error}} {% endif %}
+                        <h4 class="error"><strong>Error:</strong> {{error}}</h4>
+                    {% endif %}
                 </center>
 
             </div>
