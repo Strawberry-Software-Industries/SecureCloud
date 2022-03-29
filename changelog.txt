@@ -1,1 +1,11 @@
-- SecureCloud is now Async coded
+- The update system works now!
+- Updated Style of Login Page
+- Added File Deleting for Shared Files
+- Added File Creation for Shared Files
+- Added Folder Deleting for Shared Files
+- Added Folder Creation for Shared Files
+- Added File Deleting for Pesonal Files
+- Added File Creation for Pesonal Files
+- Added Folder Deleting for Pesonal Files
+- Added Folder Creation for Personal Files
+- 

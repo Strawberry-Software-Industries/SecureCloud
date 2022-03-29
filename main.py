@@ -12,6 +12,7 @@ import datetime
 import psutil
 import socket
 import requests
+import shutil
 
 
 # Upload Size, Get Installed Version & Get Online Version Function
@@ -53,6 +54,8 @@ is_lts_ver = "yes"
 is_oss = "yes"
 edition_ver = "Developer Preview"
 uptime = time.time()
+
+KMS_SERVER = "https://kms.strawberrysoftware.ga/db/enterprise/validate/"
 
 
 # Functions
@@ -664,7 +667,7 @@ async def about():
                            dark_mode=dark_mode, oss=oss, edition_ver=edition_ver, codename=codename)
 
 
-
+# SecureCloud File System (SCFS) - File Choosing Page
 @app.route('/files')
 async def file_choosing():
     if not logged_in(session):
@@ -705,7 +708,7 @@ async def file_choosing():
 
 
 
-# Files
+# Shared Files 
 @app.route("/shared-files", defaults={'req_path': ''})
 @app.route('/shared-files/<path:req_path>')
 async def files(req_path):
@@ -747,19 +750,7 @@ async def files(req_path):
                             files_link=files_link, dir=dir)
 
 
-# Download Files
-@app.route("/shared-files/download/<path:filename>", methods=["GET", "POST"])
-async def download_file(filename):
-    if not logged_in(session):
-        return redirect("/")
-    
-    upload_path = get_upload_path()
-
-    path = upload_path + filename
-    return send_file(path, as_attachment=True)
-
-
-# Browse Files
+# Browse Shared Files
 @app.route('/shared-files/', defaults={'req_path': ''})
 @app.route('/shared-files/<path:req_path>')
 async def dir_browsing(req_path):
@@ -797,6 +788,79 @@ async def dir_browsing(req_path):
 
     return render_template('file_browsing.html', files=files, title=title, upload_link=upload_link, settings_link=settings_link, home_link=home_link, 
                             user_link=user_link, files_link=files_link)
+
+
+
+# Download Shared Files
+@app.route("/shared-files/download/<path:filename>", methods=["GET", "POST"])
+async def download_file(filename):
+    if not logged_in(session):
+        return redirect("/")
+    
+    upload_path = get_upload_path()
+
+    path = upload_path + filename
+    return send_file(path, as_attachment=True)
+
+
+# Delete Shared Files
+@app.route("/shared-files/delete/<path:filename>", methods=["GET", "POST"])
+@app.route("/shared-files/rm/<path:filename>", methods=["GET", "POST"])
+async def delete_shared_file(filename):
+    if not logged_in(session):
+        return redirect("/")
+    
+    upload_path = get_upload_path()
+
+    path = upload_path + filename
+    os.remove(path)
+
+    return redirect("/shared-files")
+
+
+# Delete Shared Folder
+@app.route("/shared-files/delete-folder/<path:filename>", methods=["GET", "POST"])
+@app.route("/shared-files/rmdir/<path:filename>", methods=["GET", "POST"])
+async def delete_shared_folder(filename):
+    if not logged_in(session):
+        return redirect("/")
+    
+    upload_path = get_upload_path()
+
+    path = upload_path + filename
+    shutil.rmtree(path)
+
+    return redirect("/shared-files")
+
+
+# Create Shared Files
+@app.route("/shared-files/create/<path:filename>", methods=["GET", "POST"])
+async def create_shared_file(filename):
+    if not logged_in(session):
+        return redirect("/")
+    
+    upload_path = get_upload_path()
+
+    path = upload_path + filename
+    with open(path, "a") as f:
+        f.write("")
+
+    return redirect("/shared-files")
+
+
+# Create Shared Folder
+@app.route("/shared-files/create-folder/<path:filename>", methods=["GET", "POST"])
+@app.route("/shared-files/mkdir/<path:filename>", methods=["GET", "POST"])
+async def create_shared_folder(filename):
+    if not logged_in(session):
+        return redirect("/")
+    
+    upload_path = get_upload_path()
+
+    path = upload_path + filename
+    os.mkdir(path)
+
+    return redirect("/shared-files")
 
 
 
@@ -844,18 +908,6 @@ async def personal_files(req_path):
                             files_link=files_link, dir=dir)
 
 
-# Download Personal Files
-@app.route("/personal-files/download/<path:filename>", methods=["GET", "POST"])
-async def download_personal_file(filename):
-    if not logged_in(session):
-        return redirect("/")
-    
-    user_file_path = f'./data/{session.get("username")}'
-
-    path = user_file_path + filename
-    return send_file(path, as_attachment=True)
-
-
 # Browse Personal Files
 @app.route('/personal-files/', defaults={'req_path': ''})
 @app.route('/personal-files/<path:req_path>')
@@ -894,6 +946,79 @@ async def dir_browsing_personal(req_path):
 
     return render_template('file_browsing_personal.html', files=files, title=title, upload_link=upload_link, settings_link=settings_link, home_link=home_link, 
                             user_link=user_link, files_link=files_link)
+
+
+# Download Personal Files
+@app.route("/personal-files/download/<path:filename>", methods=["GET", "POST"])
+async def download_personal_file(filename):
+    if not logged_in(session):
+        return redirect("/")
+    
+    user_file_path = f'./data/{session.get("username")}'
+
+    path = user_file_path + filename
+    return send_file(path, as_attachment=True)
+
+
+# Delete Personal Files
+@app.route("/personal-files/delete/<path:filename>", methods=["GET", "POST"])
+@app.route("/personal-files/rm/<path:filename>", methods=["GET", "POST"])
+async def delete_personal_file(filename):
+    if not logged_in(session):
+        return redirect("/")
+    
+    user_file_path = f'./data/{session.get("username")}/'
+
+    path = user_file_path + filename
+    os.remove(path)
+
+    return redirect("/personal-files")
+
+
+# Delete Personal Folder
+@app.route("/personal-files/delete-folder/<path:filename>", methods=["GET", "POST"])
+@app.route("/personal-files/rmdir/<path:filename>", methods=["GET", "POST"])
+async def delete_personal_folder(filename):
+    if not logged_in(session):
+        return redirect("/")
+    
+    user_file_path = f'./data/{session.get("username")}/'
+
+    path = user_file_path + filename
+    shutil.rmtree(path)
+
+    return redirect("/personal-files")
+
+
+# Create Personal Files
+@app.route("/personal-files/create/<path:filename>", methods=["GET", "POST"])
+async def create_personal_file(filename):
+    if not logged_in(session):
+        return redirect("/")
+    
+    user_file_path = f'./data/{session.get("username")}/'
+
+    path = user_file_path + filename
+    with open(path, "a") as f:
+        f.write("")
+
+    return redirect("/personal-files")
+
+
+# Create Personal Folder
+@app.route("/personal-files/create-folder/<path:filename>", methods=["GET", "POST"])
+@app.route("/personal-files/mkdir/<path:filename>", methods=["GET", "POST"])
+async def create_personal_folder(filename):
+    if not logged_in(session):
+        return redirect("/")
+    
+    user_file_path = f'./data/{session.get("username")}/'
+
+    path = user_file_path + filename
+    os.mkdir(path)
+
+    return redirect("/personal-files")
+
 
 
 # Users
@@ -1018,6 +1143,7 @@ async def create_user():
     return render_template('create-user.html', username_txt=username_txt,password_txt=password_txt,password_txt2=password_txt2, title=title, upload_link=upload_link, 
                             settings_link=settings_link, home_link=home_link, user_link=user_link, files_link=files_link,submitvalue=submitvalue, postscr=postscr, 
                             create_new_account_txt=create_new_account_txt)
+
 
 
 # Upload to Shared Files
