@@ -8,4 +8,6 @@
 - Added File Creation for Pesonal Files
 - Added Folder Deleting for Pesonal Files
 - Added Folder Creation for Personal Files
-- 
+- Changed Style of File Choosing Page
+- Changed Style of File Browsing Pages
+- Added SecureCloud API Auth
