@@ -18,13 +18,22 @@
         font-family: "Rubik";
     }
 
-    a:link {
-        color: blue;
-        background-color: transparent;
+    li {
+        margin-top: 10px;
+        margin-left: -15px;
+        background-color: #eaeaea;
+        list-style-type: none;
+        border-radius: 20px;
+        padding: 10px;
+        width: 400px;
     }
 
-    a:visited {
-        color: purple;
+    .center {
+        text-align: center;
+    }
+
+    a:link {
+        color: blue;
         background-color: transparent;
     }
 
@@ -33,16 +42,10 @@
         background-color: transparent;
     }
 
-    a:active {
-        color: purple;
-        background-color: transparent;
-    }
-
     
 </style>
 
 <body>
-
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
         <header class="mdl-layout__header">
             <div class="mdl-layout__header-row">
@@ -67,15 +70,17 @@
         </div>
         <main class="mdl-layout__content">
             <div class="page-content"></div>
-            <ul>
-                {% for file in files %}
-                <li>
-                    <a href="{{ (request.path + '/' if request.path != '/' else '') + file }}">
-                        {{ (request.path + '/' if request.path != '/' else '') + file }}
-                    </a>
-                </li>
-                {% endfor %}
-            </ul>
+            <div class="center">
+                <ul>
+                    {% for file in files %}
+                    <li>
+                        <a href="{{ (request.path + '/' if request.path != '/' else '') + file }}">
+                            {{ ('' + '' if request.path != '/' else '') + file }}
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
 
             <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" 
                 style="position: fixed; bottom: 30px; right: 30px;" href="/upload/personal">{{upload_link}}</a>

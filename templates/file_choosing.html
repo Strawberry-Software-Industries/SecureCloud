@@ -13,6 +13,17 @@
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 </head>
 
+<style>
+    h1, h2, h3, h4, h5, h6 {
+      font-family: "Rubik";
+    }
+
+    .center {
+        text-align: center;
+    }
+
+</style>
+
 <body>
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
         <header class="mdl-layout__header">
@@ -38,17 +49,21 @@
         </div>
         <main class="mdl-layout__content">
             <div class="page-content">
+                <div class="center">
+                    <h2 style="margin-top: 20px; margin-left: 20px; font-family: Rubik;"><b>{{storage}}</b></h2>
 
-                <h4 style="margin-top: 20px; margin-left: 20px; font-family: Rubik;"><b>{{global_file_str}}</b></h4>
-                <h6 style="margin-top: -10px; margin-left: 20px; font-family: Rubik;" >{{cur_up_path}} {{upload_path}}</h6>
-                <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="margin-left: 20px;" href="/shared-files">
-                    /shared-files/
-                </a>
-                <h4 style="margin-top: 35px; margin-left: 20px; font-family: Rubik;"><b>{{personal_file_str}}</b></h4>
-                <h6 style="margin-top: -10px; margin-left: 20px; font-family: Rubik;" >{{logged_in_as}} {{username}}</h6>
-                <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" style="margin-left: 20px;" href="/personal-files">
-                    /personal-files/
-                </a>
+                    <h3 style="margin-top: 20px; margin-left: 20px; font-family: Rubik;"><b>{{global_file_str}}</b></h3>
+                    <h6 style="margin-top: -10px; margin-left: 20px; font-family: Rubik;" >{{cur_up_path}} {{upload_path}}</h6>
+                    <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="margin-left: 20px;" href="/shared-files">
+                        /shared-files/
+                    </a>
+                    
+                    <h3 style="margin-top: 35px; margin-left: 20px; font-family: Rubik;"><b>{{personal_file_str}}</b></h3>
+                    <h6 style="margin-top: -10px; margin-left: 20px; font-family: Rubik;" >{{logged_in_as}} {{username}}</h6>
+                    <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" style="margin-left: 20px;" href="/personal-files">
+                        /personal-files/
+                    </a>
+                </div>
 
             </div>
         </main>
