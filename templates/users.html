@@ -14,6 +14,24 @@
 
 </head>
 
+<style>
+    ul {
+        font-family: "Rubik";
+    }
+
+    li {
+        margin-top: 10px;
+        margin-left: -15px;
+        list-style-type: none;
+    }
+
+    h4, h3, h2 {
+        font-family: "Rubik";
+        margin-top: 5px;
+        margin-left: 0px;
+    }
+</style>
+
 <body>
 
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
@@ -40,10 +58,24 @@
         </div>
         <main class="mdl-layout__content">
             <div class="page-content">
+                <h2 style="margin-left: 20px; margin-top: 20px;"><b>{{title}}</b></h2>
+                {% for row in user_list %}
+                    <li class="mdl-list__item mdl-list__item--three-line" style="margin-left: 20px;">
+                        <span class="mdl-list__item-primary-content ">
+                            <h4><img src="/static/favicon.png" style="width: 50px; height: 50px; margin-right: 5px;">{{row}}</h4>
+                        </span>
+                    </li>
+                {% endfor %}
+
+                
 
 
-                <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" style="position: fixed; bottom: 30px; right: 30px;" href="users/create">{{cr_new_usr}}</a>
-                <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" style="position: fixed; bottom: 30px; left: 30px;" href="/logout">{{logout}}</a>
+                <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored"
+                    style="position: fixed; bottom: 30px; right: 30px;" href="/users/create">{{cr_new_usr}}</a>
+                <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" disabled
+                    style="position: fixed; bottom: 90px; right: 30px;" >{{delete_user}}</a> <!-- href="/users/delete" -->
+                <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored"
+                    style="position: fixed; bottom: 30px; left: 30px;" href="/logout">{{logout}}</a>
 
             </div>
         </main>

@@ -1,5 +1,5 @@
 # Networking 
-ip_type = "networking" # Change between localhost and networking
+ip_type = "networking" # Change between localhost, networking and self-asigned
 global_port = "80" # Port for SecureCloud
 
 # Developer

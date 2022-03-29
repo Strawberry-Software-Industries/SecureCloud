@@ -22,11 +22,13 @@ def max_upload_size():
 
     return data.rstrip()
 
+
 def get_installed_version():
     with open("current_version.txt", "r") as version:
         return version.read().rstrip()
 
 
+print(" * Connecting to SecureCloud API")
 def get_online_version():
     api = requests.get("https://api.strawberrysoftware.ga/api/v1/securecloud/version/?edition=home")
     return api.text.rstrip()
@@ -55,7 +57,9 @@ is_oss = "yes"
 edition_ver = "Developer Preview"
 uptime = time.time()
 
-KMS_SERVER = "https://kms.strawberrysoftware.ga/db/enterprise/validate/"
+
+API = "https://kms.strawberrysoftware.ga/db/enterprise/validate/"
+print(" * Connected")
 
 
 # Functions
@@ -688,6 +692,7 @@ async def file_choosing():
         personal_file_str = "Personal Files"
         cur_up_path = "Current Shared Path: "
         logged_in_as = "Logged in as"
+        storage = "Your SecureCloud Drives"
 
     else:
         title = "Dateien"
@@ -700,11 +705,12 @@ async def file_choosing():
         personal_file_str = "Personal Files"
         cur_up_path = "Aktueller Geteilte Pfad: "
         logged_in_as = "Angemeldet als"
+        storage = "Deine SecureCloud Laufwerke"
     
 
     return render_template('file_choosing.html', title=title, upload_link=upload_link, settings_link=settings_link, home_link=home_link, user_link=user_link, 
                             files_link=files_link, dir=dir, global_file_str=global_file_str, personal_file_str=personal_file_str, cur_up_path=cur_up_path,
-                            logged_in_as=logged_in_as, upload_path=upload_path, username=username)
+                            logged_in_as=logged_in_as, upload_path=upload_path, username=username, storage=storage)
 
 
 
@@ -746,7 +752,7 @@ async def files(req_path):
     files = os.listdir(abs_path)
     
 
-    return render_template('files.html', files=files, title=title, upload_link=upload_link, settings_link=settings_link, home_link=home_link, user_link=user_link, 
+    return render_template('file_browsing.html', files=files, title=title, upload_link=upload_link, settings_link=settings_link, home_link=home_link, user_link=user_link, 
                             files_link=files_link, dir=dir)
 
 
@@ -1039,6 +1045,7 @@ async def users():
         user_link = "Users"
         cr_new_usr = "Add user"
         logout = "Logout"
+        delete_user = "Delete User"
 
     else:
         title = "Benutzer"
@@ -1050,14 +1057,19 @@ async def users():
         user_link = "Benutzer"
         cr_new_usr = "Nutzer hinzufügen"
         logout = "Ausloggen"
+        delete_user = "Benutzer löschen"
 
-    conn = sql.connect('db/users.db')
-    cur = conn.cursor()
-    cur.execute("CREATE TABLE IF NOT EXISTS users (name TEXT, password TEXT)")
-    conn.close()
-    
+        con = sql.connect("./db/users.db")
+        c = con.cursor()
+
+        c.execute("SELECT name FROM users")
+        users = c.fetchall()
+        user_list = [str(user[0]) for user in users]
+
+
     return render_template('users.html', title=title, text=text, upload_link=upload_link, files_link=files_link, settings_link=settings_link, home_link=home_link, 
-                            user_link=user_link, user_list=[], cr_new_usr=cr_new_usr, logout=logout)
+                            user_link=user_link, cr_new_usr=cr_new_usr, logout=logout, user_list=user_list, users=users, 
+                            delete_user=delete_user)
 
 
 # Create User
@@ -1143,6 +1155,80 @@ async def create_user():
     return render_template('create-user.html', username_txt=username_txt,password_txt=password_txt,password_txt2=password_txt2, title=title, upload_link=upload_link, 
                             settings_link=settings_link, home_link=home_link, user_link=user_link, files_link=files_link,submitvalue=submitvalue, postscr=postscr, 
                             create_new_account_txt=create_new_account_txt)
+
+
+# Delete User 
+@app.route("/users/delete/<username>", methods=['GET', 'POST'])
+async def delete_user(username):
+    if not logged_in(session):
+        return redirect("/")
+
+    lang = get_language()
+
+    if lang == "english":
+        title = "User Deletion"
+        settings_link = "Settings"
+        upload_link = "Upload"
+        files_link = "Files"
+        home_link = "Home"
+        user_link = "User"
+        submitvalue = "Delete"
+        username_txt = "Name"
+        password_txt = "Password"
+        password_txt2 = "Repeat Password"
+        postscr = ""
+        create_new_account_txt = "The User Account Manager will help you! So type only the data you need"
+
+    else:
+        title = "Benutzerlöschung"
+        settings_link = "Einstellungen"
+        upload_link = "Hochladen"
+        files_link = "Dateien"
+        home_link = "Startseite"
+        user_link = "Benutzer"
+        submitvalue = "Löschen"
+        username_txt = "Name"
+        password_txt = "Passwort"
+        password_txt2 = "Passwort wiederholen"
+        postscr = ""
+        create_new_account_txt = "Der User Account Manager wird dir dabei helfen! Tippe also nur die benötigten Daten ein"
+
+    try:
+        if request.method == "POST":
+
+            if request.form["password"] == request.form["password2"]:
+                pass
+
+                if lang == "english":
+                    postscr=f"The account with the name {username} has been deleted."
+
+                else:
+                    postscr=f"Der Account mit dem Namen {username} wurde gelöscht."
+
+                try:
+                    Password_Byte_Encoded = str.encode(request.form["password"])
+                    Hashed_Password = SHAKE256.new()
+                    Hashed_Password.update(Password_Byte_Encoded)
+
+                    conn = sql.connect('./db/users.db')
+                    conn.execute(f"DELETE FROM users WHERE name = '{username}'")
+                    conn.commit()
+                    conn.close()
+                    print(f"[User Account Manager] Account deleted » {username}")
+
+                    # try:
+                    #     shutil.rmtree(f"./data/{username}")
+
+                    # except FileNotFoundError:
+                    #     print(f"Could not delete Directory {username}: This Directory does not exist")
+                except: 
+                    pass
+    except:
+        pass
+
+    return render_template('delete-user.html', username_txt=username_txt,password_txt=password_txt,password_txt2=password_txt2, title=title, upload_link=upload_link, 
+                            settings_link=settings_link, home_link=home_link, user_link=user_link, files_link=files_link,submitvalue=submitvalue, postscr=postscr, 
+                            create_new_account_txt=create_new_account_txt, username=username)
 
 
 
@@ -1320,7 +1406,7 @@ async def update():
 # Whats that
 @app.route("/secretpage")
 async def secretpage():
-    return "<img src='{{url_for('static', filename='strawberry_software.png')}}' align='middle'/>"
+    return "<img src='/static/strawberry-software.png' align='middle'/>"
 
                             
 # Logout
@@ -1341,6 +1427,9 @@ if ip_type == "networking":
 
 elif ip_type == "localhost":
     hostip = "localhost"
+
+elif ip_type == "self-asigned":
+    hostip = "0.0.0.0"
 
 else:
     hostip = "localhost"
