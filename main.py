@@ -2,6 +2,7 @@ from flask import Flask
 from flask import *
 from werkzeug.utils import secure_filename
 from config import *
+from Cryptodome.Hash import SHAKE256
 
 import sqlite3 as sql
 import hashlib
@@ -10,15 +11,24 @@ import time
 import datetime
 import psutil
 import socket
-from Cryptodome.Hash import SHAKE256
+import requests
 
 
-# Upload Size Function & Configuration
+# Upload Size, Get Installed Version & Get Online Version Function
 def max_upload_size():
     with open("./config/upload-size.conf", 'r') as f:
         data = f.read()        
 
     return data.rstrip()
+
+def get_installed_version():
+    with open("current_version.txt", "r") as version:
+        return version.read().rstrip()
+
+
+def get_online_version():
+    api = requests.get("https://api.strawberrysoftware.ga/api/v1/securecloud/version/?edition=home")
+    return api.text.rstrip()
 
 
 # App Declaration
@@ -31,17 +41,17 @@ app.config["SECRET_KEY"] = "xprivate_ypysKXdjbyMNkBIbx88IFaKlbwiZwn"
 
 
 # Variables
-release_github = "https://github.com/Strawberry-Software-Industries/SecureCloud/releases/tag/v1.9"
-build_date = "2022-26-03_21-21-28"
-build_ver = "1.9.1_" + build_date
-version_full = "Version 1.9.1"
-version_short = "v1.9.1"
+release_github = f"https://github.com/Strawberry-Software-Industries/SecureCloud/releases/tag/v{get_online_version()}"
+build_date = "2022-29-03_20-00-59"
+build_ver = "2.0_" + build_date
+version_full = "Version 2.0"
+version_short = "v2.0"
 revision = "rev-1"
-codename = "Strawberry Mix"
+codename = "Vanilla Cake"
 
-is_lts_ver = "no"
-is_oss = "no"
-edition_ver = "Pro"
+is_lts_ver = "yes"
+is_oss = "yes"
+edition_ver = "Developer Preview"
 uptime = time.time()
 
 
@@ -115,6 +125,7 @@ def logged_in(session):
         return False
 
 
+
 # Login
 @app.route('/', methods=['GET', 'POST'])
 async def login():
@@ -162,7 +173,10 @@ async def login():
 
         else:
             print(f'[User Account Manager] {username} tried to log in! - But the Username or Password is wrong!')
-            error = 'Invalid Credentials. Please try again.'
+            if lang == "english":
+                error = 'Invalid Credentials. Please try again.'
+            else:
+                error = "Inkorrekte Anmeldedaten. Bitte versuche es erneuert"
 
     db = sql.connect('db/users.db')
     c = db.cursor()
@@ -182,6 +196,7 @@ async def login():
         return render_template('login.html', title=title, title_header=title_header, username_txt=username_txt, password_txt=password_txt, error=error, welcome=welcome,
                                 hostname=hostname)
 
+
 # First Setup
 @app.route("/fsetup")
 async def first_setup():
@@ -193,11 +208,11 @@ async def first_setup():
         return redirect("/")
     elif request.method=="POST":
         try:
-            mode=request.form["mode"]
-            username=request.form["username"]
-            password=request.form["password"]
+            mode = request.form["mode"]
+            username = request.form["username"]
+            password = request.form["password"]
             return f"{escape(request.form)}"
-            errorr=False
+            error=False
             if request.form["password"] == request.form["password2"]:
                 pass
 
@@ -316,6 +331,8 @@ async def settings():
 
     lang = get_language()
     upload_size = max_upload_size()
+    online_version = get_online_version()
+    installed_version = get_installed_version()
 
 
     if request.method == 'POST':
@@ -342,7 +359,7 @@ async def settings():
         add = "Add"
         up_av = "Update available"
         up_txt = "An update for SecureCloud is available. To install the update, save all your settings and press Perform Update."
-        up_perf = "Perform Update"
+        up_perf = "Open Update Manager"
         goto_about = "To go to the information page press about"
         about_link = "About"
         german = "German"
@@ -355,6 +372,8 @@ async def settings():
         upload_limit = "Upload Size"
         change = "Change"
         more = "More..."
+        no_update_title = "No Update Available"
+        no_update = "You are using the latest version."
 
     else:
         title = "Einstellungen"
@@ -370,7 +389,7 @@ async def settings():
         add = "Hinzufügen"
         up_av = "Update verfügbar"
         up_txt = "Ein Update für SecureCloud ist verfügbar. Um das Update zu installieren sichern sie alle ihre Einstellungen, und drücken sie auf Update durchführen"
-        up_perf = "Update durchführen"
+        up_perf = "Updatemanager öffnen"
         goto_about = "Um zur Informationsseite zu gelangen drücken sie auf Über"
         about_link = "Über"
         language = "Sprache"
@@ -383,6 +402,8 @@ async def settings():
         upload_limit = "Hochladegröße"
         change = "Ändern"
         more = "Weiteres..."
+        no_update_title = "Kein Update verfügbar"
+        no_update = "Sie verwenden die aktuellste Version."
 
     memory_usage_percent = f"{psutil.virtual_memory()[2]} %"
     cpu_usage_percent = cpu_usage()
@@ -395,7 +416,8 @@ async def settings():
                            german=german, english=english, add_ext=add_ext, file_extensions_data=file_extensions_data, memory_usage_mb=memory_usage_mb,
                            memory_usage_percent=memory_usage_percent, memory=memory, file_extensions_data_text=file_extensions_data_text, changed_german=changed_german,
                            changed_english=changed_english, upload_limit=upload_limit, change=change, upload_size=upload_size, more=more, cpu_usage_percent=cpu_usage_percent,
-                           uptime_conv=uptime_conv, add=add)
+                           uptime_conv=uptime_conv, add=add, no_update_title=no_update_title, no_update=no_update, installed_version=installed_version, 
+                           online_version=online_version)
 
 
 # Change Upload Size
@@ -1137,6 +1159,8 @@ async def update():
         return redirect("/")
 
     lang = get_language()
+    installed_version = get_installed_version()
+    online_version = get_online_version()
 
     if lang == "english":
         title = "Update"
@@ -1147,6 +1171,8 @@ async def update():
         user_link = "User"
         update_text = "An update for SecureCloud is available. To install the update, save all your settings and press Perform Update."
         up_perf = "Perform update"
+        no_update = "No update available"
+
 
     else:
         title = "Update"
@@ -1157,9 +1183,12 @@ async def update():
         user_link = "Benutzer"
         update_text = "Ein Update für SecureCloud ist verfügbar. Um das Update zu installieren sichern sie alle ihre Einstellungen, und drücken sie auf Update durchführen"    
         up_perf = "Update durchführen"
+        no_update = "Kein Update verfügbar"
+
 
     return render_template('update.html', title=title, settings_link=settings_link, upload_link=upload_link, files_link=files_link, home_link=home_link, user_link=user_link,
-                            update_text=update_text, up_perf=up_perf, release_github=release_github)
+                            update_text=update_text, up_perf=up_perf, release_github=release_github, installed_version=installed_version, online_version=online_version,
+                            no_update=no_update)
 
 
 # Whats that
