@@ -39,7 +39,7 @@ app = Flask(__name__, static_url_path="/static")
 
 
 # App Config
-app.config['MAX_CONTENT_LENGTH'] = int(max_upload_size()) * 1024 * 1024
+app.config['MAX_CONTENT_LENGTH'] = int(max_upload_size()) * 1024^2
 app.config["SECRET_KEY"] = "xprivate_ypysKXdjbyMNkBIbx88IFaKlbwiZwn"
 
 
